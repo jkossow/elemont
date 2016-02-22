@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../mainTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+   
+
+    <ui:define name="content">
+        View id &nbsp; <h:outputText value="#{view.viewId}" />
+        <p:dataTable value="#{materialBean.findAll}" var="m" paginator="true" rows="15">
+            <p:column headerText="Indeks">
+                <h:outputText value="#{m.indeks}" />
+            </p:column>
+            <p:column headerText="Nazwa" sortBy="#{m.nazwa}" filterBy="#{m.nazwa}">
+                <h:outputText value="#{m.nazwa}" />
+            </p:column>
+            <p:column headerText="Jedn. miary">
+                <h:outputText value="#{m.jm.symbol}" />
+            </p:column>
+            <p:column headerText="Grupa">
+                <h:outputText value="#{m.grupa.symbol}" />
+            </p:column>
+            <p:column headerText="Nazwa">
+                <h:commandLink value="Popraw" />&nbsp;
+                <h:commandLink value="Usuń" />
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+
+</ui:composition>

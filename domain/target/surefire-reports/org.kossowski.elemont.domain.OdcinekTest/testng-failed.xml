@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [org.kossowski.elemont.domain.OdcinekTest]">
+  <test name="Command line test(failed)">
+    <classes>
+      <class name="org.kossowski.elemont.domain.OdcinekTest">
+        <methods>
+          <include name="tearDownClass"/>
+          <include name="tearDownMethod"/>
+          <include name="setUpClass"/>
+          <include name="setUpMethod"/>
+          <include name="isSet"/>
+        </methods>
+      </class> <!-- org.kossowski.elemont.domain.OdcinekTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [org.kossowski.elemont.domain.OdcinekTest] -->

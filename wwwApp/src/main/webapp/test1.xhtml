@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+>
+    
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        
+          
+            <h:form id="form1">
+                <p:messages showDetail="true"/>
+                <p:selectOneMenu  id="sel2" value="#{test1Bean.km.material}" required="true"
+                                                                 
+                                 >
+                    <p:effect type="crop" event="click">
+            <f:param name="direction" value="'horizontal'" />
+        </p:effect>
+                   
+                   <!-- <f:selectItems value="#{test1Bean.materials}" var="m" itemValue="#{m}" itemLabel="#{m.nazwa}"/> -->
+                    <f:selectItems value="#{test1Bean.materials1}" />
+                    
+                    <f:converter binding="#{materialConverter}" />
+                    <p:ajax partialSubmit="true" update="outText"/>
+                    
+                </p:selectOneMenu>
+                
+                <p:commandButton  value="OK" action="#{test1Bean.save()}" ajax="false"/>
+                
+                <h:outputText id="outText" value="#{test1Bean.km.material}" />
+            </h:form>
+            
+        
+        
+    </h:body>
+    
+</html>

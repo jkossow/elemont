@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+    <head>
+        <title>Dane przykładow</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <f:view>
+            <h:form>
+                <div><h1>Serwis</h1></div>
+                <br/>
+                <h:panelGrid columns="1">
+                    <h:commandLink value="Kasowanie danych" action="#{tableDeleteBean.deleteData()}"/>
+                    <h:commandLink value="Wpisanie danych" action="#{dataGeneratorBean.insertData()}"/>
+                    <h:commandLink value="Kasowanie kart magazynowych" action="#{tableDeleteBean.deleteKm()}"/>
+                    <h:commandLink value="Lista beanów" action="#{dataGeneratorBean.beanList()}"/>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+    </body>
+</html>

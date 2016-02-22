@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../mainTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    
+
+    <ui:define name="content">
+        View id &nbsp; <h:outputText value="#{view.viewId}" />
+        <!--
+        <p:panel >
+        <p:commandLink value="Nowa karta magazynowa" action="/faces/commons/karta_mag/add.xhtml" />
+        </p:panel>
+        -->
+        <p:dataTable value="#{kartaMagazynowaBean.findAll}" var="k" 
+                     selectionMode="single" selection="#{kartaMagazynowaBean.selectedKarta}" rowKey="#{k.id}"
+                     
+                     >
+            <p:column headerText="Id" sortBy="#{k.id}" filterBy="#{k.id}" >
+                <p:commandLink value="#{k.id}" onclick="PF('opDlg').show()"/>
+                
+            </p:column>
+            <p:column headerText="Indeks" sortBy="#{k.material.indeks}" filterBy="#{k.material.indeks}">
+                <h:outputText value="#{k.material.indeks}" />
+            </p:column>
+            <p:column headerText="Nazwa" >
+                <h:outputText value="#{k.material.nazwa}" />
+            </p:column>
+            <p:column headerText="Jedn. miary">
+                <h:outputText value="#{k.material.jm.symbol}" />
+            </p:column>
+            <p:column headerText="Grupa">
+                <h:outputText value="#{k.material.grupa.symbol}" />
+            </p:column>
+            <p:column headerText="Producent">
+                <h:outputText value="#{k.producent.symbol}" />
+            </p:column>
+            <!--
+            <p:column headerText="Umowa">
+                <h:outputText value="#{k.umowa.numer}" />
+            </p:column>
+            -->
+            <p:column headerText="Miejsce skł">
+                <h:outputText value="#{k.miejsceSkladowania}" />
+            </p:column>
+            <p:column headerText="Status" >
+                <h:outputText value="#{k.status}" />
+            </p:column>
+            <!--
+            <p:column headerText="Il. przyj.">
+                <h:outputText value="#{k.stanIl.stan[0]}" />
+            </p:column>
+            -->
+            <p:column headerText="Il. w mag.">
+                <p:commandLink value="#{k.stanIl.stan[1]}"  onclick="PF('stanyDlg').show()"/>
+            </p:column>
+            <!--
+            <p:column headerText="Il. wydana">
+                <h:outputText value="#{k.stanIl.stan[2]}" />
+            </p:column>
+            -->
+          
+            <p:column headerText="Operacje">
+                <p:commandLink value="Prek. na bud." action="#{przekazNaBudowe.prePrzekaz1}">
+                    <f:param name="id" value="#{k.id}" />
+                </p:commandLink>
+                <br/>
+                <p:commandLink value="Druk. przyw." action="#{drukPrzywBean.preDruk()}">
+                    <f:param name="id" value="#{k.id}" />
+                </p:commandLink>
+                <br/>
+                <p:commandLink value="Kasuj" action="#{kartaIPrzyjecieBean.delete()}">
+                    <f:param name="id" value="#{k.id}" />
+                </p:commandLink>
+            </p:column>
+            -->
+        </p:dataTable>
+        
+        <p:dialog widgetVar="stanyDlg" width="200px">
+            Stan szczegółowy
+        </p:dialog>
+        
+        <p:dialog widgetVar="opDlg" width="200px">
+            Operacje na partii (przyjęcia, ger QR, montaż, weryfikacja)
+            <h:outputText value="#{kartaMagazynowaBean.selectedKarta.id}" />
+            oooo
+        </p:dialog>
+        
+        <p:panel >
+            <h:outputText value="Stany" />
+        <p:dataTable id="stany" value="#{kartaMagazynowaBean.findAll}" var="k">
+            <p:column headerText="id">
+                <h:outputText value="#{k.id}" />
+            </p:column>
+            <p:column headerText="S0">
+                <h:outputText value="#{k.stanIl.stan[0]}" />
+            </p:column>
+            <p:column headerText="S1">
+                <h:outputText value="#{k.stanIl.stan[1]}" />
+            </p:column>
+            <p:column headerText="S2">
+                <h:outputText value="#{k.stanIl.stan[2]}" />
+            </p:column>
+            <p:column headerText="S3">
+                <h:outputText value="#{k.stanIl.stan[3]}" />
+            </p:column>
+            <p:column headerText="S4">
+                <h:outputText value="#{k.stanIl.stan[4]}" />
+            </p:column>
+            <p:column headerText="S5">
+                <h:outputText value="#{k.stanIl.stan[5]}" />
+            </p:column>
+            <p:column headerText="S6">
+                <h:outputText value="#{k.stanIl.stan[6]}" />
+            </p:column>
+            
+        </p:dataTable>
+        </p:panel>
+        <p:dialog widgetVar="stanPanel" minHeight="40" modal="true">
+            <h:outputText value="frfrr" />
+        </p:dialog>
+    </ui:define>
+
+</ui:composition>

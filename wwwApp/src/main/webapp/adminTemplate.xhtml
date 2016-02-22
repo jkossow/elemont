@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+          
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="default.css" library="css"/>
+        <h:outputStylesheet name="cssLayout.css" library="css"/>
+        <title>Facelets Template</title>
+    </h:head>
+    
+    <h:body>
+        <h:form id="form1">   
+    
+        <div id="top" class="top">
+            
+            <ui:insert name="top">Panel administracyjny</ui:insert>
+          
+        </div>
+        <div>
+            <div id="left">
+               
+                <!--
+                <ui:insert name="left">Left</ui:insert>
+                -->
+   
+                <p:menu >
+                <p:submenu label="Magazyn">
+                    <p:menuitem value="Stany magazynowe" action="/faces/commons/karta_mag/list.xhtml" />
+                </p:submenu>
+                <p:submenu label="Operacje">
+                    <p:menuitem value="Nowa karta i przyjęcie" url="/faces/commons/operacje/add_karta_i_przyjecie.xhtml"  immediate="true"/>
+                    <p:menuitem value="Przekaż na budowy" action="#{przekazNaBudowe.przekazAll}"  immediate="true"/>
+                </p:submenu>
+                <p:submenu label="Słowniki">
+                    <p:menuitem value="Jedn. miary" action="/faces/commons/jm/list.xhtml"  immediate="true"/>
+                    <p:menuitem value="Grupy materiałów" action="/faces/commons/grupa/list.xhtml" immediate="true"/>
+                    <p:menuitem value="Producenci" action="/faces/commons/producent/list.xhtml" immediate="true"/>
+                    <p:menuitem value="Materiały" action="/faces/commons/material/list.xhtml" immediate="true"/>
+                    <p:separator />
+                    <p:menuitem value="Projekty (budowy)" action="/faces/commons/projekt/list.xhtml" immediate="true"/>
+                    <p:menuitem value="Umowy" action="/faces/commons/umowa/list.xhtml" immediate="true"/>
+                    <p:menuitem value="Użytkownicy" action="/faces/commons/user/list.xhtml" immediate="true"/>
+                    <p:menuitem value="Stanowiska" action="/faces/commons/stanowisko/list.xhtml" immediate="true"/>
+                </p:submenu>
+            </p:menu> 
+   
+            </div>
+            <div id="content" class="left_content">
+   
+                    <ui:insert name="content">Content</ui:insert>
+   
+                
+            </div>
+        </div>
+        </h:form>   
+    </h:body>
+   
+</html>

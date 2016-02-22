@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [org.kossowski.elemont.domain.operacje.SkanZawieszkiTest]">
+  <test name="Command line test(failed)">
+    <classes>
+      <class name="org.kossowski.elemont.domain.operacje.SkanZawieszkiTest">
+        <methods>
+          <include name="setUpClass"/>
+          <include name="skanTest1"/>
+          <include name="setUp"/>
+          <include name="prefixTest"/>
+          <include name="tearDownClass"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- org.kossowski.elemont.domain.operacje.SkanZawieszkiTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [org.kossowski.elemont.domain.operacje.SkanZawieszkiTest] -->
