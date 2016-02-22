@@ -27,6 +27,8 @@ public class User implements Serializable {
     private String nazwisko;
     private String imie;
     
+    private String password;
+    
     @Column( unique = true )
     private String kodQR;
     
@@ -83,6 +85,14 @@ public class User implements Serializable {
 
     public void setAktywny(Boolean aktywny) {
         this.aktywny = aktywny;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     
