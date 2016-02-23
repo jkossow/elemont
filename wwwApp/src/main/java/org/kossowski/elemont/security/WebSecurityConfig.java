@@ -30,29 +30,39 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         
         
         http
-            
-                
             .csrf().disable()
             .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/faces/budowa/*").hasRole("budowa")
+                .antMatchers("/faces/serwis/index.xhtml").permitAll()
+                .antMatchers("/faces/magazyn/*").hasRole("MAGAZYN")
+                .antMatchers("/faces/budowa/*").hasRole("PROJEKT")
+                .antMatchers("/faces/admin/*").hasRole("ADMIN")
+                .antMatchers("/faces/serwis/*").hasRole("SERWIS")
+                .antMatchers("/faces/sandbox/*").hasRole("SERWIS")
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/loginjk.xhtml")
+                .loginPage("/loginjk.xhtml").failureUrl("/loginjk.xhtml?error")
+                
                 .permitAll()
                 .and()
             .logout()
-                
-                .permitAll();
+                .logoutSuccessUrl("/loginjk.xhtml?logout")
+                .permitAll()
+                .and()
+            .exceptionHandling().accessDeniedPage("/403.xhtml");
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .jdbcAuthentication()
-                .dataSource(dataSource);
-                
+                .dataSource(dataSource)
+                .usersByUsernameQuery(
+                        "select login,password, aktywny from users where login=?")
+                .authoritiesByUsernameQuery(
+                        "select login, role from roles where login=?" )
+            ;
             //.inMemoryAuthentication()
             //    .withUser("user").password("password").roles("USER","budowa");
     }

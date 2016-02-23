@@ -2,50 +2,50 @@
 <testng-results skipped="0" failed="0" total="28" passed="28">
   <reporter-output>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="157" started-at="2016-02-22T17:33:39Z" finished-at="2016-02-22T17:33:39Z">
+  <suite name="Command line suite" duration-ms="183" started-at="2016-02-23T19:14:25Z" finished-at="2016-02-23T19:14:25Z">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="157" started-at="2016-02-22T17:33:39Z" finished-at="2016-02-22T17:33:39Z">
+    <test name="Command line test" duration-ms="183" started-at="2016-02-23T19:14:25Z" finished-at="2016-02-23T19:14:25Z">
       <class name="org.kossowski.elemont.domain.operacje.SkanZawieszkiTest">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@566776ad]" name="setUpClass" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@6108b2d7]" name="setUpClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="prefixTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@566776ad]" name="prefixTest" duration-ms="2" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="prefixTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@6108b2d7]" name="prefixTest" duration-ms="2" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- prefixTest -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@566776ad]" name="setUp" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@6108b2d7]" name="setUp" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="skanTest1()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@566776ad]" name="skanTest1" duration-ms="2" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="skanTest1()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@6108b2d7]" name="skanTest1" duration-ms="2" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- skanTest1 -->
-        <test-method status="PASS" signature="suffixTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@566776ad]" name="suffixTest" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="suffixTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@6108b2d7]" name="suffixTest" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- suffixTest -->
-        <test-method status="PASS" signature="testQRCode1()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@566776ad]" name="testQRCode1" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="testQRCode1()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@6108b2d7]" name="testQRCode1" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testQRCode1 -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@566776ad]" name="tearDown" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@6108b2d7]" name="tearDown" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@566776ad]" name="tearDownClass" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.SkanZawieszkiTest@6108b2d7]" name="tearDownClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- org.kossowski.elemont.domain.operacje.SkanZawieszkiTest -->
       <class name="org.kossowski.elemont.domain.operacje.WydanieNabudoweTest">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6bf256fa]" name="setUpClass" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6cd8737]" name="setUpClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="powtorneWydanieNaBudoweTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6bf256fa]" name="powtorneWydanieNaBudoweTest" duration-ms="4" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="powtorneWydanieNaBudoweTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6cd8737]" name="powtorneWydanieNaBudoweTest" duration-ms="3" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <exception class="org.kossowski.elemont.domain.IllegalStatusException">
             <full-stacktrace>
               <![CDATA[org.kossowski.elemont.domain.IllegalStatusException
@@ -91,31 +91,31 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- powtorneWydanieNaBudoweTest -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6bf256fa]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6cd8737]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6bf256fa]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6cd8737]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="wydanieNaBudoweTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6bf256fa]" name="wydanieNaBudoweTest" duration-ms="2" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="wydanieNaBudoweTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6cd8737]" name="wydanieNaBudoweTest" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wydanieNaBudoweTest -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6bf256fa]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6cd8737]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6bf256fa]" name="tearDownMethod" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6cd8737]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpMethod -->
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6cd8737]" name="tearDownMethod" is-config="true" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6bf256fa]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="wydanieNaBudoweTest1()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6bf256fa]" name="wydanieNaBudoweTest1" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="wydanieNaBudoweTest1()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6cd8737]" name="wydanieNaBudoweTest1" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <exception class="org.kossowski.elemont.domain.IllegalStatusException">
             <full-stacktrace>
               <![CDATA[org.kossowski.elemont.domain.IllegalStatusException
@@ -161,251 +161,255 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- wydanieNaBudoweTest1 -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6bf256fa]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6cd8737]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6bf256fa]" name="tearDownClass" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.WydanieNabudoweTest@6cd8737]" name="tearDownClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- org.kossowski.elemont.domain.operacje.WydanieNabudoweTest -->
       <class name="org.kossowski.elemont.domain.MaterialTest">
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="equalsTest()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="equalsTest" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="equalsTest()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="equalsTest" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- equalsTest -->
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="setUpClass" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="setUpClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="setUpMethod" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="equalsTest1()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="equalsTest1" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="equalsTest1()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="equalsTest1" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- equalsTest1 -->
-        <test-method status="PASS" signature="equalsTest3()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="equalsTest3" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="equalsTest3()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="equalsTest3" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- equalsTest3 -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="tearDownClass" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="tearDownClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.MaterialTest@1a407d53]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
       </class> <!-- org.kossowski.elemont.domain.MaterialTest -->
       <class name="org.kossowski.elemont.domain.KartaMagazynowaTest">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="setUpClass" is-config="true" duration-ms="14" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="setUpClass" is-config="true" duration-ms="15" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="odcinkiTest()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="odcinkiTest" duration-ms="8" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="odcinkiTest()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="odcinkiTest" duration-ms="26" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- odcinkiTest -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="operacjeSizeTest1()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="operacjeSizeTest1" duration-ms="6" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="operacjeSizeTest1()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="operacjeSizeTest1" duration-ms="4" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- operacjeSizeTest1 -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="operacjeSizeTest2()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="operacjeSizeTest2" duration-ms="27" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="operacjeSizeTest2()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="operacjeSizeTest2" duration-ms="31" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- operacjeSizeTest2 -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="tearDownMethod" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="operacjeSizeTest3()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="operacjeSizeTest3" duration-ms="33" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="setUpMethod" is-config="true" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpMethod -->
+        <test-method status="PASS" signature="operacjeSizeTest3()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="operacjeSizeTest3" duration-ms="28" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- operacjeSizeTest3 -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="tearDownMethod" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="setUpMethod" is-config="true" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="stanInitState()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="stanInitState" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="stanInitState()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="stanInitState" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stanInitState -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="tearDownMethod" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="tearDownMethod" is-config="true" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="stanSetState()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="stanSetState" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="stanSetState()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="stanSetState" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stanSetState -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@6108b2d7]" name="tearDownClass" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.KartaMagazynowaTest@1554909b]" name="tearDownClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- org.kossowski.elemont.domain.KartaMagazynowaTest -->
       <class name="org.kossowski.elemont.domain.OdcinekTest">
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="setUpClass" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="setUpClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="isSet()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="isSet" duration-ms="2" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpMethod -->
+        <test-method status="PASS" signature="isSet()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="isSet" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- isSet -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="setUpMethod" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="odcinekEqualsTest()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="odcinekEqualsTest" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="odcinekEqualsTest()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="odcinekEqualsTest" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- odcinekEqualsTest -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="tearDownMethod" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="odcinekSetTest()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="odcinekSetTest" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpMethod -->
+        <test-method status="PASS" signature="odcinekSetTest()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="odcinekSetTest" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- odcinekSetTest -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="odcinekUsedTest()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="odcinekUsedTest" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="odcinekUsedTest()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="odcinekUsedTest" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- odcinekUsedTest -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="tearDownMethod" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="odcinekWithIdTest()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="odcinekWithIdTest" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="odcinekWithIdTest()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="odcinekWithIdTest" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- odcinekWithIdTest -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="tearDownMethod" is-config="true" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@6fadae5d]" name="tearDownClass" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.OdcinekTest@17f6480]" name="tearDownClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
       </class> <!-- org.kossowski.elemont.domain.OdcinekTest -->
       <class name="org.kossowski.elemont.domain.StanTest">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpClass" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpClass" is-config="true" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="stanEquals1()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="stanEquals1" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="stanEquals1()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="stanEquals1" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stanEquals1 -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpMethod" is-config="true" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpMethod -->
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="stanEquals2()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="stanEquals2" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="stanEquals2()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="stanEquals2" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stanEquals2 -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpMethod" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownMethod" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="stanIntArrayContructorException()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="stanIntArrayContructorException" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="stanIntArrayContructorException()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="stanIntArrayContructorException" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <exception class="org.kossowski.elemont.domain.IllegalStockSizeException">
             <full-stacktrace>
               <![CDATA[org.kossowski.elemont.domain.IllegalStockSizeException
@@ -451,41 +455,37 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stanIntArrayContructorException -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="stanNotEqual()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="stanNotEqual" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="stanNotEqual()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="stanNotEqual" duration-ms="2" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stanNotEqual -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownMethod" is-config="true" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="test1()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="test1" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="test1()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="test1" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test1 -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownClass" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDownClass -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownMethod -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.StanTest@3498ed]" name="tearDownClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
       </class> <!-- org.kossowski.elemont.domain.StanTest -->
       <class name="org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@13969fbe]" name="setUpClass" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@6aaa5eb0]" name="setUpClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="powtornePrzyjecieTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@13969fbe]" name="powtornePrzyjecieTest" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="powtornePrzyjecieTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@6aaa5eb0]" name="powtornePrzyjecieTest" duration-ms="1" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <exception class="org.kossowski.elemont.domain.IllegalStatusException">
             <full-stacktrace>
               <![CDATA[org.kossowski.elemont.domain.IllegalStatusException
@@ -531,27 +531,27 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- powtornePrzyjecieTest -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@13969fbe]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@6aaa5eb0]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@13969fbe]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="setUpMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@6aaa5eb0]" name="setUpMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpMethod -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@13969fbe]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@6aaa5eb0]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->
-        <test-method status="PASS" signature="przyjecieZGlownegoTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@13969fbe]" name="przyjecieZGlownegoTest" duration-ms="3" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="przyjecieZGlownegoTest()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@6aaa5eb0]" name="przyjecieZGlownegoTest" duration-ms="5" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- przyjecieZGlownegoTest -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@13969fbe]" name="tearDownClass" is-config="true" duration-ms="1" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@6aaa5eb0]" name="tearDownClass" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@13969fbe]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-22T18:33:39Z" finished-at="2016-02-22T18:33:39Z">
+        <test-method status="PASS" signature="tearDownMethod()[pri:0, instance:org.kossowski.elemont.domain.operacje.PrzyjecieZGlownegoTest@6aaa5eb0]" name="tearDownMethod" is-config="true" duration-ms="0" started-at="2016-02-23T20:14:25Z" finished-at="2016-02-23T20:14:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownMethod -->

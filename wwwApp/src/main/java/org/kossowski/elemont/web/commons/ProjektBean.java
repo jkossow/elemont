@@ -81,28 +81,7 @@ public class ProjektBean {
         List<User> source = userRepo.findAll();
         List<User> target = projekt.getZespol();
         
-        
-        System.out.println("source start");
-        for( User u1: source )
-            System.out.println( u1.getNazwisko() + " " + u1.getImie() );
-        System.out.println("source stop");
-        
-        System.out.println("target start");
-        for( User u1: target )
-            System.out.println( u1.getNazwisko() + " " + u1.getImie() );
-        System.out.println("target stop");
-        
-        //for( User u : source)
-        //    if( target.contains(u)) {
-        //        System.out.println("Do usunięcia "  + u.getNazwisko());
-        //        //source.remove(u);
-        //    }
         source.removeAll(target);
-        
-        System.out.println("target start po korekcie");
-        for( User u1: target )
-            System.out.println( u1.getNazwisko() + " " + u1.getImie() );
-        System.out.println("target stop po korekcie");
         
         pickData = new DualListModel<User>( source, target );
         

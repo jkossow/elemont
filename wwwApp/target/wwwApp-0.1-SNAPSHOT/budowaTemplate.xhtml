@@ -19,7 +19,12 @@
     
         <div id="top" class="top">
             
-            <ui:insert name="top">Panel budowy</ui:insert>
+            <ui:insert name="top">Panel budowy
+                <h:outputText value="#{securityController.userName}" />
+                <h:outputText value="#{securityController.nazwisko}" />
+                <h:outputText value="#{securityController.imie}" />
+                <a href="/wwwApp/loginjk.xhtml?logout" >wyloguj</a>
+            </ui:insert>
           
         </div>
         <div>

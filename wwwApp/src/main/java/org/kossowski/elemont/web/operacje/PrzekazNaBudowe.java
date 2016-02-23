@@ -1,12 +1,14 @@
 package org.kossowski.elemont.web.operacje;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import javax.faces.context.FacesContext;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Status;
+import org.kossowski.elemont.domain.User;
 import org.kossowski.elemont.domain.operacje.WydanieNaBudowe;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,35 +33,35 @@ public class PrzekazNaBudowe {
     @Autowired
     protected KartaMagazynowaRepository kmRepo;
     
-    private WydanieNaBudowe wydanie = new WydanieNaBudowe();
+    protected Long id; //id karty magazynowej
+    protected User user;
+    protected BigDecimal ilosc;
     
     public String prePrzekaz1() {
         
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String,String> pm = fc.getExternalContext().getRequestParameterMap();
         
-        Long id = new Long( pm.get("id"));
+        id = new Long( pm.get("id"));
         
         KartaMagazynowa km = kmRepo.findOne( id );
-        wydanie.setKartaMagazynowa(km);
-        wydanie.setIlosc( km.getStanIl().getIValue(1));
-        
-        
+        setIlosc( km.getStanIl().getIValue(1));
+                
         return "/commons/operacje/przekNaBud.xhtml";
     }
     
     public String przekaz1() {
         
-        FacesContext fc = FacesContext.getCurrentInstance();
-        Map<String,String> pm = fc.getExternalContext().getRequestParameterMap();
+        //FacesContext fc = FacesContext.getCurrentInstance();
+        //Map<String,String> pm = fc.getExternalContext().getRequestParameterMap();
         
         // fix może uda sie przekazawc karte w polu hidden
         //serializacja
-        Long id = new Long( pm.get("id"));
+        //id = new Long( pm.get("id"));
         KartaMagazynowa km = kmRepo.findOne(id);
-        wydanie.setKartaMagazynowa( km );
+        //wydanie.setKartaMagazynowa( km );
         
-        Operacja o = new WydanieNaBudowe( wydanie.getUser(), wydanie.getIlosc()) ;
+        Operacja o = new WydanieNaBudowe( getUser(), getIlosc()) ;
         km.addOperation(o);
         
         try {
@@ -89,14 +91,30 @@ public class PrzekazNaBudowe {
         return "";
     }
 
-    public WydanieNaBudowe getWydanie() {
-        return wydanie;
+    public Long getId() {
+        return id;
     }
 
-    public void setWydanie(WydanieNaBudowe wydanie) {
-        this.wydanie = wydanie;
+    public void setId(Long id) {
+        this.id = id;
     }
-    
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public BigDecimal getIlosc() {
+        return ilosc;
+    }
+
+    public void setIlosc(BigDecimal ilosc) {
+        this.ilosc = ilosc;
+    }
+
     
     
 }

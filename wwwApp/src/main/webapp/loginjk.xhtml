@@ -5,29 +5,45 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <head>
-        <title>TODO supply a title</title>
+        <title>Logowanie</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+        <fieldset   style="width:25%; margin: 0 auto">
+            
         <form id="login_form" action="#{request.contextPath}/loginjk" method="post">
-    <p>
-        <label for="j_username" class="login-form-tag">User</label> <input
-            type="text" id="username" name="username" class="ui-corner-all"
-            required="required" />
-    </p>
-    <p>
-        <label for="j_password" class="login-form-tag">Password</label>
-        <input type="password" id="password" name="password"
-            class="ui-corner-all" required="required" />
-    </p>
-    <p>
-        <button type="submit"
-            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
-            <span class="ui-button-text">Login</span>
-        </button>
-    </p>
-</form>
+            <table>
+                <tr> 
+                    <td>
+                        <label for="j_username" class="login-form-tag">Użytkownik:</label> 
+                    </td>
+                    <td>
+                        <input type="text" id="username" name="username" class="ui-corner-all"
+                            required="required" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="j_password" class="login-form-tag">Hasło:</label>
+                    </td>
+                    <td>
+                        <input type="password" id="password" name="password"
+                            class="ui-corner-all" required="required" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit"
+                            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+                            <span class="ui-button-text">Login</span>
+                        </button>
+                    </td>
+                </tr>    
+            </table>
+        </form>
+        </fieldset>
     </body>
 </html>

@@ -15,13 +15,18 @@
         <p:commandLink value="Nowa karta magazynowa" action="/faces/commons/karta_mag/add.xhtml" />
         </p:panel>
         -->
+        <h:form id="form">
+        <p:panel>
         <p:dataTable value="#{kartaMagazynowaBean.findAll}" var="k" 
-                     selectionMode="single" selection="#{kartaMagazynowaBean.selectedKarta}" rowKey="#{k.id}"
+                     selectionMode="single" selection="#{kartaMagazynowaBean.selected}" 
+                     rowKey="#{k.id}"
                      
                      >
+            
+            <p:ajax event="rowSelect"  update="form:opDlg,viewBtn,przekBtn"/>
+            
             <p:column headerText="Id" sortBy="#{k.id}" filterBy="#{k.id}" >
-                <p:commandLink value="#{k.id}" onclick="PF('opDlg').show()"/>
-                
+                <h:outputText value="#{k.id}" />
             </p:column>
             <p:column headerText="Indeks" sortBy="#{k.material.indeks}" filterBy="#{k.material.indeks}">
                 <h:outputText value="#{k.material.indeks}" />
@@ -38,90 +43,103 @@
             <p:column headerText="Producent">
                 <h:outputText value="#{k.producent.symbol}" />
             </p:column>
-            <!--
-            <p:column headerText="Umowa">
-                <h:outputText value="#{k.umowa.numer}" />
-            </p:column>
-            -->
-            <p:column headerText="Miejsce skł">
+            <p:column headerText="Miejsce składowania">
                 <h:outputText value="#{k.miejsceSkladowania}" />
             </p:column>
             <p:column headerText="Status" >
                 <h:outputText value="#{k.status}" />
             </p:column>
-            <!--
-            <p:column headerText="Il. przyj.">
-                <h:outputText value="#{k.stanIl.stan[0]}" />
-            </p:column>
-            -->
-            <p:column headerText="Il. w mag.">
-                <p:commandLink value="#{k.stanIl.stan[1]}"  onclick="PF('stanyDlg').show()"/>
-            </p:column>
-            <!--
-            <p:column headerText="Il. wydana">
-                <h:outputText value="#{k.stanIl.stan[2]}" />
-            </p:column>
-            -->
-          
-            <p:column headerText="Operacje">
-                <p:commandLink value="Prek. na bud." action="#{przekazNaBudowe.prePrzekaz1}">
-                    <f:param name="id" value="#{k.id}" />
-                </p:commandLink>
-                <br/>
-                <p:commandLink value="Druk. przyw." action="#{drukPrzywBean.preDruk()}">
-                    <f:param name="id" value="#{k.id}" />
-                </p:commandLink>
-                <br/>
-                <p:commandLink value="Kasuj" action="#{kartaIPrzyjecieBean.delete()}">
-                    <f:param name="id" value="#{k.id}" />
-                </p:commandLink>
-            </p:column>
-            -->
-        </p:dataTable>
-        
-        <p:dialog widgetVar="stanyDlg" width="200px">
-            Stan szczegółowy
-        </p:dialog>
-        
-        <p:dialog widgetVar="opDlg" width="200px">
-            Operacje na partii (przyjęcia, ger QR, montaż, weryfikacja)
-            <h:outputText value="#{kartaMagazynowaBean.selectedKarta.id}" />
-            oooo
-        </p:dialog>
-        
-        <p:panel >
-            <h:outputText value="Stany" />
-        <p:dataTable id="stany" value="#{kartaMagazynowaBean.findAll}" var="k">
-            <p:column headerText="id">
-                <h:outputText value="#{k.id}" />
-            </p:column>
-            <p:column headerText="S0">
-                <h:outputText value="#{k.stanIl.stan[0]}" />
-            </p:column>
-            <p:column headerText="S1">
+            <p:column headerText="Ilość w magazynie">
                 <h:outputText value="#{k.stanIl.stan[1]}" />
             </p:column>
-            <p:column headerText="S2">
-                <h:outputText value="#{k.stanIl.stan[2]}" />
-            </p:column>
-            <p:column headerText="S3">
-                <h:outputText value="#{k.stanIl.stan[3]}" />
-            </p:column>
-            <p:column headerText="S4">
-                <h:outputText value="#{k.stanIl.stan[4]}" />
-            </p:column>
-            <p:column headerText="S5">
-                <h:outputText value="#{k.stanIl.stan[5]}" />
-            </p:column>
-            <p:column headerText="S6">
-                <h:outputText value="#{k.stanIl.stan[6]}" />
-            </p:column>
+            
+            <f:facet name="footer">
+                <p:commandButton id ="viewBtn"  value="Szczegóły" disabled="#{kartaMagazynowaBean.selected eq null}"  onclick="PF('opDlg').show()"/>
+                <p:commandButton id ="przekBtn" value="Przek. na budowę" ajax="false" disabled="#{kartaMagazynowaBean.selected eq null}" action="#{przekazNaBudowe.prePrzekaz1()}">
+                    <f:param name="id" value="#{kartaMagazynowaBean.selected.id}" />
+                </p:commandButton>
+            
+            </f:facet>
+            
             
         </p:dataTable>
-        </p:panel>
-        <p:dialog widgetVar="stanPanel" minHeight="40" modal="true">
-            <h:outputText value="frfrr" />
+        
+                
+        <p:dialog  widgetVar="opDlg" width="75%;">
+            <p:outputPanel id="opDlg">
+            <p:tabView>
+                <p:tab title="Stany">
+                    <p:panelGrid columns="3">
+                        <h:outputText value="S0" />
+                        <h:outputText value="ilość przyjęta"/>
+                        <h:outputText value="#{kartaMagazynowaBean.selected.stanIl.stan[0]}" />
+                        <h:outputText value="S1" />
+                        <h:outputText value="ilość w magazynie głównym"/>
+                        <h:outputText value="#{kartaMagazynowaBean.selected.stanIl.stan[1]}" />
+                        <h:outputText value="S2" />
+                        <h:outputText value="ilość wydana na budowę"/>
+                        <h:outputText value="#{kartaMagazynowaBean.selected.stanIl.stan[2]}" />
+                        <h:outputText value="S3" />
+                        <h:outputText value="ilość położona"/>
+                        <h:outputText value="#{kartaMagazynowaBean.selected.stanIl.stan[3]}" />
+                        <h:outputText value="S4" />
+                        <h:outputText value="ilość podłaczona"/>
+                        <h:outputText value="#{kartaMagazynowaBean.selected.stanIl.stan[4]}" />
+                        <h:outputText value="S5" />
+                        <h:outputText value="ilość ścinków"/>
+                        <h:outputText value="#{kartaMagazynowaBean.selected.stanIl.stan[5]}" />
+                        <h:outputText value="S6" />
+                        <h:outputText value="ilość inne"/>
+                        <h:outputText value="#{kartaMagazynowaBean.selected.stanIl.stan[6]}" />
+                        <h:outputText value="S7" />
+                        <h:outputText value="ilość na budowie"/>
+                        <h:outputText value="#{kartaMagazynowaBean.selected.stanIl.stan[7]}" />
+                    </p:panelGrid>
+                </p:tab >
+                <p:tab title="Operacje">
+                    <p:dataTable var="o" value="#{kartaMagazynowaBean.selected.operacje}" >
+                        <p:column>
+                            <h:outputText value="#{o.id}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{o.creationTime}" >
+                                <f:convertDateTime pattern="YYYY-MM-dd" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{o.opis}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:tab>
+                <p:tab title="Odcinki">
+                    <p:dataTable var="odc" value="#{kartaMagazynowaBean.selected.odcinki}" >
+                        <p:column>
+                            <h:outputText value="#{o.id}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{odc.a}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{odc.b}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{odc.c}" />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="#{odc.d}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:tab>
+            </p:tabView>   
+            </p:outputPanel>    
+                    
+            <h:commandLink value="close" onclick="close()" />
         </p:dialog>
+        
+        
+        </p:panel>
+        </h:form>
+        
     </ui:define>
 
 </ui:composition>

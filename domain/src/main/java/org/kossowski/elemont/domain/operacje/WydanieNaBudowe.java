@@ -61,9 +61,6 @@ public class WydanieNaBudowe extends Operacja {
         if( ilosc.compareTo( getKartaMagazynowa().getStanIl().getIValue(Stan.IL_W_MAG_GL) ) > 0 )
             throw new Exception("za dużo w pobraniu");
         
-        //dopisanie do kolekcji operacji
-        //getKartaMagazynowa().getOperacje().add( this );
-        
         //przypisanie pól
         getKartaMagazynowa().setUser(this.user);
         
@@ -81,7 +78,7 @@ public class WydanieNaBudowe extends Operacja {
 
     @Override
     public String opis() {
-        return "Wydanie na budowę user " + getUser() + " ilosc " + getIlosc() ;
+        return "Wydanie na budowę, Pracownik: " + getUser().getNazwisko() + " ilosc: " + getIlosc() ;
     }
 
     

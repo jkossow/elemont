@@ -11,66 +11,85 @@
             <!--<p:growl id="growl" showDetail="true" sticky="true" /> -->
             
             View id &nbsp; <h:outputText value="#{view.viewId}" />
+            <h:form>
             <p:panelGrid columns="2">
-                
+                 
                 <h:outputText value="Materiał:" />
                 
                 
-                <p:selectOneMenu   id="sel1" value="#{kartaIPrzyjecieBean.km.material}"  
-                                   required="true"  converterMessage="Materiał - musisz wypełnić" 
-                                   filter="true" filterMatchMode="startsWith" >
-                    <f:selectItem itemLabel="-----" itemValue="0" noSelectionOption="true"/> 
-                    <f:selectItems value="#{kartaIPrzyjecieBean.materialy}" var="m" itemLabel="#{m.nazwa}" itemValue="#{m}"/>
+                <p:selectOneMenu   id="material" value="#{kartaIPrzyjecieBean.przyjecie.material}"  
+                                   required="true"  
+                                   converterMessage="conccccc"
+                                   validatorMessage="mat vnot vvvv" 
+                                   requiredMessage="Materiał - musisz wypełnić" 
+                                   filter="true" filterMatchMode="contains" >
+                    <f:selectItem itemLabel="-----" itemValue="0" noSelectionOption="true" /> 
+                    <f:selectItems value="#{kartaIPrzyjecieBean.materialy}" var="m"  itemLabel="#{m.nazwa}" itemValue="#{m}"/>
                     
                     <f:converter binding="#{materialConverter}"  />
                     <p:ajax partialSubmit="true" update="nazwa,grupa,jm"/>
                 </p:selectOneMenu>
                 
                 
-                <h:outputText value="Nazwa:" />
-                <h:outputText id="nazwa" value="#{kartaIPrzyjecieBean.km.material.indeks}" />
+                <h:outputText value="Indeks:" />
+                <h:outputText id="nazwa" value="#{kartaIPrzyjecieBean.przyjecie.material.indeks}" />
                 
                 <h:outputText value="Grupa:" />
-                <h:outputText id="grupa" value="#{kartaIPrzyjecieBean.km.material.grupa.nazwa}" />
+                <h:outputText id="grupa" value="#{kartaIPrzyjecieBean.przyjecie.material.grupa.nazwa}" />
                 
                 <h:outputText value="Jednostka miary:" />
-                <h:outputText id="jm" value="#{kartaIPrzyjecieBean.km.material.jm.nazwa}" />
+                <h:outputText id="jm" value="#{kartaIPrzyjecieBean.przyjecie.material.jm.symbol}" />
               
                 <h:outputText value ="Producent:" />
-                <p:selectOneMenu value="#{kartaIPrzyjecieBean.km.producent}" required="true">
+                <p:selectOneMenu id="producent" value="#{kartaIPrzyjecieBean.przyjecie.producent}" required="true"
+                                converterMessage="conccccc"
+                                validatorMessage="mat vnot vvvv" 
+                                requiredMessage="Materiał - musisz wypełnić" 
+                                filter="true" filterMatchMode="contains" >
                     <f:selectItem itemLabel="---" itemValue="0" noSelectionOption="true" />
                     <f:selectItems value="#{kartaIPrzyjecieBean.producenci}" var="prod" itemLabel="#{prod.nazwa}" itemValue="#{prod}"/> 
                     <f:converter binding="#{producentConverter}" />
                 </p:selectOneMenu>
                 
                  <h:outputText value ="Dostawca:" />
-                 <p:selectOneMenu value="#{kartaIPrzyjecieBean.km.dostawca}" required="true">
+                 <p:selectOneMenu id="dostawca" value="#{kartaIPrzyjecieBean.przyjecie.dostawca}" required="true"
+                                converterMessage="conccccc"
+                                validatorMessage="mat vnot vvvv" 
+                                requiredMessage="Materiał - musisz wypełnić" 
+                                filter="true" filterMatchMode="contains" >
                     <f:selectItem itemLabel="---" itemValue="0" noSelectionOption="true" />
                     <f:selectItems value="#{kartaIPrzyjecieBean.producenci}" var="prod" itemLabel="#{prod.nazwa}" itemValue="#{prod}"/> 
                     <f:converter binding="#{producentConverter}" />
                 </p:selectOneMenu>
                 
                           
-                <h:outputText value="Umowa/projekt:" />
+                <h:outputText value="Projekt:" />
                 
-                <p:selectOneMenu value="#{kartaIPrzyjecieBean.km.umowa}" required="true">
+                <p:selectOneMenu id="projekt" value="#{kartaIPrzyjecieBean.przyjecie.projekt}" required="true"
+                                converterMessage="conccccc"
+                                validatorMessage="mat vnot vvvv" 
+                                requiredMessage="Materiał - musisz wypełnić" 
+                                filter="true" filterMatchMode="contains" >>
                     <f:selectItem itemLabel="---" itemValue="0" noSelectionOption="true"/>
-                    <f:selectItems value="#{kartaIPrzyjecieBean.umowy}" var="u" itemLabel="#{u.numer}" itemValue="#{u}"/>
-                    <f:converter binding="#{umowaConverter}" />
+                    <f:selectItems value="#{kartaIPrzyjecieBean.projekty}" var="p" itemLabel="#{p.symbol}" itemValue="#{p}"/>
+                    <f:converter binding="#{projektConverter}" />
+                    
                 </p:selectOneMenu>
                
                 <h:outputText value="Miejsce składowania:" />
-                <p:inputText value="#{kartaIPrzyjecieBean.km.miejsceSkladowania}" required="true"/>
+                <p:inputText id="miejsceSkl" value="#{kartaIPrzyjecieBean.przyjecie.miejsceSkladowania}" required="true"
+                             requiredMessage="Musisz wypełnić"/>
                 
                 <h:outputText value="Ilość:" />
-                <p:inputText id="ilosc" value="#{kartaIPrzyjecieBean.ilosc}" required="true"/>
+                <p:inputText id="ilosc" value="#{kartaIPrzyjecieBean.przyjecie.ilosc}" required="true"
+                             requiredMessage="Ilość - musisz wypełnić" converterMessage="To nie jest liczba"/>
                 
                 <p:commandButton   value="Zapisz"  action="#{kartaIPrzyjecieBean.save()}" ajax="false" update="growl"/>
                 <h:outputText value="&nbsp;"  />   
             </p:panelGrid>
            
-            <p:messages ></p:messages>
-
+            <h:messages />
+            </h:form>
        
     </ui:define>
 

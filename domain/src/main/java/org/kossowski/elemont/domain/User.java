@@ -6,10 +6,15 @@
 package org.kossowski.elemont.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -34,6 +39,10 @@ public class User implements Serializable {
     
     private Boolean aktywny = true;
 
+    @ElementCollection
+    @CollectionTable( name = "roles",  joinColumns = {@JoinColumn(name="login")}) 
+    private List<String> role = new ArrayList<>();
+    
     public User() {
     }
 
@@ -93,6 +102,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<String> getRole() {
+        return role;
+    }
+
+    public void setRole(List<String> role) {
+        this.role = role;
     }
 
     

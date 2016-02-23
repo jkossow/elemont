@@ -10,6 +10,7 @@
     <ui:define name="content">
       
         View id &nbsp; <h:outputText value="#{view.viewId}" />
+        <h:form>
         <p:dataTable value="#{grupaBean.findAll}" var="grupa">
             <p:column headerText="Symbol">
                 <h:outputText value="#{grupa.symbol}" />
@@ -22,7 +23,7 @@
                 <h:commandLink value="Usuń" />
             </p:column>
         </p:dataTable>
-      
+        </h:form>
     </ui:define>
 
 </ui:composition>

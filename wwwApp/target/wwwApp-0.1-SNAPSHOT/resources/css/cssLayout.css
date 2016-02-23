@@ -40,14 +40,14 @@
 }
 
 .left_content {
-    background-color: #dddddd;  /* to jest styl głównej częsci */
+    /*background-color: #dddddd; */ /* to jest styl głównej częsci */
     padding: 5px;
     margin-left: 210px;
     
 }
 
 .right_content {
-    background-color: #dddddd;
+    /*background-color: #dddddd; */
     padding: 5px;
     margin: 0px 170px 0px 170px;
     

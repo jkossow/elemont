@@ -88,7 +88,7 @@ public class PrzyjecieZGlownego extends Operacja {
 
     @Override
     public String opis() {
-        return "przyjecieZGlownego projekt " + getProjekt() + " ilosc " + getIlosc() ;
+        return "przyjecieZGlownego projekt " + getProjekt().getSymbol() + " ilosc " + getIlosc() ;
     }
 
     

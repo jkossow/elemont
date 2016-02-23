@@ -9,12 +9,16 @@
     
 
     <ui:define name="content">
-        View id &nbsp; <h:outputText value="#{view.viewId}" />
+        <h:form>
+            <p:panel>
+                View id &nbsp; <h:outputText value="#{view.viewId}" />
+            </p:panel>
         <!--
         <p:panel >
         <p:commandLink value="Nowa karta magazynowa" action="/faces/commons/karta_mag/add.xhtml" />
         </p:panel>
         -->
+        
         <p:dataTable value="#{kartaMagazynowaBean.findAllNaBudowie}" var="k">
             <p:column headerText="Id">
                 <h:outputText value="#{k.id}" >
@@ -99,6 +103,7 @@
         <p:dialog widgetVar="stanPanel" minHeight="40" modal="true">
             <h:outputText value="frfrr" />
         </p:dialog>
+     </h:form>
     </ui:define>
 
 </ui:composition>

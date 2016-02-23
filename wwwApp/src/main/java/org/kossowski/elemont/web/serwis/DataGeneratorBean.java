@@ -106,6 +106,12 @@ public class DataGeneratorBean {
         
         kartaRepo.save( k );
         
+        o = new WydanieNaBudowe( userRepo.findOne("jkossow"), new BigDecimal(120));
+        k.addOperation(o);
+        o.accept();
+        
+        kartaRepo.save( k );
+        
         k = new KartaMagazynowa();
         k.setMaterial( matRepo.findFirstByIndeks("yky 01"));
         k.setProducent( prodRepo.findFirstBySymbol("inna"));
@@ -190,6 +196,11 @@ public class DataGeneratorBean {
         User u;
         
         u = new User("jkossow", "Kossowski", "Janusz");
+        u.setPassword("aaa");
+        u.getRole().add("ROLE_ADMIN");
+        u.getRole().add("ROLE_BUDOWA");
+        u.getRole().add("ROLE_MAGAZYN");
+        u.getRole().add("ROLE_SERWIS");
         u.setKodQR("001");
         userRepo.save( u );
         

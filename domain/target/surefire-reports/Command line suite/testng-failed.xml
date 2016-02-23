@@ -14,8 +14,8 @@
       <class name="org.kossowski.elemont.domain.operacje.SkanZawieszkiTest">
         <methods>
           <include name="setUpClass"/>
+          <include name="skanTest1"/>
           <include name="setUp"/>
-          <include name="prefixTest"/>
           <include name="tearDownClass"/>
           <include name="tearDown"/>
         </methods>
@@ -30,7 +30,10 @@
       </class> <!-- org.kossowski.elemont.domain.KartaMagazynowaTest -->
       <class name="org.kossowski.elemont.domain.operacje.WydanieNabudoweTest">
         <methods>
+          <include name="wydanieNaBudoweTest1"/>
+          <include name="powtorneWydanieNaBudoweTest"/>
           <include name="setUpClass"/>
+          <include name="wydanieNaBudoweTest"/>
           <include name="tearDownClass"/>
           <include name="tearDownMethod"/>
           <include name="setUpMethod"/>

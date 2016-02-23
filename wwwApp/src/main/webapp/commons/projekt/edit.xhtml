@@ -9,11 +9,12 @@
                 >
 
     <ui:define name="content">
+        <h:form>
         <p:panel>
             View id &nbsp; <h:outputText value="#{view.viewId}" />
         </p:panel>
         <p:panel>
-            <h:form>
+            
             <h:inputHidden value="#{projektBean.projekt.id}" />
             <p:panelGrid columns="2">
                 <h:outputText value ="Symbol:" />
@@ -38,8 +39,9 @@
                 <p:commandButton partialSubmit="false" value="Zapisz" action="#{projektBean.save}" ajax="false"/>
                 <p:commandButton value="Cancel" action="list.xhtml" ajax="false"/>
             </p:panelGrid>
-            </h:form>
+            
         </p:panel>
+        </h:form>
     </ui:define>
 
 </ui:composition>

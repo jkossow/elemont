@@ -15,7 +15,7 @@
     </h:head>
     
     <h:body>
-        <h:form id="form1">   
+         
     
         <div id="top" class="top">
             
@@ -28,29 +28,29 @@
                 <!--
                 <ui:insert name="left">Left</ui:insert>
                 -->
-   
+                <h:form id="menuForm" >
                 <p:menu >
-                <p:submenu label="Magazyn">
-                    <p:menuitem value="Stany magazynowe" action="/faces/commons/karta_mag/list.xhtml" />
+                    <p:submenu label="Magazyn">
+                    <p:menuitem value="Stany magazynowe" action="/faces/commons/karta_mag/list.xhtml" immediate="true"/>
                 </p:submenu>
-                <p:submenu label="Operacje">
+                    <p:submenu label="Operacje">
                     <p:menuitem value="Nowa karta i przyjęcie" url="/faces/commons/operacje/add_karta_i_przyjecie.xhtml"  immediate="true"/>
                     
                         
                 </p:submenu>
-                <p:submenu label="Słowniki">
+                    <p:submenu label="Słowniki">
                     <p:menuitem value="Jedn. miary" action="/faces/commons/jm/list.xhtml"  immediate="true"/>
                     <p:menuitem value="Grupy materiałów" action="/faces/commons/grupa/list.xhtml" immediate="true"/>
-                    <p:menuitem value="Producenci" action="/faces/commons/producent/list.xhtml" immediate="true"/>
+                    <p:menuitem value="Producenci/Dostawcy" action="/faces/commons/producent/list.xhtml" immediate="true"/>
                     <p:menuitem value="Materiały" action="/faces/commons/material/list.xhtml" immediate="true"/>
                     <p:separator />
                     <p:menuitem value="Projekty (budowy)" action="/faces/commons/projekt/list.xhtml" immediate="true"/>
-                    <p:menuitem value="Umowy" action="/faces/commons/umowa/list.xhtml" immediate="true"/>
+                    
                     <p:menuitem value="Użytkownicy" action="/faces/commons/user/list.xhtml" immediate="true"/>
-                    <p:menuitem value="Użytkownicy" action="/faces/commons/stanowisko/list.xhtml" immediate="true"/>
+                    
                 </p:submenu>
-            </p:menu> 
-   
+                </p:menu> 
+                </h:form>
             </div>
             <div id="content" class="left_content">
    
@@ -59,7 +59,7 @@
                 
             </div>
         </div>
-        </h:form>   
+        
     </h:body>
    
 </html>

@@ -5,6 +5,7 @@
  */
 package org.kossowski.elemont.web.commons;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.faces.context.FacesContext;
@@ -14,6 +15,7 @@ import org.kossowski.elemont.domain.User;
 import org.kossowski.elemont.repositories.GrupaRepository;
 import org.kossowski.elemont.repositories.UmowaRepository;
 import org.kossowski.elemont.repositories.UserRepository;
+import org.primefaces.model.DualListModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -32,8 +34,22 @@ public class UserBean {
     
     private User user = new User();
     
+    
+    private DualListModel<String> pickData;
+    
     public List<User> getFindAll() {
         return userRepo.findAll();
+    }
+    
+    public String prepAdd() {
+        user = new User();
+        
+        List<String> source = roles();
+        List<String> target = user.getRole();
+        
+        pickData = new DualListModel<String>( source, target );
+        
+        return "add.xhtml";
     }
     
     public String edit() {
@@ -46,13 +62,21 @@ public class UserBean {
         String login = pm.get("login");
         
         user = userRepo.findOne(login);
+        
+        List<String> source = roles();
+        List<String> target = user.getRole();
+        
+        source.removeAll(target);
+        
+        pickData = new DualListModel<String>( source, target );
+        
         return "edit.xhtml";
         //return "/commons/user/edit.xhtml";
     }
     
     public String save() {
-        System.out.println("user qr" + user.getKodQR() );
-        System.out.println("user login" + user.getLogin() );
+       
+        user.setRole( pickData.getTarget() );
         userRepo.save( user );
         return "list.xhtml";
     }
@@ -64,7 +88,25 @@ public class UserBean {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public DualListModel<String> getPickData() {
+        return pickData;
+    }
+
+    public void setPickData(DualListModel<String> pickData) {
+        this.pickData = pickData;
+    }
     
-    
+    private List<String> roles() {
+        
+        List<String> l = new ArrayList<>();
+        l.add( "ROLE_MAGAZYN");
+        l.add( "ROLE_PROJEKT");
+        l.add( "ROLE_ADMIN");
+        l.add( "ROLE_SERWIS");
+        l.add( "ROLE_BUDOWA");
+        
+        return l;
+    } 
     
 }

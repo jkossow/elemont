@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view id="root" >
+    <h:form id="form">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <body>
+        
+        <p:dataTable id="tab1" value="#{matSelBean.findAll()}" var ="k" style="width: 50%; margin: 0 auto"
+                     selectionMode="single" selection="#{matSelBean.selMat}" rowKey="#{k.id}" >
+            <p:ajax event="rowSelect"  update="form:matId,ot,viewBtn"/>
+            <p:column headerText="id" sortBy="${k.id}" filterBy="${k.id}" >
+                
+                <h:outputText value="${k.id}" />
+            </p:column>
+            <p:column headerText="nazwa" >
+                <h:outputText value="#{k.material.nazwa}" />
+            </p:column>
+            
+            <f:facet name="footer">
+                
+                <p:commandButton id="viewBtn" value="View" disabled="#{matSelBean.selMat eq null}" onclick="PF('dlg').show()" />
+                <h:outputText id="ot" value="#{matSelBean.selMat.id}" /> 
+                 
+            </f:facet>
+            
+        </p:dataTable>
+            
+        
+        
+        <p:dialog widgetVar="dlg" width="10%"> 
+                <p:outputPanel id="matId" >
+                    <p:tabView>
+                        <p:tab title="Stany">
+                            <p:panelGrid columns="2">
+                                <h:outputText value="S0" />
+                                <h:outputText value="#{matSelBean.selMat.stanIl.stan[0]}" />
+                                <h:outputText value="S1" />
+                                <h:outputText value="#{matSelBean.selMat.stanIl.stan[1]}" />
+                                <h:outputText value="S2" />
+                                <h:outputText value="#{matSelBean.selMat.stanIl.stan[2]}" />
+                                <h:outputText value="S3" />
+                                <h:outputText value="#{matSelBean.selMat.stanIl.stan[3]}" />
+                                <h:outputText value="S4" />
+                                <h:outputText value="#{matSelBean.selMat.stanIl.stan[4]}" />
+                                <h:outputText value="S5" />
+                                <h:outputText value="#{matSelBean.selMat.stanIl.stan[5]}" />
+                                <h:outputText value="S6" />
+                                <h:outputText value="#{matSelBean.selMat.stanIl.stan[6]}" />
+                                <h:outputText value="S7" />
+                                <h:outputText value="#{matSelBean.selMat.stanIl.stan[7]}" />
+                            </p:panelGrid>
+                        </p:tab >
+                        <p:tab title="Operacje">
+                            <p:dataTable var="o" value="#{matSelBean.selMat.operacje}" >
+                                <p:column>
+                                    <h:outputText value="#{o.id}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{o.creationTime}" />
+                                </p:column>
+                            </p:dataTable>
+                        </p:tab>
+                        <p:tab title="Odcinki">
+                            <p:dataTable var="odc" value="#{matSelBean.selMat.odcinki}" >
+                                <p:column>
+                                    <h:outputText value="#{o.id}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{odc.a}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{odc.b}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{odc.c}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{odc.d}" />
+                                </p:column>
+                            </p:dataTable>
+                        </p:tab>
+                    </p:tabView>   
+                
+                    
+                 <h:commandLink value="close" onclick="close()" />
+                
+                </p:outputPanel>
+            </p:dialog>
+        
+            <p:commandLink value="show" type="button" onclick="PF('dlg').show()"/>
+            <p:commandLink value="hide" />
+        
+    </body>
+    </h:form>
+    </f:view>
+</html>

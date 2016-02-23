@@ -103,6 +103,9 @@ public class Operacja implements IOperacja, Serializable {
     }
     
     
+    public String getOpis() {
+      return opis();  
+    };
     
     
 

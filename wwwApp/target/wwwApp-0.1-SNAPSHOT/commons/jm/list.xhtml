@@ -8,6 +8,7 @@
    
     <ui:define name="content">
         View id &nbsp; <h:outputText value="#{view.viewId}" />
+        <h:form>
         <p:dataTable value="#{jmBean.findAll}" var="jm">
             <p:column headerText="Symbol">
                 <h:outputText value="#{jm.symbol}" />
@@ -20,6 +21,7 @@
                 <h:commandLink value="Usuń" />
             </p:column>
         </p:dataTable>
+        </h:form>    
     </ui:define>
 
 </ui:composition>

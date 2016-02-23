@@ -56,7 +56,8 @@ public class KartaIPrzyjecieBean implements Serializable {
     @Autowired
     protected KartaMagazynowaRepository kmRepo;
     
-    KartaMagazynowa km = new KartaMagazynowa();
+    //KartaMagazynowa km = new KartaMagazynowa();
+    protected PrzyjecieZGlownego przyjecie =new PrzyjecieZGlownego();
      
     private BigDecimal ilosc;
     
@@ -89,9 +90,7 @@ public class KartaIPrzyjecieBean implements Serializable {
         return prodRepo.findAll();
     }
     
-    public List<Umowa> getUmowy() {
-        return umowyRepo.findAll();
-    }
+    
     
     public List<Projekt> getProjekty() {
         return projektRepo.findAll();
@@ -107,8 +106,16 @@ public class KartaIPrzyjecieBean implements Serializable {
         System.out.println("początek metody save PrzujeciaIKartaBean");
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("You've registered"));
       
-     
-      
+        KartaMagazynowa km = new KartaMagazynowa();
+        km.addOperation(przyjecie);
+        
+        try {
+            przyjecie.accept();
+        } catch ( Exception e) { e.printStackTrace();};
+        
+        kmRepo.save( km );
+        
+      /*
       Logger.getAnonymousLogger().info( "zapisuję {}");
       Operacja o = new PrzyjecieZGlownego( ilosc );
       km.addOperation(o);
@@ -116,19 +123,12 @@ public class KartaIPrzyjecieBean implements Serializable {
         o.accept();
       } catch ( Exception e) { e.printStackTrace();};
       kmRepo.save( km );
-      
+      */
       return "/faces/commons/karta_mag/list.xhtml";
       
     };
     
-    public String delete() {
-        
-        Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        //String id = params.get("id");
-        System.out.println("delete id=" + id);
-         
-        return "";
-    }
+    
 
       public BigDecimal getIlosc() {
         return ilosc;
@@ -138,13 +138,15 @@ public class KartaIPrzyjecieBean implements Serializable {
         this.ilosc = ilosc;
     }
 
-    public KartaMagazynowa getKm() {
-        return km;
+    public PrzyjecieZGlownego getPrzyjecie() {
+        return przyjecie;
     }
 
-    public void setKm(KartaMagazynowa km) {
-        this.km = km;
+    public void setPrzyjecie(PrzyjecieZGlownego przyjecie) {
+        this.przyjecie = przyjecie;
     }
+
+   
 
     public Long getId() {
         return id;

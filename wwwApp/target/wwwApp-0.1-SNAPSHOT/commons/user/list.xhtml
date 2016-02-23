@@ -11,8 +11,9 @@
     <ui:define name="content">
       
         View id &nbsp; <h:outputText value="#{view.viewId}" />
+        <h:form>
         <p:panel>
-            <p:commandLink value="Nowy użytkownik" action="add.xhtml" ajax="false"/>
+            <p:commandLink value="Nowy użytkownik" action="#{userBean.prepAdd()}" ajax="false"/>
         </p:panel>
         <p:panel>
         <p:dataTable value="#{userBean.findAll}" var="u">
@@ -40,6 +41,7 @@
             </p:column>
         </p:dataTable>
         </p:panel>
+        </h:form>    
     </ui:define>
 
 </ui:composition>

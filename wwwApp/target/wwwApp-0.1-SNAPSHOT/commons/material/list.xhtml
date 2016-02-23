@@ -9,11 +9,12 @@
 
     <ui:define name="content">
         View id &nbsp; <h:outputText value="#{view.viewId}" />
+        <h:form>
         <p:dataTable value="#{materialBean.findAll}" var="m" paginator="true" rows="15">
             <p:column headerText="Indeks">
                 <h:outputText value="#{m.indeks}" />
             </p:column>
-            <p:column headerText="Nazwa" sortBy="#{m.nazwa}" filterBy="#{m.nazwa}">
+            <p:column headerText="Nazwa" sortBy="#{m.nazwa}" filterBy="#{m.nazwa}" filterMatchMode="contains">
                 <h:outputText value="#{m.nazwa}" />
             </p:column>
             <p:column headerText="Jedn. miary">
@@ -27,6 +28,7 @@
                 <h:commandLink value="Usuń" />
             </p:column>
         </p:dataTable>
+        </h:form>
     </ui:define>
 
 </ui:composition>
