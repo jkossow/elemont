@@ -49,9 +49,24 @@ public class SkanZawieszkiBean {
         Long idOdc = new Long(s);
         
         Odcinek o = odcRepo.findOne(idOdc);
+        //tymczasowo
+        //Odcinek o = new Odcinek();
+        System.out.println("isset A " + o.isSetN("A") + " " + o.getN("A") + " " + o.getA() );
+        System.out.println("isset B " + o.isSetN("B") + " " + o.getN("B") + " " + o.getB() );
+        System.out.println("isset C " + o.isSetN("C") + " " + o.getN("C") + " " + o.getC() );
+        System.out.println("isset D " + o.isSetN("D") + " " + o.getN("D") + " " + o.getD() );
+        
         KartaMagazynowa km = o.getKartaMagazynowa();
         
         SkanZawieszki skanZaw = new SkanZawieszki(QRCode2, znacznik);
+        skanZaw = opRepo.save( skanZaw );
+        km.addOperation(skanZaw);
+        
+        try {
+            skanZaw.accept();
+        } catch (Exception e) { e.printStackTrace();};
+        
+        kmRepo.save( km );
         return "";
     } 
     

@@ -7,6 +7,7 @@ package org.kossowski.elemont.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -26,7 +27,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Odcinek implements Serializable  {
     
-    public static final BigDecimal NOT_SET = new BigDecimal( -1 );
+    public static final BigDecimal NOT_SET = new BigDecimal( -1).setScale(2);
             
     
     @Id @GeneratedValue

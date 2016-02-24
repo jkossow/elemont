@@ -139,7 +139,8 @@ public class SkanZawieszki  extends Operacja{
         if( (getSuffix().equals("C") || getSuffix().equals("D")) && !( o.getStatus() !=Status.S4 || o.getStatus() !=Status.S5 ) )
             throw new Exception("zła faza");
         
-        // sprawdz czy juz byl skanowany
+        //sprawdz czy juz byl skanowany
+        System.out.println( "Zancznik n " + getSuffix() + " " + o.getN( getSuffix() ) );
         if( !o.getN( getSuffix()).equals( Odcinek.NOT_SET ) )
             throw new Exception("juz przypisany");
         
@@ -152,6 +153,7 @@ public class SkanZawieszki  extends Operacja{
         setAcceptFlag();
         
         //sprawdz czy mozna dodac ulozenie
+        System.out.println("Test issetA, issSetB " + o.isSetN("A") + " " +o.isSetN("B"));
         if(o.getStatus() == Status.S3 && o.isSetN("A") && o.isSetN("B")) 
             dodajMontazOdcinka( o ); 
         else {        

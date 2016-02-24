@@ -4,6 +4,7 @@ org/kossowski/elemont/web/operacje/PrzekazNaBudowe.class
 org/kossowski/elemont/web/converters/KartaMagazynowaConverter.class
 org/kossowski/elemont/security/SecurityController.class
 org/kossowski/elemont/web/operacje/Test1Bean.class
+org/kossowski/elemont/web/operacje/SkanZawieszkiBean.class
 org/kossowski/elemont/web/operacje/KartaIPrzyjecieBean.class
 org/kossowski/elemont/web/commons/GrupaBean.class
 org/kossowski/elemont/web/commons/KartaMagazynowaBean.class

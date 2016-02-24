@@ -46,6 +46,9 @@
             <p:column headerText="Miejsce składowania">
                 <h:outputText value="#{k.miejsceSkladowania}" />
             </p:column>
+            <p:column headerText="Użytkownik">
+                <h:outputText value="#{k.user.login}" />
+            </p:column>
             <p:column headerText="Status" >
                 <h:outputText value="#{k.status}" />
             </p:column>
@@ -113,20 +116,32 @@
                 </p:tab>
                 <p:tab title="Odcinki">
                     <p:dataTable var="odc" value="#{kartaMagazynowaBean.selected.odcinki}" >
-                        <p:column>
-                            <h:outputText value="#{o.id}" />
+                        <p:column headerText="id">
+                            <h:outputText value="#{odc.id}" />
                         </p:column>
-                        <p:column>
+                        <p:column headerText="A">
                             <h:outputText value="#{odc.a}" />
                         </p:column>
-                        <p:column>
+                        <p:column headerText="B">
                             <h:outputText value="#{odc.b}" />
                         </p:column>
-                        <p:column>
+                        <p:column headerText="C">
                             <h:outputText value="#{odc.c}" />
                         </p:column>
-                        <p:column>
+                        <p:column headerText="D">
                             <h:outputText value="#{odc.d}" />
+                        </p:column>
+                        <p:column headerText="Ułożone">
+                            <h:outputText value="#{odc.ulozone}" />
+                        </p:column>
+                        <p:column headerText="Podłaczone">
+                            <h:outputText value="#{odc.podlaczone}" />
+                        </p:column>
+                        <p:column headerText="Ścinek A">
+                            <h:outputText value="#{odc.scinekA}" />
+                        </p:column>
+                        <p:column headerText="Ścinek B">
+                            <h:outputText value="#{odc.scinekB}" />
                         </p:column>
                     </p:dataTable>
                 </p:tab>
