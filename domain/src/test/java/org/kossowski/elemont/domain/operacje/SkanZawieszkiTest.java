@@ -43,7 +43,7 @@ public class SkanZawieszkiTest {
     @AfterClass
     public void tearDown() throws Exception {
     }
-    
+    /*
     @Test
     public void testQRCode1() {
         SkanZawieszki sk = new SkanZawieszki();
@@ -86,5 +86,5 @@ public class SkanZawieszkiTest {
         
        
     }
-  
+   */
 }

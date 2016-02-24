@@ -49,7 +49,7 @@ public class PrzyjecieZGlownegoTest {
     public void tearDownMethod() throws Exception {
     }
     
-    
+    /*
     public void przyjecieZGlownego( BigDecimal ilosc ) throws IllegalStatusException, Exception {
         KartaMagazynowa k = new KartaMagazynowa();
         Stan przed = new Stan( new int[]{0,0,0,0,0,0,0,0} );
@@ -96,5 +96,5 @@ public class PrzyjecieZGlownegoTest {
          k.addOperation(o2);
          o2.accept();
     }
-    
+    */
 }

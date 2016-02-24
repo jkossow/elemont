@@ -33,7 +33,8 @@ public class Odcinek implements Serializable  {
     private Long id;
     
     @ManyToOne
-    @JoinColumn( foreignKey = @ForeignKey(name = "kartamag_fk"))
+    @JoinColumn( name = "kartaMag_id")
+    //@JoinColumn( foreignKey = @ForeignKey(name = "kartamag_fk"))
     private KartaMagazynowa kartaMagazynowa;
     
     

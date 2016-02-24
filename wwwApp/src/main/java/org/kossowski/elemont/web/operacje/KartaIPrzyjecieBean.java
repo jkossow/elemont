@@ -25,6 +25,7 @@ import org.kossowski.elemont.domain.Umowa;
 import org.kossowski.elemont.domain.operacje.PrzyjecieZGlownego;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.MaterialRepository;
+import org.kossowski.elemont.repositories.OperacjaRepository;
 import org.kossowski.elemont.repositories.ProducentRepository;
 import org.kossowski.elemont.repositories.ProjektRepository;
 import org.kossowski.elemont.repositories.UmowaRepository;
@@ -55,6 +56,9 @@ public class KartaIPrzyjecieBean implements Serializable {
     
     @Autowired
     protected KartaMagazynowaRepository kmRepo;
+    
+    @Autowired
+    protected OperacjaRepository opRepo;
     
     //KartaMagazynowa km = new KartaMagazynowa();
     protected PrzyjecieZGlownego przyjecie =new PrzyjecieZGlownego();
@@ -107,13 +111,16 @@ public class KartaIPrzyjecieBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("You've registered"));
       
         KartaMagazynowa km = new KartaMagazynowa();
+        
+        //przyjecie.setKartaMagazynowa(km);
+        
         km.addOperation(przyjecie);
         
         try {
             przyjecie.accept();
         } catch ( Exception e) { e.printStackTrace();};
         
-        kmRepo.save( km );
+        km = kmRepo.save( km );
         
       /*
       Logger.getAnonymousLogger().info( "zapisuję {}");

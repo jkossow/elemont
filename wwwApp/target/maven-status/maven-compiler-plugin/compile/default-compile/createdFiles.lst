@@ -1,6 +1,7 @@
 org/kossowski/elemont/web/commons/MaterialBean.class
 org/kossowski/elemont/web/converters/ProjektConverter.class
 org/kossowski/elemont/web/operacje/PrzekazNaBudowe.class
+org/kossowski/elemont/web/converters/KartaMagazynowaConverter.class
 org/kossowski/elemont/security/SecurityController.class
 org/kossowski/elemont/web/operacje/Test1Bean.class
 org/kossowski/elemont/web/operacje/KartaIPrzyjecieBean.class
@@ -13,6 +14,7 @@ org/kossowski/elemont/web/commons/ProjektBean.class
 org/kossowski/elemont/web/converters/UserConverter.class
 org/kossowski/elemont/web/commons/UmowaBean.class
 org/kossowski/elemont/web/converters/UserKodQRConverter.class
+org/kossowski/elemont/web/serwis/Printer.class
 org/kossowski/elemont/NewClass.class
 org/kossowski/elemont/web/serwis/TableDeleteBean.class
 org/kossowski/elemont/web/serwis/FileReader1.class

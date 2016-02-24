@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -34,6 +35,7 @@ public class Operacja implements IOperacja, Serializable {
     private Long id = 0L;
     
     @ManyToOne
+    @JoinColumn( name = "kartaMag_id" )
     private KartaMagazynowa kartaMagazynowa;
     
     private Date creationTime = null;

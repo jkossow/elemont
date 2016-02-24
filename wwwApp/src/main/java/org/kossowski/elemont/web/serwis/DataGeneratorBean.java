@@ -9,6 +9,7 @@ import com.sun.javafx.UnmodifiableArrayList;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -19,12 +20,14 @@ import org.kossowski.elemont.domain.Grupa;
 import org.kossowski.elemont.domain.Jm;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Material;
+import org.kossowski.elemont.domain.Odcinek;
 import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Producent;
 import org.kossowski.elemont.domain.Projekt;
 import org.kossowski.elemont.domain.Stanowisko;
 import org.kossowski.elemont.domain.Umowa;
 import org.kossowski.elemont.domain.User;
+import org.kossowski.elemont.domain.operacje.NowyOdcinek;
 import org.kossowski.elemont.domain.operacje.PrzyjecieZGlownego;
 import org.kossowski.elemont.domain.operacje.WydanieNaBudowe;
 import org.kossowski.elemont.repositories.GrupaRepository;
@@ -96,39 +99,34 @@ public class DataGeneratorBean {
         
         initStanowisko();
         
+        List<Material> lm = matRepo.findAll();
         KartaMagazynowa k = new KartaMagazynowa();
         
-        k.setMaterial( matRepo.findFirstByIndeks("yky 02"));
-        k.setProducent( prodRepo.findFirstBySymbol("ant"));
-        Operacja o = new PrzyjecieZGlownego(new BigDecimal( 120 ));
-        k.addOperation(o);
-        o.accept();
+        k = kartaRepo.save(k);
         
+        PrzyjecieZGlownego p = new PrzyjecieZGlownego();
+        p.setMaterial( lm.get(0));
+        p.setDostawca( prodRepo.findFirstBySymbol("ant"));
+        p.setProducent(prodRepo.findFirstBySymbol("ant"));
+        p.setProjekt( projektRepo.findFirstBySymbol("p1"));
+        p.setMiejsceSkladowania("ffffff");
+        p.setIlosc( new BigDecimal(300));
+        
+        k.addOperation(p);
+        p.accept();
         kartaRepo.save( k );
         
-        o = new WydanieNaBudowe( userRepo.findOne("jkossow"), new BigDecimal(120));
-        k.addOperation(o);
-        o.accept();
+        WydanieNaBudowe w = new WydanieNaBudowe( userRepo.findFirstByKodQR("001"), new BigDecimal(300));
+        k.addOperation(w);
+        w.accept();
+        kartaRepo.save(k);
         
-        kartaRepo.save( k );
-        
-        k = new KartaMagazynowa();
-        k.setMaterial( matRepo.findFirstByIndeks("yky 01"));
-        k.setProducent( prodRepo.findFirstBySymbol("inna"));
-        o = new PrzyjecieZGlownego(new BigDecimal( 200 ));
-        k.addOperation(o);
-        o.accept();
-        k.getOperacje().add(o);
-        kartaRepo.save( k );
-        
-        k = new KartaMagazynowa();
-        k.setMaterial( matRepo.findFirstByIndeks("yky 03"));
-        k.setProducent( prodRepo.findFirstBySymbol("ant"));
-        o = new PrzyjecieZGlownego(new BigDecimal( 100 ));
-        k.addOperation(o);
-        o.accept();
-        k.getOperacje().add(o);
-        kartaRepo.save( k );
+        Odcinek odc = new Odcinek();
+        NowyOdcinek no = new NowyOdcinek(odc);
+        k.addOcinek(odc);
+        k.addOperation(no);
+        no.accept();
+        kartaRepo.save(k);
         
     }
     

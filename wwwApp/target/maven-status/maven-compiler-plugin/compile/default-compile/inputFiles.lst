@@ -7,6 +7,7 @@
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/datamodels/KartaMagazynowaSelectableDataModel.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/scope/ViewScopeViewMapListener.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/serwis/TableDeleteBean.java
+/Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/operacje/SkanZawieszkiBean.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/commons/UmowaBean.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/converters/UserConverter.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/operacje/NowaKartaBean.java
@@ -26,6 +27,8 @@
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/NewClass.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/commons/ProducentBean.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/scope/ViewScope.java
+/Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/converters/KartaMagazynowaConverter.java
+/Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/serwis/Printer.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/commons/JmBean.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/converters/UserKodQRConverter.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/converters/ProjektConverter.java

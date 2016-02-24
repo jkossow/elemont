@@ -39,12 +39,11 @@ public class KartaMagazynowa implements Serializable {
     
     @ManyToOne
     @JoinColumn( foreignKey = @ForeignKey(name = "projekt_fk"))
-    private Projekt projekt =  new Projekt();
+    private Projekt projekt = null; //new Projekt();
     
     @ManyToOne
     @JoinColumn( foreignKey = @ForeignKey(name = "material_fk"))
-    private Material material = new Material();
-    
+    private Material material = null;
     // w tym momencie niewykorzystywane pole 
     // jednostka miary wynika z wartosci material.jm
     // byc moze bedzie potrzeba aby karta mag. miala swoja wartosc jjm
@@ -67,7 +66,7 @@ public class KartaMagazynowa implements Serializable {
     @JoinColumn( foreignKey = @ForeignKey( name = "stan_fk"))
     private Stan stanIl = new Stan();
     
-    @OneToMany(  mappedBy = "kartaMagazynowa", cascade = CascadeType.ALL  )
+    @OneToMany(  mappedBy = "kartaMagazynowa" , cascade = CascadeType.ALL  )
     //@JoinColumn( foreignKey = @ForeignKey(name = "operacje_fk"))
     private List<Operacja> operacje = new ArrayList<>();       
 

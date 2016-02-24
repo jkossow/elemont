@@ -49,7 +49,7 @@ public class WydanieNabudoweTest {
     @AfterMethod
     public void tearDownMethod() throws Exception {
     }
-    
+    /*
     //normalny cykl operacji
     @Test
     public void wydanieNaBudoweTest() throws Exception {
@@ -106,4 +106,6 @@ public class WydanieNabudoweTest {
     //public void wydanieWithNull() {
     //    Operacja o = new WydanieNaBudowe( new User(), BigDecimal.ONE);
     //}
+
+    */
 }

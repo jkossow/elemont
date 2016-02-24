@@ -5,20 +5,15 @@
  */
 package org.kossowski.elemont.domain.operacje;
 
-import com.sun.xml.internal.fastinfoset.util.CharArray;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import org.kossowski.elemont.domain.CzytnikQR2;
 import org.kossowski.elemont.domain.IllegalStatusException;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Odcinek;
 import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Status;
-import org.springframework.expression.ExpressionException;
 
 /**
  *
@@ -30,7 +25,7 @@ import org.springframework.expression.ExpressionException;
 
 public class SkanZawieszki  extends Operacja{
     
-    
+    private Odcinek odcinek;
     private String qrCode;
     private BigDecimal znacznik;
     
@@ -48,6 +43,7 @@ public class SkanZawieszki  extends Operacja{
         
         this.qrCode = qrCode;
         this.znacznik = znacznik;
+        
         suffix = getSuffix();
         prefix = getIdOdcinka();
     }
@@ -193,6 +189,14 @@ public class SkanZawieszki  extends Operacja{
 
     public void setZnacznik(BigDecimal znacznik) {
         this.znacznik = znacznik;
+    }
+
+    public Odcinek getOdcinek() {
+        return odcinek;
+    }
+
+    public void setOdcinek(Odcinek odcinek) {
+        this.odcinek = odcinek;
     }
     
     

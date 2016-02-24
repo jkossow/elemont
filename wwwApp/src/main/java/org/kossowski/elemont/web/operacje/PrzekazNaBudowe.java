@@ -11,6 +11,7 @@ import org.kossowski.elemont.domain.Status;
 import org.kossowski.elemont.domain.User;
 import org.kossowski.elemont.domain.operacje.WydanieNaBudowe;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
+import org.kossowski.elemont.repositories.OperacjaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,10 @@ public class PrzekazNaBudowe {
     @Autowired
     protected KartaMagazynowaRepository kmRepo;
     
+    @Autowired
+    protected OperacjaRepository opRepo;
+    
+    protected KartaMagazynowa km;
     protected Long id; //id karty magazynowej
     protected User user;
     protected BigDecimal ilosc;
@@ -62,12 +67,41 @@ public class PrzekazNaBudowe {
         //wydanie.setKartaMagazynowa( km );
         
         Operacja o = new WydanieNaBudowe( getUser(), getIlosc()) ;
+        o = opRepo.save(o);
         km.addOperation(o);
+        //o.setKartaMagazynowa(km);
         
         try {
             o.accept();
-            kmRepo.save(km);
+            
         } catch ( Exception e) {e.printStackTrace();};
+        km = kmRepo.save(km);
+        
+        return "/commons/karta_mag/list.xhtml";
+    }
+    
+    public String przekaz2() {
+        
+        //FacesContext fc = FacesContext.getCurrentInstance();
+        //Map<String,String> pm = fc.getExternalContext().getRequestParameterMap();
+        
+        // fix może uda sie przekazawc karte w polu hidden
+        //serializacja
+        //id = new Long( pm.get("id"));
+        //KartaMagazynowa km = kmRepo.findOne(id);
+        //wydanie.setKartaMagazynowa( km );
+        
+        Operacja o = new WydanieNaBudowe( getUser(), getIlosc()) ;
+        opRepo.save(o);
+        km.addOperation(o);
+        o.setKartaMagazynowa(km);
+        
+        try {
+            o.accept();
+            
+        } catch ( Exception e) {e.printStackTrace();};
+        
+        kmRepo.save(km);
         
         return "/commons/karta_mag/list.xhtml";
     }
@@ -113,6 +147,14 @@ public class PrzekazNaBudowe {
 
     public void setIlosc(BigDecimal ilosc) {
         this.ilosc = ilosc;
+    }
+
+    public KartaMagazynowa getKm() {
+        return km;
+    }
+
+    public void setKm(KartaMagazynowa km) {
+        this.km = km;
     }
 
     
