@@ -10,13 +10,14 @@ import org.kossowski.elemont.domain.Grupa;
 import org.kossowski.elemont.repositories.GrupaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author jkossow
  */
 
-@Controller
+@Service
 public class GrupaBean {
     
     @Autowired

@@ -7,13 +7,8 @@ package org.kossowski.elemont.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.MathContext;
-import java.util.Collections;
-import java.util.List;
 import java.util.Objects;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,7 +22,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Odcinek implements Serializable  {
     
-    public static final BigDecimal NOT_SET = new BigDecimal( -1).setScale(2);
+    public static final BigDecimal NOT_SET = new BigDecimal( -1);
             
     
     @Id @GeneratedValue
@@ -100,10 +95,10 @@ public class Odcinek implements Serializable  {
     public boolean isSetN( String wyroznik ) {
         
         switch( wyroznik ) {
-            case "A": return !getA().equals(NOT_SET); 
-            case "B": return !getB().equals(NOT_SET);
-            case "C": return !getC().equals(NOT_SET);
-            case "D": return !getD().equals(NOT_SET);
+            case "A": return !(getA().compareTo(NOT_SET) == 0L ); 
+            case "B": return !(getB().compareTo(NOT_SET) == 0L );
+            case "C": return !(getC().compareTo(NOT_SET) == 0L );
+            case "D": return !(getD().compareTo(NOT_SET) == 0L );
         }
         throw new IndexOutOfBoundsException( "Odczyt poza zakresem (A,B,C,D");
     }

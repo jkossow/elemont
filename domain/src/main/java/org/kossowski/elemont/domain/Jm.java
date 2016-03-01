@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -19,6 +20,7 @@ import javax.persistence.Table;
 @SuppressWarnings("PersistenceUnitPresent")
 @Entity
 @Table( name = "jm" )
+@XmlRootElement( name = "jm" )
 public class Jm implements Serializable {
     
     @Id @GeneratedValue

@@ -12,13 +12,14 @@ import org.kossowski.elemont.repositories.GrupaRepository;
 import org.kossowski.elemont.repositories.ProducentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author jkossow
  */
 
-@Controller
+@Service
 public class ProducentBean {
     
     @Autowired

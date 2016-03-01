@@ -15,8 +15,6 @@ import javax.persistence.ManyToOne;
 import org.kossowski.elemont.domain.IllegalStatusException;
 import org.kossowski.elemont.domain.Odcinek;
 import org.kossowski.elemont.domain.Operacja;
-import org.kossowski.elemont.domain.Projekt;
-import org.kossowski.elemont.domain.Stan;
 import org.kossowski.elemont.domain.Status;
 
 /**

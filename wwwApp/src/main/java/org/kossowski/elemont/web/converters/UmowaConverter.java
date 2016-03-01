@@ -12,6 +12,7 @@ import org.kossowski.elemont.domain.Umowa;
 import org.kossowski.elemont.repositories.UmowaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 /**
  *
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Controller;
  */
 
 
-@Controller
+@Service
 public class UmowaConverter implements Converter  {
 
     @Autowired

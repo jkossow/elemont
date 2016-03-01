@@ -119,23 +119,23 @@ public class Material implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        
         if (this == obj) {
-            //System.out.println("return true1");
             return true;
         }
-        if (obj == null) 
+        if (obj == null) {
             return false;
-        
-        if (getClass() != obj.getClass())         
+        }
+        if (getClass() != obj.getClass()) {
             return false;
-        
+        }
         final Material other = (Material) obj;
-        if (!Objects.equals(this.id, other.id)) 
+        if (!Objects.equals(this.id, other.id)) {
             return false;
+        }
         return true;
-
     }
+
+    
 
     
    

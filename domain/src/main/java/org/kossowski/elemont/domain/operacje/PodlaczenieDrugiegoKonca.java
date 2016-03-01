@@ -6,7 +6,6 @@
 package org.kossowski.elemont.domain.operacje;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;

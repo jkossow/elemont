@@ -9,6 +9,9 @@
     <ui:define name="content">
         View id &nbsp; <h:outputText value="#{view.viewId}" />
         <h:form>
+        <p:panel>
+            <p:commandLink value="Nowa jednostka miary" action="#{projektBean.prepAdd}" ajax="false" />
+        </p:panel>    
         <p:dataTable value="#{jmBean.findAll}" var="jm">
             <p:column headerText="Symbol">
                 <h:outputText value="#{jm.symbol}" />

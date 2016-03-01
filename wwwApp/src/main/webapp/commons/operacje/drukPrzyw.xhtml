@@ -12,6 +12,9 @@
 
             <ui:define name="content">
                 <p:panelGrid columns="2">
+                    <f:facet name="header">
+                     Generowanie przywieszek
+                    </f:facet>
                     <h:outputText value="Liczba przywieszek:" />
                     <p:inputText value="#{drukPrzywBean.ilosc}" />
                     <p:commandButton value="Drukuj" action="#{drukPrzywBean.drukuj()}" />

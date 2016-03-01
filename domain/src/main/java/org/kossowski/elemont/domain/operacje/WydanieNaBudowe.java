@@ -12,7 +12,6 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import org.kossowski.elemont.domain.IllegalStatusException;
-import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Stan;
 import org.kossowski.elemont.domain.Status;
@@ -59,7 +58,10 @@ public class WydanieNaBudowe extends Operacja {
             throw new IllegalStatusException();
         
         if( ilosc.compareTo( getKartaMagazynowa().getStanIl().getIValue(Stan.IL_W_MAG_GL) ) > 0 )
-            throw new Exception("za dużo w pobraniu");
+            throw new Exception("Pobranie ponad stan");
+        
+        if( !getKartaMagazynowa().getProjekt().getZespol().contains( this.getUser() ))
+            throw new Exception("Pracownik nie przypisany do projektu");
         
         //przypisanie pól
         getKartaMagazynowa().setUser(this.user);

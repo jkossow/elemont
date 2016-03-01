@@ -5,10 +5,8 @@
  */
 package org.kossowski.elemont.repositories;
 
-import java.io.Serializable;
 import org.kossowski.elemont.domain.Stanowisko;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 /**
  *

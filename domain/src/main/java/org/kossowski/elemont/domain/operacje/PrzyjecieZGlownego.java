@@ -12,7 +12,6 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import org.kossowski.elemont.domain.IllegalStatusException;
-import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Material;
 import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Producent;

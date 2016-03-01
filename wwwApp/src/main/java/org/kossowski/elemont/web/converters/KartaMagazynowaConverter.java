@@ -34,8 +34,10 @@ public class KartaMagazynowaConverter implements Converter {
         if (value.isEmpty()) {
             return null;
         }
-
-        Long id = Long.valueOf(value);
+        Long id;
+        try {
+            id = Long.valueOf(value);
+        } catch ( Exception e ) { return null; }
         KartaMagazynowa km;
         if (id != 0L) {
             km = kmRepo.findOne(id);

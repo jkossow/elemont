@@ -9,22 +9,29 @@
     
     <ui:define name="content">
             <!--<p:growl id="growl" showDetail="true" sticky="true" /> -->
-            
+            <f:view>
             View id &nbsp; <h:outputText value="#{view.viewId}" />
-            <h:form>
+            
+            <h:form id="add_karta_i_przyjecie">
+                
             <p:panelGrid columns="2">
-                 
+                <f:facet name="header">
+                    Przyjęcie z magazynu głównego
+                </f:facet>
                 <h:outputText value="Materiał:" />
                 
                 
                 <p:selectOneMenu   id="material" value="#{kartaIPrzyjecieBean.przyjecie.material}"  
-                                   required="true"  
+                                   required="true"
+                                   
                                    converterMessage="conccccc"
                                    validatorMessage="mat vnot vvvv" 
                                    requiredMessage="Materiał - musisz wypełnić" 
-                                   filter="true" filterMatchMode="contains" >
-                    <f:selectItem itemLabel="-----" itemValue="0" noSelectionOption="true" /> 
-                    <f:selectItems value="#{kartaIPrzyjecieBean.materialy}" var="m"  itemLabel="#{m.nazwa}" itemValue="#{m}"/>
+                                   filter="true" filterMatchMode="contains" 
+                                   >
+                    <!--<f:selectItem itemLabel="dddd" itemValue="0" noSelectionOption="true" /> -->
+                    
+                    <f:selectItems value="#{kartaIPrzyjecieBean.materialSelectItemsMap}" var="m"  itemLabel="#{m.nazwa}" itemValue="#{m}"/>
                     
                     <f:converter binding="#{materialConverter}"  />
                     <p:ajax partialSubmit="true" update="nazwa,grupa,jm"/>
@@ -89,8 +96,9 @@
             </p:panelGrid>
            
             <h:messages />
+            <h:message for="material" showDetail="true"/>
             </h:form>
-       
+            </f:view>
     </ui:define>
 
 </ui:composition>

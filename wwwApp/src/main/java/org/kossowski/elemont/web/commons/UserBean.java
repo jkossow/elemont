@@ -15,17 +15,19 @@ import org.kossowski.elemont.domain.User;
 import org.kossowski.elemont.repositories.GrupaRepository;
 import org.kossowski.elemont.repositories.UmowaRepository;
 import org.kossowski.elemont.repositories.UserRepository;
+import org.kossowski.elemont.utils.JSFUtils;
 import org.primefaces.model.DualListModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author jkossow
  */
 
-@Controller
+@Service
 @Scope("request")
 public class UserBean {
     
@@ -77,7 +79,13 @@ public class UserBean {
     public String save() {
        
         user.setRole( pickData.getTarget() );
-        userRepo.save( user );
+        try {
+            userRepo.save( user );
+        } catch ( Exception e ) {
+            JSFUtils.addMessage(  e.getMessage() );
+            return null;
+        }
+                
         return "list.xhtml";
     }
 

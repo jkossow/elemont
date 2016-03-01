@@ -136,7 +136,7 @@ public class SkanZawieszki  extends Operacja{
             throw new Exception("zła faza");
         
         // C i D tylko przy S4
-        if( (getSuffix().equals("C") || getSuffix().equals("D")) && !( o.getStatus() !=Status.S4 || o.getStatus() !=Status.S5 ) )
+        if( (getSuffix().equals("C") || getSuffix().equals("D")) && !( o.getStatus() == Status.S4 || o.getStatus() ==Status.S5 ) )
             throw new Exception("zła faza");
         
         //sprawdz czy juz byl skanowany

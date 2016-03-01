@@ -9,8 +9,11 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
@@ -32,13 +35,14 @@ import org.kossowski.elemont.repositories.UmowaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author jkossow
  */
 
-@Controller
+@Service
 @Scope("request")
 public class KartaIPrzyjecieBean implements Serializable {
     
@@ -71,6 +75,16 @@ public class KartaIPrzyjecieBean implements Serializable {
     
     public KartaIPrzyjecieBean() {
         Logger.getAnonymousLogger().log( Level.INFO, "Konstruktor PrzyjecieBean");
+    }
+    
+    public Map<String,Material> getMaterialSelectItemsMap() {
+        Map<String,Material> map = new HashMap<String,Material>();
+    
+        map.put( "-----", null );
+        for( Material m : matRepo.findAll() )
+            map.put( m.getNazwa(), m);
+        
+        return map;
     }
     
     
@@ -107,8 +121,8 @@ public class KartaIPrzyjecieBean implements Serializable {
       
     
     public String save() {
-        System.out.println("początek metody save PrzujeciaIKartaBean");
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("You've registered"));
+        //System.out.println("początek metody save PrzujeciaIKartaBean");
+        //FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("You've registered"));
       
         KartaMagazynowa km = new KartaMagazynowa();
         

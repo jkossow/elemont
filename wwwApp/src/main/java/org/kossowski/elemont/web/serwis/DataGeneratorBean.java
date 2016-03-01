@@ -43,6 +43,7 @@ import org.kossowski.elemont.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 /**
@@ -50,7 +51,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  * @author jkossow
  */
 
-@Controller
+@Service
 public class DataGeneratorBean {
     
     @Autowired
@@ -100,15 +101,17 @@ public class DataGeneratorBean {
         initStanowisko();
         
         List<Material> lm = matRepo.findAll();
+        List<Projekt> lp = projektRepo.findAll();
+        List<Producent> lprod = prodRepo.findAll();
         KartaMagazynowa k = new KartaMagazynowa();
         
         k = kartaRepo.save(k);
         
         PrzyjecieZGlownego p = new PrzyjecieZGlownego();
         p.setMaterial( lm.get(0));
-        p.setDostawca( prodRepo.findFirstBySymbol("ant"));
-        p.setProducent(prodRepo.findFirstBySymbol("ant"));
-        p.setProjekt( projektRepo.findFirstBySymbol("p1"));
+        p.setDostawca( lprod.get(1));
+        p.setProducent(lprod.get(2));
+        p.setProjekt( lp.get(0));
         p.setMiejsceSkladowania("ffffff");
         p.setIlosc( new BigDecimal(300));
         
@@ -149,7 +152,7 @@ public class DataGeneratorBean {
         
         try {
             
-            List<String> l = Files.readAllLines( Paths.get( "/material.txt"),Charset.forName("cp1250"));
+            List<String> l = Files.readAllLines( Paths.get( "/Users/jkossow/Desktop/material.txt"),Charset.forName("cp1250"));
             for( String s: l) {
                 Material m = new Material(s, s, jm, grupa);
                 matRepo.save(m);
@@ -163,23 +166,17 @@ public class DataGeneratorBean {
         User j = userRepo.findOne("jkossow");
         User k = userRepo.findOne("jakubk");
         
-        Projekt p = new Projekt("p1", "projekt pierwszy");
-        p.getZespol().add( j );
-        projektRepo.save( p );
         
-        p = new Projekt("p1 bis", "projekt pierwszy bis");
-        p.getZespol().add( k );
-        projektRepo.save( p );
         
-        p = new Projekt("p2", "projekt drugi");
-        p.getZespol().add( j );
-        p.getZespol().add( k );
-        projektRepo.save( p );
-        
-        p = new Projekt( "p2", "projektTrzeci");
-        p.getZespol().add( j );
-        p.getZespol().add( k );
-        projektRepo.save( p );
+        try {
+            
+            List<String> l = Files.readAllLines( Paths.get( "/Users/jkossow/Desktop/projekty.txt"),Charset.forName("cp1250"));
+            for( String s: l) {
+                Projekt p = new Projekt(s, s);
+                p.getZespol().add(j);
+                projektRepo.save(p);
+            }
+        } catch ( IOException e ){ e.printStackTrace(); };
         
     }
     
@@ -205,11 +202,35 @@ public class DataGeneratorBean {
         u = new User("jakubk", "Kwiatkowski", "Jakub");
         u.setKodQR("002");
         userRepo.save( u );
+        
+        u = new User("golonm", "Golonka", "łukasz");
+        u.setPassword("aaaaa");
+        u.getRole().add("ROLE_MAGAZYN");
+        u.setKodQR("003");
+        userRepo.save( u );
+        
+        u = new User("golonb", "Golonka", "łukasz");
+        u.setPassword("aaaaa");
+        u.getRole().add("ROLE_BUDOWA");
+        u.setKodQR("004");
+        userRepo.save( u );
+        
+        u = new User("golonadmin", "Golonka", "łukasz");
+        u.setPassword("aaaaa");
+        u.getRole().add("ROLE_BUDOWA");
+        u.setKodQR("005");
+        userRepo.save( u );
     }
     
     private void initProducent() {
-        prodRepo.save( new Producent("ant", "Ant Computers"));
-        prodRepo.save( new Producent("inna","jakaś inna firma"));
+        try {
+            
+            List<String> l = Files.readAllLines( Paths.get( "/Users/jkossow/Desktop/dostawcy.txt"),Charset.forName("cp1250"));
+            for( String s: l) {
+                Producent p = new Producent(s, s);
+                prodRepo.save(p);
+            }
+        } catch ( IOException e ){ e.printStackTrace(); };
     }
     
     private void initStanowisko() {

@@ -14,13 +14,14 @@ import org.kossowski.elemont.repositories.MaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author jkossow
  */
 
-@Controller
+@Service
 @Scope("request")
 public class Test1Bean {
     

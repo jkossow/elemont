@@ -74,8 +74,12 @@ public class Rozliczenie1 {
         printState(k);
         
         rejSkanPrzyw(k, "1A", 20); printState(k);
-        rejSkanPrzyw(k, "1B", 40); printState(k);
+        //rejSkanPrzyw(k, "1C", 20); printState(k);
+        rejSkanPrzyw(k, "1B", 40); printState(k); //oryginalnie 1B
         rejSkanPrzyw(k, "1C", 22); printState(k);
+        
+        //rejSkanPrzyw(k, "1A", 22); printState(k);
+        
         rejSkanPrzyw(k, "2A", 45); printState(k);
         rejSkanPrzyw(k, "2B", 60); printState(k);
         rejSkanPrzyw(k, "1D", 39); printState(k);

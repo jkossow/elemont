@@ -14,6 +14,9 @@
                 <h:form>
                    
                 <p:panelGrid columns="2">
+                    <f:facet name="header">
+                    Przekazanie na budowę
+                    </f:facet>  
                     <h:outputText value="Ident. partii:" />
                     <p:inputText value="#{przekazNaBudowe.km}" >
                         <f:converter binding="#{kartaMagazynowaConverter}" />
@@ -27,7 +30,9 @@
                     <p:commandButton value="OK" action="#{przekazNaBudowe.przekaz2}" ajax="false">
                         <!--<f:param name="id" value="#{przekazNaBudowe.id}" /> -->
                     </p:commandButton>    
+                    
                 </p:panelGrid>
+                    <p:messages />
                 </h:form>
             </ui:define>
 

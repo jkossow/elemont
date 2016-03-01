@@ -10,12 +10,13 @@ import org.kossowski.elemont.domain.Jm;
 import org.kossowski.elemont.repositories.JmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author jkossow
  */
-@Controller
+@Service
 public class JmBean {
     
     @Autowired

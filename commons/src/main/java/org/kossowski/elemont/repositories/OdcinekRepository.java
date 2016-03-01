@@ -5,9 +5,7 @@
  */
 package org.kossowski.elemont.repositories;
 
-import java.io.Serializable;
 import org.kossowski.elemont.domain.Odcinek;
-import org.kossowski.elemont.domain.Umowa;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

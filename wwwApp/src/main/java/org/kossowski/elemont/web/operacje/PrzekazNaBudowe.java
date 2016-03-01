@@ -4,6 +4,7 @@ package org.kossowski.elemont.web.operacje;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Operacja;
@@ -12,9 +13,12 @@ import org.kossowski.elemont.domain.User;
 import org.kossowski.elemont.domain.operacje.WydanieNaBudowe;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.OperacjaRepository;
+import org.kossowski.elemont.repositories.UserRepository;
+import org.kossowski.elemont.utils.JSFUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,7 +31,7 @@ import org.springframework.stereotype.Controller;
  * @author jkossow
  */
 
-@Controller
+@Service
 @Scope("request")
 public class PrzekazNaBudowe {
     
@@ -36,6 +40,9 @@ public class PrzekazNaBudowe {
     
     @Autowired
     protected OperacjaRepository opRepo;
+    
+    //@Autowired
+    //protected UserRepository userRepo;
     
     protected KartaMagazynowa km;
     protected Long id; //id karty magazynowej
@@ -59,6 +66,10 @@ public class PrzekazNaBudowe {
         
         //FacesContext fc = FacesContext.getCurrentInstance();
         //Map<String,String> pm = fc.getExternalContext().getRequestParameterMap();
+        if( user == null) {
+            JSFUtils.addMessage("Nieznany QR-kod pracownika");
+            return null;
+        }
         
         // fix może uda sie przekazawc karte w polu hidden
         //serializacja
@@ -69,12 +80,20 @@ public class PrzekazNaBudowe {
         Operacja o = new WydanieNaBudowe( getUser(), getIlosc()) ;
         o = opRepo.save(o);
         km.addOperation(o);
+        
+        
         //o.setKartaMagazynowa(km);
         
         try {
             o.accept();
             
-        } catch ( Exception e) {e.printStackTrace();};
+        } catch ( Exception e) {
+            km.removeOperation(o);
+            opRepo.delete(o);
+            
+            JSFUtils.addMessage(e.getMessage());
+            return null;
+        };
         km = kmRepo.save(km);
         
         return "/commons/karta_mag/list.xhtml";
@@ -90,6 +109,16 @@ public class PrzekazNaBudowe {
         //id = new Long( pm.get("id"));
         //KartaMagazynowa km = kmRepo.findOne(id);
         //wydanie.setKartaMagazynowa( km );
+        if( km == null ) {
+            JSFUtils.addMessage("Nie ma takiej partii w magazynie");
+            return null;
+        }
+        
+        if( user == null ) {
+            JSFUtils.addMessage("Nieznany QR-kod pracownika");
+            return null;
+        }
+        
         
         Operacja o = new WydanieNaBudowe( getUser(), getIlosc()) ;
         opRepo.save(o);

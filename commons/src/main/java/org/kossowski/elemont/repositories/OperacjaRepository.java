@@ -5,7 +5,6 @@
  */
 package org.kossowski.elemont.repositories;
 
-import java.io.Serializable;
 import org.kossowski.elemont.domain.Operacja;
 import org.springframework.data.jpa.repository.JpaRepository;
 

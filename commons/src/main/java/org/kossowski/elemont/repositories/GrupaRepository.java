@@ -6,7 +6,6 @@
 package org.kossowski.elemont.repositories;
 
 import org.kossowski.elemont.domain.Grupa;
-import org.kossowski.elemont.domain.Material;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
