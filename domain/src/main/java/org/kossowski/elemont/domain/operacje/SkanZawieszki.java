@@ -13,9 +13,9 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import org.kossowski.elemont.domain.IllegalStatusException;
-import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Odcinek;
 import org.kossowski.elemont.domain.Operacja;
+import org.kossowski.elemont.domain.Stan;
 import org.kossowski.elemont.domain.Status;
 
 /**
@@ -88,40 +88,52 @@ public class SkanZawieszki  extends Operacja{
         return found;
     }
     
-    private void dodajMontazOdcinka( Odcinek o ) {
+    private void dodajMontazOdcinka( Odcinek o ) throws Exception {
+        System.out.println("Ułożono odcinek " + o.getId());
         
-        KartaMagazynowa k = o.getKartaMagazynowa();
+        BigDecimal polozono = o.getA().subtract(o.getB()).abs();
+        o.setUlozone(polozono);
+        Stan stan = o.getKartaMagazynowa().getStanIl();
         
-        UlozenieOdcinka m = new UlozenieOdcinka( o );
-        k.addOperation(m);
+        stan.setIValue(Stan.IL_POLOZONA,  stan.getIValue(Stan.IL_POLOZONA).add(polozono));
+        //stan.setIValue( Stan.IL_WYDANA_NA_BUD, stan.getIValue(Stan.IL_WYDANA_NA_BUD).subtract(polozono)  );
+        stan.setIValue(Stan.IL_STAN_BIEZ, stan.getIValue(Stan.IL_STAN_BIEZ).subtract(polozono));
         
-        try {
-            m.accept();
-        } catch (Exception e ) {e.printStackTrace(); }
+        //setAcceptFlag();
+        
+        o.setStatus( Status.S4);
+        getKartaMagazynowa().trySet( Status.S4 );
+        
     }
     
-    private void dodajPodlaczeniePierwszegoKonca( Odcinek o ) {
+    private void dodajPodlaczeniePierwszegoKonca( Odcinek o ) throws Exception {
+        System.out.println("Podłączono pierszwy koniec " + o.getId());
         
-        KartaMagazynowa k = o.getKartaMagazynowa();
+        Stan stan = o.getKartaMagazynowa().getStanIl();
         
-        PodlaczeniePierwszegoKonca p = new PodlaczeniePierwszegoKonca(o);
-        k.addOperation(p);
+        //setAcceptFlag();
         
-        try {
-            p.accept();
-        } catch (Exception e ) {e.printStackTrace(); }
+        o.setStatus( Status.S5);
+        getKartaMagazynowa().trySet( Status.S5 );
     }
     
-    private void dodajPodlaczenieDrugiegoKonca( Odcinek o ) {
+    private void dodajPodlaczenieDrugiegoKonca( Odcinek o ) throws  Exception {
+        System.out.println("Podłczono drugi koniec " + o.getId());
         
-        KartaMagazynowa k = o.getKartaMagazynowa();
+        if( o.getStatus() !=Status.S5   )
+            throw new Exception("zła faza");
         
-        PodlaczenieDrugiegoKonca p = new PodlaczenieDrugiegoKonca(o);
-        k.addOperation(p);
+        BigDecimal podlaczono =  o.getC().subtract(o.getD()).abs();
+        o.setPodlaczone( podlaczono );
+        Stan stan = o.getKartaMagazynowa().getStanIl();
         
-        try {
-            p.accept();
-        } catch (Exception e ) {e.printStackTrace(); }
+        stan.setIValue( Stan.IL_PODLACZONA, stan.getIValue( Stan.IL_PODLACZONA).add( podlaczono ));
+        //stan.setIValue( Stan.IL_POLOZONA,   stan.getIValue( Stan.IL_POLOZONA).subtract( podlaczono ));
+        
+        //setAcceptFlag();
+        
+        o.setStatus( Status.S6);
+        getKartaMagazynowa().trySet( Status.S6 );
     }
     
     
@@ -169,10 +181,6 @@ public class SkanZawieszki  extends Operacja{
                 if( o.getStatus() == Status.S5 )
                     dodajPodlaczenieDrugiegoKonca( o );
         }
-        //sprawdz czy mozna dodac podlaczenie drugiego konca
-        //if( o.getStatus() == Status.S5  && (o.isSetN("C") || o.isSetN("D") ))
-        //   dodajPodlaczenieDrugiegoKonca( o );
-        
     }
 
     @Override
@@ -205,9 +213,5 @@ public class SkanZawieszki  extends Operacja{
     public void setOdcinek(Odcinek odcinek) {
         this.odcinek = odcinek;
     }
-    
-    
-    
-    
     
 }
