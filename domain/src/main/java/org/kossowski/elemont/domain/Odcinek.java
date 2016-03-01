@@ -22,7 +22,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Odcinek implements Serializable  {
     
-    public static final BigDecimal NOT_SET = new BigDecimal( -1);
+    //public static final BigDecimal NOT_SET = new BigDecimal( -1);
             
     
     @Id @GeneratedValue
@@ -34,10 +34,10 @@ public class Odcinek implements Serializable  {
     private KartaMagazynowa kartaMagazynowa;
     
     
-    private BigDecimal A = NOT_SET;
-    private BigDecimal B = NOT_SET;
-    private BigDecimal C = NOT_SET;
-    private BigDecimal D = NOT_SET;
+    private BigDecimal A = null;
+    private BigDecimal B = null;
+    private BigDecimal C = null;
+    private BigDecimal D = null;
     
     private BigDecimal ulozone;
     private BigDecimal podlaczone;
@@ -58,9 +58,9 @@ public class Odcinek implements Serializable  {
     
         
     private void updateUsed() {
-        uzyty =  A != null || B != null || C != null || D != null ||
-                 A != NOT_SET || B != NOT_SET ||
-                 C != NOT_SET || D != NOT_SET 
+        uzyty =  A != null || B != null || C != null || D != null 
+                // A != NOT_SET || B != NOT_SET ||
+                // C != NOT_SET || D != NOT_SET 
               ? true : false ; 
     }
     
@@ -95,10 +95,10 @@ public class Odcinek implements Serializable  {
     public boolean isSetN( String wyroznik ) {
         
         switch( wyroznik ) {
-            case "A": return !(getA().compareTo(NOT_SET) == 0L ); 
-            case "B": return !(getB().compareTo(NOT_SET) == 0L );
-            case "C": return !(getC().compareTo(NOT_SET) == 0L );
-            case "D": return !(getD().compareTo(NOT_SET) == 0L );
+            case "A": return getA() != null; 
+            case "B": return getB() != null;
+            case "C": return getC() != null;
+            case "D": return getD() != null;
         }
         throw new IndexOutOfBoundsException( "Odczyt poza zakresem (A,B,C,D");
     }

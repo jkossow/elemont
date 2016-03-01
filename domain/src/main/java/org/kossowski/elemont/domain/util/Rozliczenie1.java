@@ -49,7 +49,9 @@ public class Rozliczenie1 {
         System.out.println( przyj.opis() );
         printState(k);
         
-        WydanieNaBudowe wyd = new WydanieNaBudowe(new User("jkossow","kossowski", "janusz"), 
+        User u = new User("jkossow","kossowski", "janusz");
+        k.getProjekt().getZespol().add(u);
+        WydanieNaBudowe wyd = new WydanieNaBudowe( u , 
                 new BigDecimal(100));
         k.addOperation(( wyd));
         

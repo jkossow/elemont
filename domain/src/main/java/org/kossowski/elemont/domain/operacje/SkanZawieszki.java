@@ -9,6 +9,9 @@ import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import org.kossowski.elemont.domain.IllegalStatusException;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Odcinek;
@@ -25,6 +28,8 @@ import org.kossowski.elemont.domain.Status;
 
 public class SkanZawieszki  extends Operacja{
     
+    @ManyToOne
+    @JoinColumn( foreignKey = @ForeignKey(name = "odcinek_fk"))
     private Odcinek odcinek;
     private String qrCode;
     private BigDecimal znacznik;
@@ -141,7 +146,7 @@ public class SkanZawieszki  extends Operacja{
         
         //sprawdz czy juz byl skanowany
         System.out.println( "Zancznik n " + getSuffix() + " " + o.getN( getSuffix() ) );
-        if( !o.getN( getSuffix()).equals( Odcinek.NOT_SET ) )
+        if( o.getN( getSuffix()) != null )
             throw new Exception("juz przypisany");
         
         
