@@ -5,15 +5,10 @@
  */
 package org.kossowski.elemont.web.serwis;
 
-import com.sun.javafx.UnmodifiableArrayList;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import org.kossowski.elemont.domain.Grupa;
@@ -21,7 +16,6 @@ import org.kossowski.elemont.domain.Jm;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Material;
 import org.kossowski.elemont.domain.Odcinek;
-import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Producent;
 import org.kossowski.elemont.domain.Projekt;
 import org.kossowski.elemont.domain.Stanowisko;
@@ -42,9 +36,7 @@ import org.kossowski.elemont.repositories.UmowaRepository;
 import org.kossowski.elemont.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
 /**
  *
@@ -217,7 +209,7 @@ public class DataGeneratorBean {
         
         u = new User("golonadmin", "Golonka", "łukasz");
         u.setPassword("aaaaa");
-        u.getRole().add("ROLE_BUDOWA");
+        u.getRole().add("ROLE_ADMIN");
         u.setKodQR("005");
         userRepo.save( u );
     }

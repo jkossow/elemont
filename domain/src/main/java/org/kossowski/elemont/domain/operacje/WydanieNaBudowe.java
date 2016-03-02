@@ -55,13 +55,13 @@ public class WydanieNaBudowe extends Operacja {
     public void accept() throws IllegalStatusException, Exception {
         
         if( getKartaMagazynowa().getStatus() != Status.S1 )
-            throw new IllegalStatusException();
+            throw new IllegalStatusException("niedopuszczalny status partii");
         
         if( ilosc.compareTo( getKartaMagazynowa().getStanIl().getIValue(Stan.IL_W_MAG_GL) ) > 0 )
             throw new Exception("Pobranie ponad stan");
         
         if( !getKartaMagazynowa().getProjekt().getZespol().contains( this.getUser() ))
-            throw new Exception("Pracownik nie przypisany do projektu");
+            throw new Exception("Pracownik nieprzypisany do projektu");
         
         //przypisanie pól
         getKartaMagazynowa().setUser(this.user);

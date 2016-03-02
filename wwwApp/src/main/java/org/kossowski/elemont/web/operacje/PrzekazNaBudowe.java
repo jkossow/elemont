@@ -121,14 +121,20 @@ public class PrzekazNaBudowe {
         
         
         Operacja o = new WydanieNaBudowe( getUser(), getIlosc()) ;
-        opRepo.save(o);
+        o = opRepo.save(o);
         km.addOperation(o);
         o.setKartaMagazynowa(km);
         
         try {
             o.accept();
             
-        } catch ( Exception e) {e.printStackTrace();};
+        } catch ( Exception e) {
+            km.removeOperation(o);
+            opRepo.delete(o);
+            
+            JSFUtils.addMessage(e.getMessage());
+            return null;           
+        };
         
         kmRepo.save(km);
         
@@ -138,6 +144,9 @@ public class PrzekazNaBudowe {
     
     public String przekazAll() {
         
+        return null;
+        
+        /*
         Status s = Status.S1;  
         List<KartaMagazynowa> ls = kmRepo.findAllByStatus( s );
         
@@ -152,6 +161,7 @@ public class PrzekazNaBudowe {
             } catch ( Exception e ) { e.printStackTrace(); }
         }
         return "";
+        */
     }
 
     public Long getId() {

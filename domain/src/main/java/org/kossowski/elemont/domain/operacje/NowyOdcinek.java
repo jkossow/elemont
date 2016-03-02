@@ -51,8 +51,14 @@ public class NowyOdcinek  extends Operacja {
     public void accept() throws IllegalStatusException, Exception {
         
         if(  !allowedStates().contains( getKartaMagazynowa().getStatus()  ))
-            throw new IllegalStatusException();
+            throw new IllegalStatusException("niedopuszczalny status partii");
         
+        //nazwanie odcinka
+        int i = getKartaMagazynowa().getPrzyrostekNazwyOdcinka();
+        odcinek.setNazwa(  getKartaMagazynowa().getId() + "_" + i);
+        i++;
+        getKartaMagazynowa().setPrzyrostekNazwyOdcinka(i);
+
         //zmiana statusu
         getKartaMagazynowa().setStatus( Status.S3 );
         odcinek.setStatus( Status.S3 );

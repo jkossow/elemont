@@ -18,11 +18,28 @@
                             Skan ścinka
                         </f:facet>
                         <h:outputText value="KOd QR2.:" />
-                        <h:inputText value="#{skanScinkaBean.QRCode2}"/>
+                        <p:inputText value="#{skanScinkaBean.QRCode2}" >
+                            <p:ajax event="change" listener="#{skanScinkaBean.onQR2CodeComplete()}" 
+                                    update="spodzScA,spodzScB" />
+                            
+                        </p:inputText>
                         <h:outputText value="Znacznik:" />
-                        <h:inputText value="#{skanScinkaBean.znacznik}"/>
+                        <p:inputText value="#{skanScinkaBean.znacznik}"/>
+                        
                         <p:commandButton value="Ok" ajax="false" action="#{skanScinkaBean.perform()}"/>
                     </p:panelGrid>
+              <p/>
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">
+                            Spodziewane długości ścinek
+                        </f:facet>
+                        <h:outputText value="Ścinek A"/>
+                        <h:outputText id="spodzScA" value="#{skanScinkaBean.spodzScA}" />
+                        <h:outputText value="Ścinek B"/>
+                        <h:outputText id="spodzScB" value="#{skanScinkaBean.spodzScB}" />
+                    </p:panelGrid>
+                    <p:messages />
+                    
                 </h:form>
             </ui:define>
 

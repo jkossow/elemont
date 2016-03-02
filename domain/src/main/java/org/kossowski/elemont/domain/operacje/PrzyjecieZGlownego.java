@@ -59,7 +59,7 @@ public class PrzyjecieZGlownego extends Operacja {
     public void accept() throws IllegalStatusException {
         // mozna akceptowac tylko gdy status = S0
         if( getKartaMagazynowa().getStatus() != Status.S0 )
-            throw new IllegalStatusException();
+            throw new IllegalStatusException("niedopuszczalny status partii");
         
         //dopisanie do kolekcji operacji
         //getKartaMagazynowa().getOperacje().add( this );

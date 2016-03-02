@@ -68,7 +68,7 @@
         </p:dataTable>
         
                 
-        <p:dialog  widgetVar="opDlg" width="75%;">
+            <p:dialog  widgetVar="opDlg" width="75%;" responsive="true">
             <p:outputPanel id="opDlg">
             <p:tabView>
                 <p:tab title="Stany">
@@ -101,15 +101,20 @@
                 </p:tab >
                 <p:tab title="Operacje">
                     <p:dataTable var="o" value="#{kartaMagazynowaBean.selected.operacje}" >
-                        <p:column>
+                        <p:column headerText="Id odcinka">
                             <h:outputText value="#{o.id}" />
                         </p:column>
-                        <p:column>
+                        <p:column headerText="Czas utworzenia">
                             <h:outputText value="#{o.creationTime}" >
-                                <f:convertDateTime pattern="YYYY-MM-dd" />
+                                <f:convertDateTime pattern="YYYY-MM-dd HH:mm" />
                             </h:outputText>
                         </p:column>
-                        <p:column>
+                        <p:column headerText="Czas akceptacji">
+                            <h:outputText value="#{o.creationTime}" >
+                                <f:convertDateTime pattern="YYYY-MM-dd HH:mm" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Opis">
                             <h:outputText value="#{o.opis}" />
                         </p:column>
                     </p:dataTable>
@@ -118,6 +123,9 @@
                     <p:dataTable var="odc" value="#{kartaMagazynowaBean.selected.odcinki}" >
                         <p:column headerText="id">
                             <h:outputText value="#{odc.id}" />
+                        </p:column>
+                        <p:column headerText="Nazwa">
+                            <h:outputText value="#{odc.nazwa}" />
                         </p:column>
                         <p:column headerText="A">
                             <h:outputText value="#{odc.a}" />

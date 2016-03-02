@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 /**
  *
@@ -64,6 +65,7 @@ public class KartaMagazynowa implements Serializable {
     private Stan stanIl = new Stan();
     
     @OneToMany(  mappedBy = "kartaMagazynowa" , cascade = CascadeType.ALL  )
+    @OrderBy("creationTime")
     //@JoinColumn( foreignKey = @ForeignKey(name = "operacje_fk"))
     private List<Operacja> operacje = new ArrayList<>();       
 
@@ -80,6 +82,8 @@ public class KartaMagazynowa implements Serializable {
     private User user = null;
     
     private String miejsceSkladowania;
+    
+    private Integer przyrostekNazwyOdcinka = 1;  // pomocnicza do nadawania nazw odcinkom
     
     
     public void addOperation( Operacja o ) {
@@ -228,14 +232,25 @@ public class KartaMagazynowa implements Serializable {
         this.user = user;
     }
 
+    public Integer getPrzyrostekNazwyOdcinka() {
+        return przyrostekNazwyOdcinka;
+    }
+
+    public void setPrzyrostekNazwyOdcinka(Integer przyrostekNazwyOdcinka) {
+        this.przyrostekNazwyOdcinka = przyrostekNazwyOdcinka;
+    }
+
+    
+   
+
+    
+    
     @Override
     public String toString() {
         return "KartaMagazynowa{" + "id=" + id + ", status=" + status + ", projekt=" + projekt + ", material=" + material + ", producent=" + producent + ", dostawca=" + dostawca + ", stanIl=" + stanIl + ", operacje=" + operacje + ", odcinki=" + odcinki + ", user=" + user + ", miejsceSkladowania=" + miejsceSkladowania + '}';
     }
 
- 
-    
- 
+
     @Override
     public int hashCode() {
         int hash = 5;

@@ -11,4 +11,8 @@ package org.kossowski.elemont.domain;
  */
 public class IllegalStatusException  extends Exception {
     
+    public IllegalStatusException( String message ) {
+        super( message );
+    }
+    
 }

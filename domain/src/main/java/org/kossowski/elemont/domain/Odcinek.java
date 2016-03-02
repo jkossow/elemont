@@ -28,6 +28,8 @@ public class Odcinek implements Serializable  {
     @Id @GeneratedValue
     private Long id;
     
+    private String nazwa;
+    
     @ManyToOne
     @JoinColumn( name = "kartaMag_id")
     //@JoinColumn( foreignKey = @ForeignKey(name = "kartamag_fk"))
@@ -102,6 +104,15 @@ public class Odcinek implements Serializable  {
         }
         throw new IndexOutOfBoundsException( "Odczyt poza zakresem (A,B,C,D");
     }
+    
+    public BigDecimal spodzScinekA() {
+        return getA().subtract( getC() ).abs();
+    }
+    
+    public BigDecimal spodzScinekB() {
+        return getB().subtract( getD() ).abs();
+    }
+    
     
     public Long getId() {
         return id;
@@ -207,6 +218,14 @@ public class Odcinek implements Serializable  {
 
     public void setScinekB(BigDecimal scinekB) {
         this.scinekB = scinekB;
+    }
+
+    public String getNazwa() {
+        return nazwa;
+    }
+
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
     }
 
     

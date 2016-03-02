@@ -1,12 +1,37 @@
 
 #top {
     position: relative;
-    background-color: #036fab;
-    color: white;
+    /*background-color: #036fab; */
+    background-color: white;
+    color: black;
     padding: 5px;
-    margin: 0px 0px 10px 0px;
-    height: 30px;
+    /*margin: 0px 0px 10px 0px;*/
+    margin: 0px auto;
+    height: 70px;
+    width: 99%;
+    
 }
+
+#topContent {
+    
+    
+    float:right;
+    position: relative;
+    padding: 5px;
+    height: auto;
+    margin: 5px;
+}
+
+#topContentLeft {
+    
+   
+    float:left;
+    position: relative;
+    padding: 5px;
+    height: 30px;
+    margin: 5px;
+}
+
 
 #bottom {
     position: relative;
@@ -17,7 +42,8 @@
 
 #left {
     float: left;
-    background-color: #ece3a5; 
+    /*background-color: #ece3a5; */
+    background-color: white;
     padding: 5px;
     width: 180px;
     height: 600px;

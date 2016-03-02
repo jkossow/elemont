@@ -11,16 +11,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="default.css" library="css"/>
         <h:outputStylesheet name="cssLayout.css" library="css"/>
-        <title>Facelets Template</title>
+        <title>Elemont</title>
     </h:head>
     
     <h:body>
          
     
         <div id="top" class="top">
-            
-            <ui:insert name="top">Magazyn główny</ui:insert>
-          
+            <div id="topContentLeft">
+                <img src="/wwwApp/images/logo.png" alt="logo Elemont"/>
+            </div>
+            <div id="topContentLeft">
+                <ui:insert name="top"><h2>Magazyn główny</h2></ui:insert>
+            </div>
+            <div id="topContent">
+                aaaa Login Logout
+            </div>
+            <div id="topContent">
+                bbb bbb
+            </div>
         </div>
         <div>
             <div id="left">

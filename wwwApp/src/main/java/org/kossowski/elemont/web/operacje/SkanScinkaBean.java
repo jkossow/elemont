@@ -35,15 +35,13 @@ public class SkanScinkaBean {
     @Autowired
     protected KartaMagazynowaRepository kmRepo;
     
-    
-    
     private String QRCode2;
     private BigDecimal znacznik;
-
-    public String getQRCode2() {
-        return QRCode2;
-    }
-
+    
+    private BigDecimal spodzScA = null;
+    private BigDecimal spodzScB = null;
+    
+    
     public String perform() {
         
         String s = QRCode2.substring(0, QRCode2.length() -1 );
@@ -71,6 +69,29 @@ public class SkanScinkaBean {
         return "";
     } 
     
+    public void onQR2CodeComplete() {
+        System.out.println("hello "  + QRCode2);
+        String s = QRCode2.substring(0, QRCode2.length() -1 );
+        Long idOdc = new Long(s);
+        
+        Odcinek o = odcRepo.findOne( idOdc );
+        System.out.println( "Odcinek o: " + o );
+        
+        if( o == null ) {
+            
+            setSpodzScA(null);
+            setSpodzScB(null);
+            return;
+        }
+        
+        setSpodzScA( o.spodzScinekA());
+        setSpodzScB( o.spodzScinekB());
+        
+    }
+    
+    public String getQRCode2() {
+        return QRCode2;
+    }
     
     public void setQRCode2(String QRCode2) {
         this.QRCode2 = QRCode2;
@@ -82,6 +103,22 @@ public class SkanScinkaBean {
 
     public void setZnacznik(BigDecimal znacznik) {
         this.znacznik = znacznik;
+    }
+
+    public BigDecimal getSpodzScA() {
+        return spodzScA;
+    }
+
+    public void setSpodzScA(BigDecimal spodzScA) {
+        this.spodzScA = spodzScA;
+    }
+
+    public BigDecimal getSpodzScB() {
+        return spodzScB;
+    }
+
+    public void setSpodzScB(BigDecimal spodzScB) {
+        this.spodzScB = spodzScB;
     }
     
     

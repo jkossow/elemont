@@ -12,6 +12,7 @@ import org.kossowski.elemont.domain.operacje.SkanZawieszki;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.OdcinekRepository;
 import org.kossowski.elemont.repositories.OperacjaRepository;
+import org.kossowski.elemont.utils.JSFUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -46,15 +47,21 @@ public class SkanZawieszkiBean {
     public String perform() {
         
         String s = QRCode2.substring(0, QRCode2.length() -1 );
-        Long idOdc = new Long(s);
+        Long idOdc;
+        
+        try {
+            idOdc = new Long(s);
+        } catch (Exception e) {
+            JSFUtils.addMessage("Błąd w QR kodzie");
+            return null;
+        }
         
         Odcinek o = odcRepo.findOne(idOdc);
-        //tymczasowo
-        //Odcinek o = new Odcinek();
-        System.out.println("isset A " + o.isSetN("A") + " " + o.getN("A") + " " + o.getA() );
-        System.out.println("isset B " + o.isSetN("B") + " " + o.getN("B") + " " + o.getB() );
-        System.out.println("isset C " + o.isSetN("C") + " " + o.getN("C") + " " + o.getC() );
-        System.out.println("isset D " + o.isSetN("D") + " " + o.getN("D") + " " + o.getD() );
+        
+        if( o == null ) {
+            JSFUtils.addMessage("nie ma takiego odcinka");
+            return null;
+        }
         
         KartaMagazynowa km = o.getKartaMagazynowa();
         
@@ -64,8 +71,13 @@ public class SkanZawieszkiBean {
         
         try {
             skanZaw.accept();
-        } catch (Exception e) { e.printStackTrace();};
-        
+        } catch (Exception e) { 
+            km.removeOperation(skanZaw);
+            opRepo.delete(skanZaw);
+            JSFUtils.addMessage(e.getMessage());
+            return null;
+        };
+        JSFUtils.addMessage("Skan zarejestrowany");
         kmRepo.save( km );
         return "";
     } 
