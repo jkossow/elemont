@@ -47,13 +47,13 @@ public class SkanScinka  extends Operacja{
     }
     
     public Long getIdOdcinka() {
-       String s = qrCode.substring( 0, qrCode.length() - 1 );
+       String s = qrCode.substring( 0, qrCode.length() - 2 );
        return new Long(s);
     };
     
     public String getSuffix() {
         
-        String s = qrCode.substring( qrCode.length() -1 );
+        String s = qrCode.substring( qrCode.length() - 2 );
         return s;
     }
     
@@ -61,7 +61,7 @@ public class SkanScinka  extends Operacja{
         
         String s = getSuffix();
 
-        return s.equals("A") || s.equals("B");
+        return s.equals("A1") || s.equals("B1");
     }
     
     
@@ -85,9 +85,9 @@ public class SkanScinka  extends Operacja{
     private void rejestruj( Odcinek o, String scinek, BigDecimal dlugosc ) {
         
         switch (scinek) {
-            case "A" : o.setScinekA( dlugosc );
+            case "A1" : o.setScinekA1( dlugosc );
                 break;
-            case "B" : o.setScinekB( dlugosc );
+            case "B1" : o.setScinekB1( dlugosc );
                 break;
         };
         
@@ -111,14 +111,14 @@ public class SkanScinka  extends Operacja{
             throw new Exception( "nieprzypisany odcinek, odcinek nie z tez partii");
         
         // A i B tylko przy S6
-        if( (scinek.equals("A") || scinek.equals("B")) &&  o.getStatus() != Status.S6   )
+        if( (scinek.equals("A1") || scinek.equals("B1")) &&  o.getStatus() != Status.S6   )
             throw new Exception("zła faza");
         
-        if( scinek.equals("A") && o.getScinekA() != null)       
-            throw new Exception("scinek A juz skanowany");
+        if( scinek.equals("A1") && o.getScinekA1() != null)       
+            throw new Exception("scinek A1 juz skanowany");
         
-        if( scinek.equals("B") && o.getScinekB() != null)       
-            throw new Exception("scinek A juz skanowany");
+        if( scinek.equals("B1") && o.getScinekB1() != null)       
+            throw new Exception("scinek B1 juz skanowany");
         
         rejestruj( o, scinek, dlugosc );
         
@@ -127,7 +127,7 @@ public class SkanScinka  extends Operacja{
         //akceptacja
         setAcceptFlag();
         
-        if( o.getScinekA() != null && o.getScinekB() != null )
+        if( o.getScinekA1() != null && o.getScinekB1() != null )
             o.setStatus( Status.S8 );
         getKartaMagazynowa().trySet( Status.S8 );
     }

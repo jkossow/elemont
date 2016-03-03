@@ -20,7 +20,7 @@
                         <h:outputText value="KOd QR2.:" />
                         <p:inputText value="#{skanScinkaBean.QRCode2}" >
                             <p:ajax event="change" listener="#{skanScinkaBean.onQR2CodeComplete()}" 
-                                    update="spodzScA,spodzScB" />
+                                    update="spodzScA1,spodzScB1,material" partialSubmit="yes" />
                             
                         </p:inputText>
                         <h:outputText value="Znacznik:" />
@@ -29,14 +29,35 @@
                         <p:commandButton value="Ok" ajax="false" action="#{skanScinkaBean.perform()}"/>
                     </p:panelGrid>
               <p/>
-                    <p:panelGrid columns="2">
+                    <p:panelGrid >
                         <f:facet name="header">
-                            Spodziewane długości ścinek
+                            <p:row>
+                                <p:column colspan="2">
+                                    <h:outputText value="Spodziewane długości ścinek" />
+                                </p:column>
+                            </p:row>
                         </f:facet>
-                        <h:outputText value="Ścinek A"/>
-                        <h:outputText id="spodzScA" value="#{skanScinkaBean.spodzScA}" />
-                        <h:outputText value="Ścinek B"/>
-                        <h:outputText id="spodzScB" value="#{skanScinkaBean.spodzScB}" />
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Ścinek A1"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText id="spodzScA1" value="#{skanScinkaBean.spodzScA1}" />
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Ścinek B1"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText id="spodzScB1" value="#{skanScinkaBean.spodzScB1}" />
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="2">
+                                <h:outputText id="material" value="#{skanScinkaBean.nazwaMaterialu}" />
+                            </p:column>
+                        </p:row>
                     </p:panelGrid>
                     <p:messages />
                     

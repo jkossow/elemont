@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="19" failures="0" name="TestSuite" time="0.846" errors="0" skipped="0">
+<testsuite tests="20" failures="0" name="TestSuite" time="1.764" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib"/>
@@ -62,23 +62,24 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="org.kossowski.elemont.domain.KartaMagazynowaTest" name="odcinkiTest" time="0.008"/>
-  <testcase classname="org.kossowski.elemont.domain.KartaMagazynowaTest" name="operacjeSizeTest1" time="0.001"/>
-  <testcase classname="org.kossowski.elemont.domain.KartaMagazynowaTest" name="operacjeSizeTest2" time="0.031"/>
-  <testcase classname="org.kossowski.elemont.domain.KartaMagazynowaTest" name="operacjeSizeTest3" time="0.039"/>
-  <testcase classname="org.kossowski.elemont.domain.KartaMagazynowaTest" name="stanInitState" time="0.001"/>
+  <testcase classname="org.kossowski.elemont.domain.KartaMagazynowaTest" name="odcinkiTest" time="0.009"/>
+  <testcase classname="org.kossowski.elemont.domain.KartaMagazynowaTest" name="operacjeSizeTest1" time="0.002"/>
+  <testcase classname="org.kossowski.elemont.domain.KartaMagazynowaTest" name="operacjeSizeTest2" time="0.024"/>
+  <testcase classname="org.kossowski.elemont.domain.KartaMagazynowaTest" name="operacjeSizeTest3" time="0.027"/>
+  <testcase classname="org.kossowski.elemont.domain.KartaMagazynowaTest" name="stanInitState" time="0.002"/>
   <testcase classname="org.kossowski.elemont.domain.KartaMagazynowaTest" name="stanSetState" time="0"/>
-  <testcase classname="org.kossowski.elemont.domain.MaterialTest" name="equalsTest" time="0.005"/>
+  <testcase classname="org.kossowski.elemont.domain.MaterialTest" name="equalsTest" time="0.001"/>
   <testcase classname="org.kossowski.elemont.domain.MaterialTest" name="equalsTest1" time="0"/>
   <testcase classname="org.kossowski.elemont.domain.MaterialTest" name="equalsTest3" time="0"/>
-  <testcase classname="org.kossowski.elemont.domain.OdcinekTest" name="isSet" time="0.002"/>
+  <testcase classname="org.kossowski.elemont.domain.OdcinekTest" name="isSet" time="0.001"/>
   <testcase classname="org.kossowski.elemont.domain.OdcinekTest" name="odcinekEqualsTest" time="0"/>
   <testcase classname="org.kossowski.elemont.domain.OdcinekTest" name="odcinekSetTest" time="0"/>
-  <testcase classname="org.kossowski.elemont.domain.OdcinekTest" name="odcinekUsedTest" time="0"/>
+  <testcase classname="org.kossowski.elemont.domain.OdcinekTest" name="odcinekUsedTest" time="0.001"/>
   <testcase classname="org.kossowski.elemont.domain.OdcinekTest" name="odcinekWithIdTest" time="0"/>
-  <testcase classname="org.kossowski.elemont.domain.StanTest" name="stanEquals1" time="0"/>
+  <testcase classname="org.kossowski.elemont.domain.SelektorZawieszkiTest" name="Sel1Test" time="0.001"/>
+  <testcase classname="org.kossowski.elemont.domain.StanTest" name="stanEquals1" time="0.001"/>
   <testcase classname="org.kossowski.elemont.domain.StanTest" name="stanEquals2" time="0"/>
-  <testcase classname="org.kossowski.elemont.domain.StanTest" name="stanIntArrayContructorException" time="0.001"/>
-  <testcase classname="org.kossowski.elemont.domain.StanTest" name="stanNotEqual" time="0.002"/>
-  <testcase classname="org.kossowski.elemont.domain.StanTest" name="test1" time="0"/>
+  <testcase classname="org.kossowski.elemont.domain.StanTest" name="stanIntArrayContructorException" time="0"/>
+  <testcase classname="org.kossowski.elemont.domain.StanTest" name="stanNotEqual" time="0.001"/>
+  <testcase classname="org.kossowski.elemont.domain.StanTest" name="test1" time="0.001"/>
 </testsuite>

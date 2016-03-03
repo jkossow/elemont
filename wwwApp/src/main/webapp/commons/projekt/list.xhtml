@@ -16,8 +16,8 @@
             <p:commandLink value="Nowy projekt" action="#{projektBean.prepAdd}" ajax="false" />
         </p:panel>
         <p:panel>
-        <p:dataTable value="#{projektBean.findAll}" var="p">
-            <p:column headerText="Numer umowy">
+            <p:dataTable value="#{projektBean.findAll}" var="p" scrollable="true" scrollHeight="490">
+                <p:column headerText="Numer umowy" footerText="&nbsp;">
                 <h:outputText value="#{p.symbol}" />
             </p:column>
             <p:column headerText="Nazwa">

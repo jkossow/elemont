@@ -54,13 +54,13 @@ public class SkanZawieszki  extends Operacja{
     }
     
     public Long getIdOdcinka() {
-       String s = qrCode.substring( 0, qrCode.length() - 1 );
+       String s = qrCode.substring( 0, qrCode.length() - 2 );
        return new Long(s);
     };
     
     public String getSuffix() {
         
-        String s = qrCode.substring( qrCode.length() -1 );
+        String s = qrCode.substring( qrCode.length() - 2 );
         return s;
     }
     
@@ -68,7 +68,7 @@ public class SkanZawieszki  extends Operacja{
         
         String s = getSuffix();
 
-        return s.equals("A") || s.equals("B") || s.equals("C") || s.equals("D");
+        return s.equals("A1") || s.equals("B1") || s.equals("A2") || s.equals("B2");
     }
     
     
@@ -91,7 +91,7 @@ public class SkanZawieszki  extends Operacja{
     private void dodajMontazOdcinka( Odcinek o ) throws Exception {
         System.out.println("Ułożono odcinek " + o.getId());
         
-        BigDecimal polozono = o.getA().subtract(o.getB()).abs();
+        BigDecimal polozono = o.getA1().subtract(o.getB1()).abs();
         o.setUlozone(polozono);
         Stan stan = o.getKartaMagazynowa().getStanIl();
         
@@ -123,7 +123,7 @@ public class SkanZawieszki  extends Operacja{
         if( o.getStatus() !=Status.S5   )
             throw new Exception("zła faza");
         
-        BigDecimal podlaczono =  o.getC().subtract(o.getD()).abs();
+        BigDecimal podlaczono =  o.getA2().subtract(o.getB2()).abs();
         o.setPodlaczone( podlaczono );
         Stan stan = o.getKartaMagazynowa().getStanIl();
         
@@ -149,11 +149,11 @@ public class SkanZawieszki  extends Operacja{
             throw new Exception( "nieprzypisany odcinek, odcinek nie z tez partii");
         
         // A i B tylko przy S3
-        if( (getSuffix().equals("A") || getSuffix().equals("B")) &&  o.getStatus() !=Status.S3   )
+        if( (getSuffix().equals("A1") || getSuffix().equals("B1")) &&  o.getStatus() !=Status.S3   )
             throw new Exception("zła faza");
         
         // C i D tylko przy S4
-        if( (getSuffix().equals("C") || getSuffix().equals("D")) && !( o.getStatus() == Status.S4 || o.getStatus() ==Status.S5 ) )
+        if( (getSuffix().equals("A2") || getSuffix().equals("B2")) && !( o.getStatus() == Status.S4 || o.getStatus() ==Status.S5 ) )
             throw new Exception("zła faza");
         
         //sprawdz czy juz byl skanowany
@@ -170,8 +170,8 @@ public class SkanZawieszki  extends Operacja{
         setAcceptFlag();
         
         //sprawdz czy mozna dodac ulozenie
-        System.out.println("Test issetA, issSetB " + o.isSetN("A") + " " +o.isSetN("B"));
-        if(o.getStatus() == Status.S3 && o.isSetN("A") && o.isSetN("B")) 
+        System.out.println("Test issetA, issSetB " + o.isSetN("A1") + " " +o.isSetN("B1"));
+        if(o.getStatus() == Status.S3 && o.isSetN("A1") && o.isSetN("B1")) 
             dodajMontazOdcinka( o ); 
         else {        
         //sprawdz czy mozna dodac podlaczeniepierwszego konca

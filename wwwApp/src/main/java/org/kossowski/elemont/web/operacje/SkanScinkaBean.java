@@ -13,6 +13,7 @@ import org.kossowski.elemont.domain.operacje.SkanZawieszki;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.OdcinekRepository;
 import org.kossowski.elemont.repositories.OperacjaRepository;
+import org.kossowski.elemont.utils.JSFUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -38,22 +39,31 @@ public class SkanScinkaBean {
     private String QRCode2;
     private BigDecimal znacznik;
     
-    private BigDecimal spodzScA = null;
-    private BigDecimal spodzScB = null;
+    private BigDecimal spodzScA1 = null;
+    private BigDecimal spodzScB1 = null;
+    private String nazwaMaterialu;
+    
     
     
     public String perform() {
         
-        String s = QRCode2.substring(0, QRCode2.length() -1 );
+        String s = QRCode2.substring(0, QRCode2.length() -2 );
         Long idOdc = new Long(s);
         
+        
+        try {
+            idOdc = new Long(s);
+        } catch (Exception e) {
+            JSFUtils.addMessage("Błąd w QR kodzie");
+            return null;
+        }
+        
         Odcinek o = odcRepo.findOne(idOdc);
-        //tymczasowo
-        //Odcinek o = new Odcinek();
-        System.out.println("isset A " + o.isSetN("A") + " " + o.getN("A") + " " + o.getA() );
-        System.out.println("isset B " + o.isSetN("B") + " " + o.getN("B") + " " + o.getB() );
-        System.out.println("isset C " + o.isSetN("C") + " " + o.getN("C") + " " + o.getC() );
-        System.out.println("isset D " + o.isSetN("D") + " " + o.getN("D") + " " + o.getD() );
+        
+        if( o == null ) {
+            JSFUtils.addMessage("nie ma takiego odcinka");
+            return null;
+        }
         
         KartaMagazynowa km = o.getKartaMagazynowa();
         
@@ -63,7 +73,12 @@ public class SkanScinkaBean {
         
         try {
             skanScinka.accept();
-        } catch (Exception e) { e.printStackTrace();};
+        } catch (Exception e) { 
+            km.removeOperation(skanScinka);
+            opRepo.delete(skanScinka);
+            JSFUtils.addMessage(e.getMessage());
+            return null;
+        };
         
         kmRepo.save( km );
         return "";
@@ -71,21 +86,32 @@ public class SkanScinkaBean {
     
     public void onQR2CodeComplete() {
         System.out.println("hello "  + QRCode2);
-        String s = QRCode2.substring(0, QRCode2.length() -1 );
-        Long idOdc = new Long(s);
+        String s = QRCode2.substring(0, QRCode2.length() - 2 );
+        System.out.println(s);
         
+        Long idOdc = 0L;
+        
+        if( s.length()  < 2 )
+            return;
+        
+        try {
+            idOdc = new Long(s);
+        } catch (NumberFormatException nfe) {
+        };
         Odcinek o = odcRepo.findOne( idOdc );
         System.out.println( "Odcinek o: " + o );
         
         if( o == null ) {
             
-            setSpodzScA(null);
-            setSpodzScB(null);
+            setSpodzScA1(null);
+            setSpodzScB1(null);
+            setNazwaMaterialu(null);
             return;
         }
         
-        setSpodzScA( o.spodzScinekA());
-        setSpodzScB( o.spodzScinekB());
+        setSpodzScA1( o.spodzScinekA1());
+        setSpodzScB1( o.spodzScinekB1());
+        setNazwaMaterialu(o.getKartaMagazynowa().getMaterial().getNazwa());
         
     }
     
@@ -105,20 +131,28 @@ public class SkanScinkaBean {
         this.znacznik = znacznik;
     }
 
-    public BigDecimal getSpodzScA() {
-        return spodzScA;
+    public BigDecimal getSpodzScA1() {
+        return spodzScA1;
     }
 
-    public void setSpodzScA(BigDecimal spodzScA) {
-        this.spodzScA = spodzScA;
+    public void setSpodzScA1(BigDecimal spodzScA1) {
+        this.spodzScA1 = spodzScA1;
     }
 
-    public BigDecimal getSpodzScB() {
-        return spodzScB;
+    public BigDecimal getSpodzScB1() {
+        return spodzScB1;
     }
 
-    public void setSpodzScB(BigDecimal spodzScB) {
-        this.spodzScB = spodzScB;
+    public void setSpodzScB1(BigDecimal spodzScB1) {
+        this.spodzScB1 = spodzScB1;
+    }
+
+    public String getNazwaMaterialu() {
+        return nazwaMaterialu;
+    }
+
+    public void setNazwaMaterialu(String nazwaMaterialu) {
+        this.nazwaMaterialu = nazwaMaterialu;
     }
     
     

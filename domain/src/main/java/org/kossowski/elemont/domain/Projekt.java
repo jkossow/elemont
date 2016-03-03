@@ -45,6 +45,12 @@ public class Projekt implements Serializable {
         this.nazwa = nazwa;
     }
     
+    public Projekt(Long id, String symbol, String nazwa) {
+        this.id = id;
+        this.symbol = symbol;
+        this.nazwa = nazwa;
+    }
+    
     
     public boolean isUserInProject( User u ) {
         return zespol.contains(u);

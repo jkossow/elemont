@@ -91,7 +91,18 @@
                 <p:inputText id="ilosc" value="#{kartaIPrzyjecieBean.przyjecie.ilosc}" required="true"
                              requiredMessage="Ilość - musisz wypełnić" converterMessage="To nie jest liczba"/>
                 
-                <p:commandButton   value="Zapisz"  action="#{kartaIPrzyjecieBean.save()}" ajax="false" update="growl"/>
+                <h:outputText value="Znacznik początku:" />
+                <p:inputText  value="#{kartaIPrzyjecieBean.przyjecie.znacznikPocz}"/>
+                
+                <h:outputText value="Znacznik końca dostepny?" />
+                <p:selectBooleanCheckbox value="#{kartaIPrzyjecieBean.przyjecie.znacznikKoncaDostepny}"  >
+                    <p:ajax  update="koniec" partialSubmit="true"/>
+                </p:selectBooleanCheckbox>
+                
+                <h:outputText value="Znacznik końca:" />
+                <p:inputText value="#{kartaIPrzyjecieBean.przyjecie.znacznikKonc}" disabled="#{kartaIPrzyjecieBean.przyjecie.znacznikKoncaDostepny}"/>
+                
+                <p:commandButton id="koniec"  value="Zapisz"  action="#{kartaIPrzyjecieBean.save()}" ajax="false" update="growl"/>
                 <h:outputText value="&nbsp;"  />   
             </p:panelGrid>
            

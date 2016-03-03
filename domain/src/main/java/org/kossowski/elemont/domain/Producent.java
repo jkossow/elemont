@@ -31,6 +31,12 @@ public class Producent implements Serializable {
         this.symbol = symbol;
         this.nazwa = nazwa;
     }
+    
+    public Producent(Long id, String symbol, String nazwa) {
+        this.id = id;
+        this.symbol = symbol;
+        this.nazwa = nazwa;
+    }
 
     public Long getId() {
         return id;

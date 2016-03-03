@@ -28,6 +28,14 @@
           <include name="setUpClass"/>
         </methods>
       </class> <!-- org.kossowski.elemont.domain.StanTest -->
+      <class name="org.kossowski.elemont.domain.SelektorZawieszkiTest">
+        <methods>
+          <include name="tearDownMethod"/>
+          <include name="tearDownClass"/>
+          <include name="setUpMethod"/>
+          <include name="setUpClass"/>
+        </methods>
+      </class> <!-- org.kossowski.elemont.domain.SelektorZawieszkiTest -->
       <class name="org.kossowski.elemont.domain.MaterialTest">
         <methods>
           <include name="setUpClass"/>

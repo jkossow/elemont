@@ -36,17 +36,17 @@ public class Odcinek implements Serializable  {
     private KartaMagazynowa kartaMagazynowa;
     
     
-    private BigDecimal A = null;
-    private BigDecimal B = null;
-    private BigDecimal C = null;
-    private BigDecimal D = null;
+    private BigDecimal A1 = null;
+    private BigDecimal B1 = null;
+    private BigDecimal A2 = null;
+    private BigDecimal B2 = null;
     
     private BigDecimal ulozone;
     private BigDecimal podlaczone;
     private BigDecimal scinkiSpodziewane;
     
-    private BigDecimal scinekA;
-    private BigDecimal scinekB;
+    private BigDecimal scinekA1;
+    private BigDecimal scinekB1;
     
     private Status status = Status.S0 ;
     private boolean  uzyty = false;
@@ -60,25 +60,25 @@ public class Odcinek implements Serializable  {
     
         
     private void updateUsed() {
-        uzyty =  A != null || B != null || C != null || D != null 
-                // A != NOT_SET || B != NOT_SET ||
-                // C != NOT_SET || D != NOT_SET 
+        uzyty =  A1 != null || B1 != null || A2 != null || B2 != null 
+                // A1 != NOT_SET || B1 != NOT_SET ||
+                // A2 != NOT_SET || B2 != NOT_SET 
               ? true : false ; 
     }
     
     public void setN( String wyroznik, BigDecimal war ) {
         
         switch( wyroznik ) {
-            case "A": setA( war ); 
+            case "A1": setA1( war ); 
                 break;
-            case "B": setB( war ); 
+            case "B1": setB1( war ); 
                 break;
-            case "C": setC( war ); 
+            case "A2": setA2( war ); 
                 break;
-            case "D": setD( war ); 
+            case "B2": setB2( war ); 
                 break;
             default:
-                throw new IndexOutOfBoundsException( "Odczyt poza zakresem (A,B,C,D");
+                throw new IndexOutOfBoundsException( "Odczyt poza zakresem (A1,A2,B1,B2)");
                 
         }
     }
@@ -86,31 +86,31 @@ public class Odcinek implements Serializable  {
     public BigDecimal getN( String wyroznik ) {
         
         switch( wyroznik ) {
-            case "A": return getA(); 
-            case "B": return getB();
-            case "C": return getC();
-            case "D": return getD();
+            case "A1": return getA1(); 
+            case "B1": return getB1();
+            case "A2": return getA2();
+            case "B2": return getB2();
         }
-        throw new IndexOutOfBoundsException( "Odczyt poza zakresem (A,B,C,D");
+        throw new IndexOutOfBoundsException( "Odczyt poza zakresem (A1,A2,B1,B2)");
     }
     
     public boolean isSetN( String wyroznik ) {
         
         switch( wyroznik ) {
-            case "A": return getA() != null; 
-            case "B": return getB() != null;
-            case "C": return getC() != null;
-            case "D": return getD() != null;
+            case "A1": return getA1() != null; 
+            case "B1": return getB1() != null;
+            case "A2": return getA2() != null;
+            case "B2": return getB2() != null;
         }
-        throw new IndexOutOfBoundsException( "Odczyt poza zakresem (A,B,C,D");
+        throw new IndexOutOfBoundsException( "Odczyt poza zakresem (A1,A2,B1,B2)");
     }
     
-    public BigDecimal spodzScinekA() {
-        return getA().subtract( getC() ).abs();
+    public BigDecimal spodzScinekA1() {
+        return getA1().subtract( getA2() ).abs();
     }
     
-    public BigDecimal spodzScinekB() {
-        return getB().subtract( getD() ).abs();
+    public BigDecimal spodzScinekB1() {
+        return getB1().subtract( getB2() ).abs();
     }
     
     
@@ -122,39 +122,39 @@ public class Odcinek implements Serializable  {
         this.id = id;
     }
 
-    public BigDecimal getA() {
-        return A;
+    public BigDecimal getA1() {
+        return A1;
     }
 
-    public void setA(BigDecimal A) {
-        this.A = A;
+    public void setA1(BigDecimal A1) {
+        this.A1 = A1;
         updateUsed();
     }
 
-    public BigDecimal getB() {
-        return B;
+    public BigDecimal getB1() {
+        return B1;
     }
 
-    public void setB(BigDecimal B) {
-        this.B = B;
+    public void setB1(BigDecimal B1) {
+        this.B1 = B1;
         updateUsed();
     }
 
-    public BigDecimal getC() {
-        return C;
+    public BigDecimal getA2() {
+        return A2;
     }
 
-    public void setC(BigDecimal C) {
-        this.C = C;
+    public void setA2(BigDecimal A2) {
+        this.A2 = A2;
         updateUsed();
     }
 
-    public BigDecimal getD() {
-        return D;
+    public BigDecimal getB2() {
+        return B2;
     }
 
-    public void setD(BigDecimal D) {
-        this.D = D;
+    public void setB2(BigDecimal B2) {
+        this.B2 = B2;
         updateUsed();
     }
 
@@ -204,20 +204,20 @@ public class Odcinek implements Serializable  {
         this.scinkiSpodziewane = scinkiSpodziewane;
     }
 
-    public BigDecimal getScinekA() {
-        return scinekA;
+    public BigDecimal getScinekA1() {
+        return scinekA1;
     }
 
-    public void setScinekA(BigDecimal scinekA) {
-        this.scinekA = scinekA;
+    public void setScinekA1(BigDecimal scinekA1) {
+        this.scinekA1 = scinekA1;
     }
 
-    public BigDecimal getScinekB() {
-        return scinekB;
+    public BigDecimal getScinekB1() {
+        return scinekB1;
     }
 
-    public void setScinekB(BigDecimal scinekB) {
-        this.scinekB = scinekB;
+    public void setScinekB1(BigDecimal scinekB1) {
+        this.scinekB1 = scinekB1;
     }
 
     public String getNazwa() {
@@ -255,10 +255,12 @@ public class Odcinek implements Serializable  {
 
     @Override
     public String toString() {
-        return "Odcinek{" + "id=" + id + ", A=" + A + ", B=" + B + ", C=" + C + ", D=" + D + 
-                ", ulozone=" + ulozone + ", podlaczone=" + podlaczone + 
-                "scinekA " + scinekA + " scinekB " + scinekB + " status=" + status + '}';
+        return "Odcinek{" + "id=" + id + ", nazwa=" + nazwa + ", A1=" + A1 + ", B1=" + B1 + ", A2=" + A2 + ", B2=" + B2 + ", ulozone=" + ulozone + ", podlaczone=" + podlaczone + ", scinkiSpodziewane=" + scinkiSpodziewane + ", scinekA1=" + scinekA1 + ", scinekB1=" + scinekB1 + ", status=" + status + ", uzyty=" + uzyty + '}';
     }
+
+   
+
+    
 
     
     

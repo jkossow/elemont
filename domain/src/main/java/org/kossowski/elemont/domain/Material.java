@@ -48,6 +48,12 @@ public class Material implements Serializable {
         this.indeks = indeks;
         this.nazwa = nazwa;
     }
+    
+    public Material(Long id, String indeks, String nazwa) {
+        this.id = id;
+        this.indeks = indeks;
+        this.nazwa = nazwa;
+    }
 
     public Material(String indeks, String nazwa, Jm jm) {
         this.indeks = indeks;
@@ -56,6 +62,14 @@ public class Material implements Serializable {
     }
 
     public Material(String indeks, String nazwa, Jm jm, Grupa grupa) {
+        this.indeks = indeks;
+        this.nazwa = nazwa;
+        this.jm = jm;
+        this.grupa = grupa;
+    }
+    
+    public Material( Long id, String indeks, String nazwa, Jm jm, Grupa grupa) {
+        this.id = id;
         this.indeks = indeks;
         this.nazwa = nazwa;
         this.jm = jm;

@@ -50,15 +50,15 @@ public class OdcinekTest {
     @Test
     public void odcinekSetTest() {
         Odcinek o = new Odcinek();
-        o.setA(BigDecimal.ONE); 
-        o.setB(BigDecimal.ONE); 
-        o.setC(BigDecimal.ONE); 
-        o.setD(BigDecimal.ONE); 
+        o.setA1(BigDecimal.ONE); 
+        o.setB1(BigDecimal.ONE); 
+        o.setA2(BigDecimal.ONE); 
+        o.setB2(BigDecimal.ONE); 
         
-        assertEquals(o.getA(), BigDecimal.ONE);
-        assertEquals(o.getB(), BigDecimal.ONE);
-        assertEquals(o.getC(), BigDecimal.ONE);
-        assertEquals(o.getD(), BigDecimal.ONE);
+        assertEquals(o.getA1(), BigDecimal.ONE);
+        assertEquals(o.getB1(), BigDecimal.ONE);
+        assertEquals(o.getA2(), BigDecimal.ONE);
+        assertEquals(o.getB2(), BigDecimal.ONE);
     }
     
     @Test
@@ -67,7 +67,7 @@ public class OdcinekTest {
         
         assertFalse( o.isUzyty() );
         
-        o.setA( BigDecimal.ONE ); 
+        o.setA1( BigDecimal.ONE ); 
         assertTrue( o.isUzyty() );
     }
     
@@ -88,9 +88,9 @@ public class OdcinekTest {
     @Test 
     public void isSet() {
         Odcinek o = new Odcinek();
-        assertFalse( o.isSetN("C"));
+        assertFalse( o.isSetN("A2"));
                 
-        o.setC( BigDecimal.TEN );
-        assertTrue( o.isSetN("C"));
+        o.setA2( BigDecimal.TEN );
+        assertTrue( o.isSetN("A2"));
     }
 }

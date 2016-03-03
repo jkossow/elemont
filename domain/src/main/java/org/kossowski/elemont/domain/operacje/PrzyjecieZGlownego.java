@@ -46,6 +46,9 @@ public class PrzyjecieZGlownego extends Operacja {
     String miejsceSkladowania;
     
     private BigDecimal ilosc ;
+    private BigDecimal znacznikPocz;
+    private BigDecimal znacznikKonc;
+    private Boolean znacznikKoncaDostepny;
     
     public PrzyjecieZGlownego() {};
     
@@ -139,6 +142,30 @@ public class PrzyjecieZGlownego extends Operacja {
 
     public void setMiejsceSkladowania(String miejsceSkladowania) {
         this.miejsceSkladowania = miejsceSkladowania;
+    }
+
+    public BigDecimal getZnacznikPocz() {
+        return znacznikPocz;
+    }
+
+    public void setZnacznikPocz(BigDecimal znacznikPocz) {
+        this.znacznikPocz = znacznikPocz;
+    }
+
+    public BigDecimal getZnacznikKonc() {
+        return znacznikKonc;
+    }
+
+    public void setZnacznikKonc(BigDecimal znacznikKonc) {
+        this.znacznikKonc = znacznikKonc;
+    }
+
+    public Boolean getZnacznikKoncaDostepny() {
+        return znacznikKoncaDostepny;
+    }
+
+    public void setZnacznikKoncaDostepny(Boolean znacznikKoncaDostepny) {
+        this.znacznikKoncaDostepny = znacznikKoncaDostepny;
     }
     
     

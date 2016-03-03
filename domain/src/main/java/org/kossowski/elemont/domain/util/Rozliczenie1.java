@@ -31,14 +31,14 @@ public class Rozliczenie1 {
         GeneratorOdcinkow bo = new GeneratorOdcinkow();
         
         KartaMagazynowa k = new KartaMagazynowa();
-        
+        k.setId( 1L );
         printState(k);
         
         PrzyjecieZGlownego przyj = new PrzyjecieZGlownego();
-        przyj.setProjekt(new Projekt("pr1", "projet 1" ));
-        przyj.setMaterial(new Material("indeks", "nazwa"));
-        przyj.setProducent( new Producent("prod1", "prod1"));
-        przyj.setDostawca( new Producent( "prod2", "prod2"));
+        przyj.setProjekt(new Projekt(1L,"p1", "projekt1"));
+        przyj.setMaterial(new Material(1L ,"indeks", "nazwa"));
+        przyj.setProducent( new Producent(1L, "prod1", "prod1"));
+        przyj.setDostawca( new Producent(1L, "prod2", "prod2"));
         przyj.setMiejsceSkladowania("m2/3");
         przyj.setIlosc( new BigDecimal( "100"));
         
@@ -75,38 +75,38 @@ public class Rozliczenie1 {
         
         printState(k);
         
-        rejSkanPrzyw(k, "1A", 20); printState(k);
+        rejSkanPrzyw(k, "1A1", 20); printState(k);
         //rejSkanPrzyw(k, "1C", 20); printState(k);
-        rejSkanPrzyw(k, "1B", 40); 
+        rejSkanPrzyw(k, "1B1", 40); 
         printState(k); //oryginalnie 1B
-        rejSkanPrzyw(k, "1C", 22); printState(k);
+        rejSkanPrzyw(k, "1A2", 22); printState(k);
         
         //rejSkanPrzyw(k, "1A", 22); printState(k);
         
-        rejSkanPrzyw(k, "2A", 45); printState(k);
-        rejSkanPrzyw(k, "2B", 60); printState(k);
-        rejSkanPrzyw(k, "1D", 39); printState(k);
-        rejSkanPrzyw(k, "2D", 60); printState(k);
-        rejSkanPrzyw(k, "2C", 46); printState(k);
+        rejSkanPrzyw(k, "2A1", 45); printState(k);
+        rejSkanPrzyw(k, "2B1", 60); printState(k);
+        rejSkanPrzyw(k, "1B2", 39); printState(k);
+        rejSkanPrzyw(k, "2B2", 60); printState(k);
+        rejSkanPrzyw(k, "2A2", 46); printState(k);
         
-        rejSkanPrzyw(k, "3A", 00); printState(k);
-        rejSkanPrzyw(k, "3B", 20); printState(k);
-        rejSkanPrzyw(k, "3C", 03); printState(k);
-        rejSkanPrzyw(k, "3D", 18); printState(k);
+        rejSkanPrzyw(k, "3A1", 00); printState(k);
+        rejSkanPrzyw(k, "3B1", 20); printState(k);
+        rejSkanPrzyw(k, "3A2", 03); printState(k);
+        rejSkanPrzyw(k, "3B2", 18); printState(k);
         
-        rejSkanPrzyw(k, "4A",  60); printState(k);
-        rejSkanPrzyw(k, "4B", 100); printState(k);
-        rejSkanPrzyw(k, "4C",  61); printState(k);
-        rejSkanPrzyw(k, "4D",  98); printState(k);
+        rejSkanPrzyw(k, "4A1",  60); printState(k);
+        rejSkanPrzyw(k, "4B1", 100); printState(k);
+        rejSkanPrzyw(k, "4A2",  61); printState(k);
+        rejSkanPrzyw(k, "4B2",  98); printState(k);
         
-        rejSkanScinka(k, "3A", 3); printState(k);
-        rejSkanScinka(k, "3B", 2); printState(k);
-        rejSkanScinka(k, "1A", 2); printState(k);
-        rejSkanScinka(k, "1B", 1); printState(k);
-        rejSkanScinka(k, "2A", 1); printState(k);
-        rejSkanScinka(k, "2B", 0); printState(k);
-        rejSkanScinka(k, "4A", 1); printState(k);
-        rejSkanScinka(k, "4B", 2); printState(k);
+        rejSkanScinka(k, "3A1", 3); printState(k);
+        rejSkanScinka(k, "3B1", 2); printState(k);
+        rejSkanScinka(k, "1A1", 2); printState(k);
+        rejSkanScinka(k, "1B1", 1); printState(k);
+        rejSkanScinka(k, "2A1", 1); printState(k);
+        rejSkanScinka(k, "2B1", 0); printState(k);
+        rejSkanScinka(k, "4A1", 1); printState(k);
+        rejSkanScinka(k, "4B1", 2); printState(k);
         
         
         System.out.println("Operacje na karce");

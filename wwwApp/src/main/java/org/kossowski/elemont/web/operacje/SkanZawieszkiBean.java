@@ -46,7 +46,7 @@ public class SkanZawieszkiBean {
 
     public String perform() {
         
-        String s = QRCode2.substring(0, QRCode2.length() -1 );
+        String s = QRCode2.substring(0, QRCode2.length() -2 );
         Long idOdc;
         
         try {

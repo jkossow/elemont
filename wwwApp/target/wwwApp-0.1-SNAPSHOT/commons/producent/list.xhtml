@@ -10,8 +10,8 @@
     <ui:define name="content">
         View id &nbsp; <h:outputText value="#{view.viewId}" />
         <h:form>
-        <p:dataTable value="#{producentBean.findAll}" var="p">
-            <p:column headerText="Symbol">
+            <p:dataTable value="#{producentBean.findAll}" var="p" scrollable="true" scrollHeight="500">
+                <p:column headerText="Symbol" footerText="">
                 <h:outputText value="#{p.symbol}" />
             </p:column>
             <p:column headerText="Nazwa">
