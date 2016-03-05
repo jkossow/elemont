@@ -31,7 +31,7 @@ public class EtykietaQR1 extends Etykieta {
                 "^LL800\n" +
                 "^FWR,0\n" +
                 "^FO140,200,0^AE^FD"+ id_partii +"^FS\n" +
-                "^FO70,200,0^AE^" + nazwa + "^FS\n" +
+                "^FO70,200,0^AE^FD" + nazwa + "^FS\n" +
                 "^FO50,30^BQN,2,6^FDMA," + qr1.encode() + "^FS\n" +
                 "^XZ";
     };

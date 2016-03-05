@@ -15,6 +15,7 @@ import org.kossowski.elemont.domain.User;
 import org.kossowski.elemont.domain.operacje.SkanScinka;
 import org.kossowski.elemont.domain.operacje.SkanZawieszki;
 import org.kossowski.elemont.domain.operacje.WydanieNaBudowe;
+import org.kossowski.elemont.domain.operacje.Zwrot;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.OdcinekRepository;
 import org.kossowski.elemont.repositories.OperacjaRepository;
@@ -82,7 +83,9 @@ public class ScanSendRestBean {
             case 4:
                 s = skanScinka( data1, date );
                 break;
-            case 5: System.out.println("t5");break;
+            case 5: 
+                s = zwrotNaMagazyn( data1, date );
+                break;
                 
         }
         return s;
@@ -198,6 +201,34 @@ public class ScanSendRestBean {
         System.out.println("Skan zarejestrowany");
         kmRepo.save( km );
         return "ok";
+    }
+    
+    private String zwrotNaMagazyn( String idKm,  Date date) {
         
+        KartaMagazynowa km = kmRepo.findOne( new Long(idKm));
+        
+        if( km == null ) {
+            System.out.println("zły id partii materiałowej");
+            return "not";
+        };
+        
+        Operacja o = new Zwrot( km.getStanIl().getIValue( Stan.IL_STAN_BIEZ)) ;
+        o.setCreationTime(date);
+        o = opRepo.save(o);
+        km.addOperation(o);
+        o.setKartaMagazynowa(km);
+        
+        try {
+            o.accept();
+            
+        } catch ( Exception e) {
+            km.removeOperation(o);
+            opRepo.delete(o);
+            System.out.println("nie można zatwierdzić " + e.getMessage());
+            return "not";           
+        };
+        
+        kmRepo.save(km);        
+        return "ok";
     }
 }

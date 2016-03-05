@@ -33,11 +33,15 @@
                 <p:selectBooleanCheckbox value="#{u.aktywny}" style="text-align: center" />
             </p:column>
             <p:column headerText="Nazwa">
-                <h:commandLink value="Popraw" action="#{userBean.edit}">
+                <p:commandLink value="Popraw" action="#{userBean.edit}" ajax="false">
                    <f:param name="login" value="#{u.login}" />
-               </h:commandLink>    
+               </p:commandLink>    
                 &nbsp;
-                <h:commandLink value="Usuń" />
+                <p:commandLink value="Usuń" />
+                &nbsp;
+                <p:commandLink value="Drukuj" action="#{userBean.print}"  ajax="false">
+                   <f:param name="login" value="#{u.login}" />
+               </p:commandLink>
             </p:column>
         </p:dataTable>
         </p:panel>

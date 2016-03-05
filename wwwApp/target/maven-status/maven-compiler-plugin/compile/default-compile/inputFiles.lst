@@ -11,6 +11,7 @@
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/rest/SkanZawieszekRestBean.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/operacje/SkanZawieszkiBean.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/commons/UmowaBean.java
+/Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/operacje/ZwrotNaMagazyn.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/utils/JSFUtils.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/converters/UserConverter.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/operacje/NowaKartaBean.java
@@ -25,6 +26,7 @@
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/operacje/Test1Bean.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/commons/UserBean.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/operacje/DrukPrzywBean.java
+/Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/serwis/GregorianCal.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/commons/KartaMagazynowaBean.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/web/operacje/SkanScinkaBean.java
 /Users/jkossow/Documents/projekty/elemont/wwwApp/src/main/java/org/kossowski/elemont/sandbox/MatSelBean.java

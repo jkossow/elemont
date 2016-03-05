@@ -17,7 +17,7 @@
         -->
         <h:form id="form">
         <p:panel>
-        <p:dataTable value="#{kartaMagazynowaBean.findAll}" var="k" 
+            <p:dataTable value="#{kartaMagazynowaBean.findAll}" var="k" scrollable="true" scrollHeight="500"
                      selectionMode="single" selection="#{kartaMagazynowaBean.selected}" 
                      rowKey="#{k.id}"
                      
@@ -34,11 +34,14 @@
             <p:column headerText="Nazwa" >
                 <h:outputText value="#{k.material.nazwa}" />
             </p:column>
-            <p:column headerText="Jedn. miary">
+            <p:column headerText="Jedn. miary" style="width: 5%;">
                 <h:outputText value="#{k.material.jm.symbol}" />
             </p:column>
             <p:column headerText="Grupa">
                 <h:outputText value="#{k.material.grupa.symbol}" />
+            </p:column>
+            <p:column headerText="Projekt">
+                <h:outputText value="#{k.projekt.nazwa}" />
             </p:column>
             <p:column headerText="Producent">
                 <h:outputText value="#{k.producent.symbol}" />
@@ -49,7 +52,7 @@
             <p:column headerText="Użytkownik">
                 <h:outputText value="#{k.user.login}" />
             </p:column>
-            <p:column headerText="Status" >
+            <p:column headerText="Status" style="width: 5%;">
                 <h:outputText value="#{k.status}" />
             </p:column>
             <p:column headerText="Ilość w magazynie">

@@ -18,6 +18,7 @@ import org.kossowski.elemont.domain.operacje.PrzyjecieZGlownego;
 import org.kossowski.elemont.domain.operacje.SkanScinka;
 import org.kossowski.elemont.domain.operacje.SkanZawieszki;
 import org.kossowski.elemont.domain.operacje.WydanieNaBudowe;
+import org.kossowski.elemont.domain.operacje.Zwrot;
 
 /**
  *
@@ -108,7 +109,15 @@ public class Rozliczenie1 {
         rejSkanScinka(k, "4A1", 1); printState(k);
         rejSkanScinka(k, "4B1", 2); printState(k);
         
+        Zwrot z = new Zwrot(  new BigDecimal(5));
+        k.addOperation(z);
+        try {
+            z.accept();
+        } catch (Exception e) { e.printStackTrace(); };
+        System.out.println( z.opis() );
+        printState(k);
         
+                
         System.out.println("Operacje na karce");
         for( Operacja o : k.getOperacje() ) {
             System.out.println( o.opis() );

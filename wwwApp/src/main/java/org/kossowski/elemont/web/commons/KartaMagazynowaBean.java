@@ -5,12 +5,19 @@
  */
 package org.kossowski.elemont.web.commons;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import javax.faces.context.FacesContext;
 import org.kossowski.elemont.domain.Grupa;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Status;
+import org.kossowski.elemont.qr.Etykieta;
+import org.kossowski.elemont.qr.EtykietaQR1;
+import org.kossowski.elemont.qr.EtykietaQR2;
 import org.kossowski.elemont.repositories.GrupaRepository;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.springframework.beans.factory.annotation.Autowired;

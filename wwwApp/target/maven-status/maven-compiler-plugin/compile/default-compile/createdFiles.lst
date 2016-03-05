@@ -1,3 +1,4 @@
+org/kossowski/elemont/web/serwis/GregorianCal.class
 org/kossowski/elemont/rest/WydanieRestBean.class
 org/kossowski/elemont/web/commons/MaterialBean.class
 org/kossowski/elemont/web/converters/ProjektConverter.class
@@ -29,6 +30,7 @@ org/kossowski/elemont/web/commons/JmBean.class
 org/kossowski/elemont/web/converters/ProducentConverter.class
 org/kossowski/elemont/web/commons/StanowiskoBean.class
 org/kossowski/elemont/sandbox/MatSelBean.class
+org/kossowski/elemont/web/operacje/ZwrotNaMagazyn.class
 org/kossowski/elemont/MaterialService.class
 org/kossowski/elemont/rest/Rest1.class
 org/kossowski/elemont/datamodels/KartaMagazynowaSelectableDataModel.class

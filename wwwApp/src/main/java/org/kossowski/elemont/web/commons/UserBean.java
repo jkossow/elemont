@@ -5,6 +5,8 @@
  */
 package org.kossowski.elemont.web.commons;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,8 @@ import javax.faces.context.FacesContext;
 import org.kossowski.elemont.domain.Grupa;
 import org.kossowski.elemont.domain.Umowa;
 import org.kossowski.elemont.domain.User;
+import org.kossowski.elemont.qr.Etykieta;
+import org.kossowski.elemont.qr.EtykietaQR2;
 import org.kossowski.elemont.repositories.GrupaRepository;
 import org.kossowski.elemont.repositories.UmowaRepository;
 import org.kossowski.elemont.repositories.UserRepository;
@@ -87,6 +91,44 @@ public class UserBean {
         }
                 
         return "list.xhtml";
+    }
+    
+    public String print() {
+        System.out.println("printuję");
+        
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String,String> pm = fc.getExternalContext().getRequestParameterMap();
+        
+        String login = pm.get("login");
+        
+        user = userRepo.findOne(login);
+        
+        Etykieta et = new EtykietaQR2( user );
+        
+        try {
+            //File file = File.createTempFile("zpl", ".zpl");
+            
+            File file = new File("/tmp/plikjk");
+            
+            FileOutputStream fout = new FileOutputStream(file);
+            fout.write( et.printerString().getBytes());
+            fout.flush();
+            fout.close();
+            
+            //java.lang.Runtime.getRuntime().exec("lp -d cab_EOS1_300 /Users/jkossow/Downloads/qr1.zpl");
+            //String s = "lp -d cab_EOS1_300 \"" + file.getCanonicalPath() +"\"";
+            String s = "lp -d cab_EOS1_300 /tmp/plikjk";
+            System.out.println( s );
+            java.lang.Runtime.getRuntime().exec( s );
+            
+            //file.delete();
+            System.out.println( et.printerString() );
+        } catch ( Exception e) {
+            e.printStackTrace();
+        }
+        
+        
+        return "";
     }
 
     public User getUser() {

@@ -16,6 +16,18 @@ import java.util.Collection;
 
 public enum Status implements Serializable {
     
+    // S0 - stan początkowy  
+    // S1 - przyjety z mag. głównego
+    // S2 - wydany na budowę
+    // S3 - przypisane kofy QR2, wygenerowanodcinki
+    // s4 - ułożony
+    // S5 - podłaczony pierwszy koniec
+    // S6 - podłczony drugi koniec
+    // S7 - stan bież na budowie
+    // S8 - wykorzystany
+    // S9 - zwrócony do mag głównego po weryfikacji ścinek
+    
+    
     S0(0), S1(1), S2(2), S3(3), S4(4), S5(5), S6(6), S7(7), S8(8), S9(9);
     
    public final int statusCode;

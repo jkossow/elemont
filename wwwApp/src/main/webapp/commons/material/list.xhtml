@@ -10,14 +10,15 @@
     <ui:define name="content">
         View id &nbsp; <h:outputText value="#{view.viewId}" />
         <h:form>
-            <p:dataTable value="#{materialBean.findAll}" var="m" scrollable="true" scrollHeight="500">
+            <p:dataTable value="#{materialBean.findAll}" var="m" 
+                         scrollRows="20" scrollable="true" liveScroll="true" liveScrollBuffer="10" scrollHeight="500">
                 <p:column headerText="Indeks" footerText="">
                 <h:outputText value="#{m.indeks}" />
             </p:column>
             <p:column headerText="Nazwa" sortBy="#{m.nazwa}" filterBy="#{m.nazwa}" filterMatchMode="contains">
                 <h:outputText value="#{m.nazwa}" />
             </p:column>
-            <p:column headerText="Jedn. miary">
+                <p:column headerText="Jedn. miary" >
                 <h:outputText value="#{m.jm.symbol}" />
             </p:column>
             <p:column headerText="Grupa">

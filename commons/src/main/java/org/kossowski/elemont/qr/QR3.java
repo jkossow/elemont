@@ -5,48 +5,45 @@
  */
 package org.kossowski.elemont.qr;
 
-import org.kossowski.elemont.domain.User;
+import org.kossowski.elemont.domain.Odcinek;
+import org.kossowski.elemont.domain.SelektorZawieszki;
 
 /**
  *
  * @author jkossow
  */
 public class QR3 extends QR {
-    
-    private static final String QR3Prefix = "03;";
 
-    private String userCode;
+    private static final String QR3Prefix = "03;";
     
-    public QR3( String code ) {
-        this.userCode = code;
-    }
+    private Long id_odcinka;
+    private SelektorZawieszki selektor;
     
-    public QR3( User user) {
-        this.userCode = user.getKodQR();
+    public QR3( Odcinek odcinek, SelektorZawieszki selektor ) {
+        this.id_odcinka = odcinek.getId();
+        this.selektor = selektor;
     }
 
     @Override
     public String encode() {
-        return QR3Prefix + userCode;
+        return QR3Prefix + id_odcinka + selektor;
+    }
+    
+    public Long getId_odcinka() {
+        return id_odcinka;
     }
 
-    
-    
-    
-    public String getUserCode() {
-        return userCode;
+    public void setId_odcinka(Long id_odcinka) {
+        this.id_odcinka = id_odcinka;
     }
 
-    public void setUserCode(String userCode) {
-        this.userCode = userCode;
+    public SelektorZawieszki getSelektor() {
+        return selektor;
     }
-    
-    
-    
-    
-    
-    
-    
+
+    public void setSelektor(SelektorZawieszki selektor) {
+        this.selektor = selektor;
+    }
     
     
     

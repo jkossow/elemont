@@ -5,6 +5,8 @@
  */
 package org.kossowski.elemont.web.operacje;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -26,6 +28,8 @@ import org.kossowski.elemont.domain.Producent;
 import org.kossowski.elemont.domain.Projekt;
 import org.kossowski.elemont.domain.Umowa;
 import org.kossowski.elemont.domain.operacje.PrzyjecieZGlownego;
+import org.kossowski.elemont.qr.Etykieta;
+import org.kossowski.elemont.qr.EtykietaQR1;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.MaterialRepository;
 import org.kossowski.elemont.repositories.OperacjaRepository;
@@ -135,6 +139,7 @@ public class KartaIPrzyjecieBean implements Serializable {
         } catch ( Exception e) { e.printStackTrace();};
         
         km = kmRepo.save( km );
+        print(km);
         
       /*
       Logger.getAnonymousLogger().info( "zapisuję {}");
@@ -178,9 +183,35 @@ public class KartaIPrzyjecieBean implements Serializable {
     }
     
     
-   
+    public void print( KartaMagazynowa km ) {
+        System.out.println("printuję");
+        
+        
+        Etykieta et = new EtykietaQR1( km );
+        
+        try {
+            //File file = File.createTempFile("zpl", ".zpl");
+            
+            File file = new File("/tmp/plikjk");
+            
+            FileOutputStream fout = new FileOutputStream(file);
+            fout.write( et.printerString().getBytes());
+            fout.flush();
+            fout.close();
+            
+            //java.lang.Runtime.getRuntime().exec("lp -d cab_EOS1_300 /Users/jkossow/Downloads/qr1.zpl");
+            //String s = "lp -d cab_EOS1_300 \"" + file.getCanonicalPath() +"\"";
+            String s = "lp -d cab_EOS1_300 /tmp/plikjk";
+            System.out.println( s );
+            java.lang.Runtime.getRuntime().exec( s );
+            
+            //file.delete();
+            System.out.println( et.printerString() );
+        } catch ( Exception e) {
+            e.printStackTrace();
+        }
     
-    
+    }
    
     
 }

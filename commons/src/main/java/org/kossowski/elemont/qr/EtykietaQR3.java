@@ -5,45 +5,51 @@
  */
 package org.kossowski.elemont.qr;
 
-import org.kossowski.elemont.domain.User;
+import org.kossowski.elemont.domain.Odcinek;
+import org.kossowski.elemont.domain.SelektorZawieszki;
 
 /**
  *
  * @author jkossow
  */
-public class EtykietaQR3 extends Etykieta {
-    
-    private QR3 qr3;
-    
-    private String nazwisko;
-    private String imie;
+public class EtykietaQR3  extends Etykieta {
 
-    public EtykietaQR3( User user ) {
-        qr3 = new QR3( user);
-        this.nazwisko = user.getNazwisko();
-        this.imie = user.getImie();
+    private QR3 qr2;
+    private SelektorZawieszki selektor;
+    private String nazwa_odcinka;
+    private String nazwa_materialu;
+    
+    public EtykietaQR3( Odcinek o, SelektorZawieszki selektor) {
+        this.qr2 =  new QR3( o, selektor );
+        this.selektor = selektor;
+        this.nazwa_odcinka = o.getNazwa();
+        this.nazwa_materialu = o.getKartaMagazynowa().getMaterial().getNazwa();
+                
+        
     }
 
     @Override
     public String printerString() {
-        return "^XA\n" +
+        return  "^XA\n" +
                 "^LL800\n" +
                 "^FWR,0\n" +
-                "^FO140,200,0^AE^FD" + nazwisko + "^FS\n" +
-                "^FO70,200,0^AE^FD" + imie + "^FS\n" +
-                "^FO50,30^BQN,2,6^FDMA," + qr3 + "^FS\n" +
-                "^XZ"; 
+                "^FO50,200,0^AG^FD" + selektor + "^FS\n" +
+                "^FO140,300,0^AE^FD" + nazwa_odcinka +"^FS\n" +
+                "^FO70,300,0^AE^FD" + nazwa_materialu + "^FS\n" +
+                "^FO50,30^BQN,2,6^FDMA," + qr2.encode() + "^FS\n" +
+                "^XZ";
+        
+        /*        
+        ^XA
+        ^LL800
+        ^FWR,0
+        ^FO50,200,0^AG^FDD^FS
+        ^FO140,300,0^AE^FD1234567890^FS
+        ^FO70,300,0^AE^FDYKY_03 15mm2^FS
+        ^FO50,30^BQN,2,6^FDMA,02;1234567890^FS
+        ^XZ
+        */
     }
-   
-    /*
-    ^XA
-    ^LL800
-    ^FWR,0
-    ^FO140,200,0^AE^FDnazwisko^FS
-    ^FO70,200,0^AE^FDimie^FS
-    ^FO50,30^BQN,2,6^FDMA,03;1234567890^FS
-    ^XZ
-    */
     
     
     
