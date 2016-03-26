@@ -14,6 +14,7 @@ import org.kossowski.elemont.domain.operacje.WydanieNaBudowe;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.OperacjaRepository;
 import org.kossowski.elemont.repositories.UserRepository;
+import org.kossowski.elemont.security.SecurityController;
 import org.kossowski.elemont.utils.JSFUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -40,6 +41,9 @@ public class PrzekazNaBudowe {
     
     @Autowired
     protected OperacjaRepository opRepo;
+    
+    @Autowired
+    protected SecurityController securityController;
     
     //@Autowired
     //protected UserRepository userRepo;
@@ -77,7 +81,7 @@ public class PrzekazNaBudowe {
         KartaMagazynowa km = kmRepo.findOne(id);
         //wydanie.setKartaMagazynowa( km );
         
-        Operacja o = new WydanieNaBudowe( getUser(), getIlosc()) ;
+        Operacja o = new WydanieNaBudowe( getIlosc(), getUser() ) ;
         o = opRepo.save(o);
         km.addOperation(o);
         
@@ -120,7 +124,7 @@ public class PrzekazNaBudowe {
         }
         
         
-        Operacja o = new WydanieNaBudowe( getUser(), getIlosc()) ;
+        Operacja o = new WydanieNaBudowe( getIlosc(), getUser() );
         o = opRepo.save(o);
         km.addOperation(o);
         o.setKartaMagazynowa(km);

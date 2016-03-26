@@ -53,6 +53,10 @@ public class SecurityController implements  Serializable {
         return user.getImie();
     }
     
+    public User getUser() {
+        return user;
+    }
+    
     
     
 }

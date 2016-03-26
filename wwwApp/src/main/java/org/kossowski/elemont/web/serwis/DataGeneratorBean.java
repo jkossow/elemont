@@ -111,13 +111,15 @@ public class DataGeneratorBean {
         p.accept();
         kartaRepo.save( k );
         
-        WydanieNaBudowe w = new WydanieNaBudowe( userRepo.findFirstByKodQR("001"), new BigDecimal(300));
+        User u = userRepo.findOne("jkossow");
+        
+        WydanieNaBudowe w = new WydanieNaBudowe( new BigDecimal(300), u );
         k.addOperation(w);
         w.accept();
         kartaRepo.save(k);
         
         Odcinek odc = new Odcinek();
-        NowyOdcinek no = new NowyOdcinek(odc);
+        NowyOdcinek no = new NowyOdcinek(odc, u);
         k.addOcinek(odc);
         k.addOperation(no);
         no.accept();

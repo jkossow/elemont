@@ -17,6 +17,7 @@ import org.kossowski.elemont.domain.Odcinek;
 import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Stan;
 import org.kossowski.elemont.domain.Status;
+import org.kossowski.elemont.domain.User;
 
 /**
  *
@@ -44,13 +45,15 @@ public class SkanZawieszki  extends Operacja{
     public SkanZawieszki() {};
     
     //mozna jeszcze dodac info o czytniku
-    public SkanZawieszki( String qrCode, BigDecimal znacznik ) {
+    public SkanZawieszki( String qrCode, BigDecimal znacznik, User user ) {
         
         this.qrCode = qrCode;
         this.znacznik = znacznik;
         
         suffix = getSuffix();
         prefix = getIdOdcinka();
+        
+        setUser( user );
     }
     
     public Long getIdOdcinka() {

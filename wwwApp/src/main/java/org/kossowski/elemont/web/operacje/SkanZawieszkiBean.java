@@ -65,7 +65,7 @@ public class SkanZawieszkiBean {
         
         KartaMagazynowa km = o.getKartaMagazynowa();
         
-        SkanZawieszki skanZaw = new SkanZawieszki(QRCode2, znacznik);
+        SkanZawieszki skanZaw = new SkanZawieszki(QRCode2, znacznik, null);
         skanZaw = opRepo.save( skanZaw );
         km.addOperation(skanZaw);
         

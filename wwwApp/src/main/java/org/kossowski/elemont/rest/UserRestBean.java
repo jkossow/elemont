@@ -5,6 +5,7 @@
  */
 package org.kossowski.elemont.rest;
 
+import java.util.List;
 import org.kossowski.elemont.domain.User;
 import org.kossowski.elemont.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,14 @@ public class UserRestBean {
     protected UserRepository userRepo;
     
     @ResponseBody
+    @RequestMapping( value="/", method = RequestMethod.GET, produces = "application/json")
+    public List<User> getAllUsers() {
+        
+        
+        return userRepo.findAll();
+    }
+    
+    @ResponseBody
     @RequestMapping( value="/checkPass/{name}/{password}", method = RequestMethod.GET, produces = "application/json")
     public Boolean checkPass( @PathVariable(value="name") String name,
             @PathVariable(value="password") String password ) {
@@ -46,6 +55,8 @@ public class UserRestBean {
         
         System.out.println("UserRestBean Name " + login);
         User u = userRepo.findOne(login);
+        if( u == null )
+            return null;
         System.out.println( u.getNazwisko() );
         u.setPassword("zatarte");
         return u;

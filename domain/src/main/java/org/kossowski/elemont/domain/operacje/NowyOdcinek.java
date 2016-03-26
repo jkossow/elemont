@@ -16,6 +16,7 @@ import org.kossowski.elemont.domain.IllegalStatusException;
 import org.kossowski.elemont.domain.Odcinek;
 import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Status;
+import org.kossowski.elemont.domain.User;
 
 /**
  *
@@ -31,12 +32,16 @@ public class NowyOdcinek  extends Operacja {
     private Odcinek odcinek;
     
     
-    public NowyOdcinek() {
+    public NowyOdcinek() {}; 
+    
+    public NowyOdcinek( User u) {
         this.odcinek = new Odcinek();
+        setUser(u);
     };
     
-    public NowyOdcinek( Odcinek odcinek ) {
+    public NowyOdcinek( Odcinek odcinek, User user ) {
         this.odcinek = odcinek;
+        setUser( user );
     }
     
     private Set<Status> allowedStates() {

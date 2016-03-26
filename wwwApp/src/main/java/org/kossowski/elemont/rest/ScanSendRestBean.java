@@ -57,34 +57,37 @@ public class ScanSendRestBean {
     }
     
     @ResponseBody
-    @RequestMapping( value="/{data1}/{data2}/{date}/{tryb}", method = RequestMethod.PUT, produces = "application/json" )
+    @RequestMapping( value="/{data1}/{data2}/{date}/NA/{login}", method = RequestMethod.PUT, produces = "application/json" )
     public String skanZawieszki(
         @PathVariable(value="data1") String data1,
         @PathVariable(value="data2") String data2,
         @PathVariable(value="date")  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date date,
-        @PathVariable(value="tryb") int tryb ) {
+        @PathVariable(value="tryb") int tryb,
+        @PathVariable(value="login") String login )
+    {
             
             System.out.println("date1 " + data1);
             System.out.println("date2 " + data2);
             System.out.println("date2 " + date);
             System.out.println("tryb " +  tryb);
+            System.out.println("login " + login);
    
         String s = "not";  //wartosc odpowiedzi    
         switch (tryb) {
             case 1:  
-                s = wydanieNaBudowe(data1,data2,date);
+                s = wydanieNaBudowe(data1,data2,date, login); // obsługa login
                 break;
             case 2: 
-                s = skanZawieszki(data1,data2,date );
+                s = skanZawieszki(data1,data2, date, login ); 
                 break;
             case 3:
-                s = skanZawieszki(data1,data2,date );
+                s = skanZawieszki(data1,data2,date, login );
                 break;
-            case 4:
-                s = skanScinka( data1, date );
+            case 6:
+                s = skanScinka( data1, data2, date, login );
                 break;
             case 5: 
-                s = zwrotNaMagazyn( data1, date );
+                s = zwrotNaMagazyn( data1, date, login );
                 break;
                 
         }
@@ -92,22 +95,65 @@ public class ScanSendRestBean {
     }
     
     
-    private String wydanieNaBudowe( String idKm, String userQR, Date date) {
+    @ResponseBody
+    @RequestMapping( value="/{data1}/{data2}/{date}/NA/{login}/{6}/{7}", method = RequestMethod.PUT, produces = "application/json" )
+    public String skanTryb5 (
+        @PathVariable(value="data1") String data1,
+        @PathVariable(value="data2") String data2,
+        @PathVariable(value="date")  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date date,
+        @PathVariable(value="tryb") int tryb,
+        @PathVariable(value="login") String login,
+        @PathVariable(value="6") String six,
+        @PathVariable(value="7") String seven )
+    {
+            
+            System.out.println("date1 " + data1);
+            System.out.println("date2 " + data2);
+            System.out.println("date2 " + date);
+            System.out.println("tryb " +  tryb);
+            System.out.println("login " + login);
+            System.out.println("six " +  six);
+            System.out.println("seven " + seven);
+    
+            String s = "not";
+            
+            switch (tryb) {
+            
+            case 6:
+                s = skanScinka( data1, data2, date ,login);
+                break;
+            
+                
+        }
+        return s;
+            
+    };
+    
+    
+    
+    
+    private String wydanieNaBudowe( String idKm, String userQR, Date date, String login ) {
         
         KartaMagazynowa km = kmRepo.findOne( new Long(idKm));
         User user = userRepo.findFirstByKodQR( userQR );
+        User operator = userRepo.findOne( login );
         
         if( km == null ) {
             System.out.println("zły id partii materiałowej");
-            return "not";
+            return "zły id partii materiałowej";
         };
         
         if( user == null ) {
             System.out.println("Brak uzytkownika o takim QR");
-            return "not";
+            return "Brak uzytkownika o takim QR";
         }
         
-        Operacja o = new WydanieNaBudowe( user,  km.getStanIl().getIValue( Stan.IL_W_MAG_GL)) ;
+        if( operator == null ) {
+            System.out.println("Brak uzytkownika o loginie");
+            return "Brak uzytkownika o loginie";
+        }
+        
+        Operacja o = new WydanieNaBudowe( km.getStanIl().getIValue( Stan.IL_W_MAG_GL), user) ;
         o.setCreationTime(date);
         o = opRepo.save(o);
         km.addOperation(o);
@@ -120,7 +166,7 @@ public class ScanSendRestBean {
             km.removeOperation(o);
             opRepo.delete(o);
             System.out.println("nie można zatwierdzić " + e.getMessage());
-            return "not";           
+            return e.getMessage();           
         };
         
         kmRepo.save(km);        
@@ -129,30 +175,36 @@ public class ScanSendRestBean {
     
     //data1 - odcinek
     //data2 - znacznik
-    private String skanZawieszki( String data1, String data2, Date date ) {
+    private String skanZawieszki( String data1, String data2, Date date, String login ) {
         
         String s = data1.substring(0, data1.length() -2 );
         BigDecimal znacznik = new BigDecimal( data2 );
+        User operator = userRepo.findOne( login );
         
         Long idOdc;
+        
+        if( operator == null ) {
+            System.out.println("Brak uzytkownika o loginie");
+            return "Brak uzytkownika o loginie";
+        }
         
         try {
             idOdc = new Long(s);
         } catch (Exception e) {
             System.out.println("Błąd w QR kodzie");
-            return "not";
+            return "Błąd w QR kodzie";
         }
         
         Odcinek o = odcRepo.findOne(idOdc);
         
         if( o == null ) {
             System.out.println("nie ma takiego odcinka");
-            return "not";
+            return "nie ma takiego odcinka";
         }
         
         KartaMagazynowa km = o.getKartaMagazynowa();
         
-        SkanZawieszki skanZaw = new SkanZawieszki(data1, znacznik);
+        SkanZawieszki skanZaw = new SkanZawieszki(data1, znacznik, operator);
         skanZaw.setCreationTime(date);
         skanZaw = opRepo.save( skanZaw );
         km.addOperation(skanZaw);
@@ -163,7 +215,7 @@ public class ScanSendRestBean {
             km.removeOperation(skanZaw);
             opRepo.delete(skanZaw);
             System.out.println("bład akceptacji " + e.getMessage());
-            return "not";
+            return e.getMessage();
         };
         System.out.println("Skan zarejestrowany");
         kmRepo.save( km );
@@ -171,48 +223,72 @@ public class ScanSendRestBean {
         
     }
     
-    private String skanScinka( String data1, Date date ) {
+    private String skanScinka( String data1, String data2,  Date date, String login ) {
+        
         
         String s = data1.substring(0, data1.length() -2 );
         
         Long idOdc;
         
+        User operator = userRepo.findOne( login );
+        
+        if( operator == null ) {
+            System.out.println("Brak uzytkownika o loginie");
+            return "Brak uzytkownika o loginie";
+        }
+        
         try {
             idOdc = new Long(s);
         } catch (Exception e) {
             System.out.println("Błąd w QR kodzie");
-            return "not";
+            return "Błąd w QR kodzie";
         }
         
         Odcinek o = odcRepo.findOne(idOdc);
         
         if( o == null ) {
             System.out.println("nie ma takiego odcinka");
-            return "not";
+            return "nie ma takiego odcinka";
         }
         
         KartaMagazynowa km = o.getKartaMagazynowa();
         
-        SkanScinka skanScinka = new SkanScinka(data1, null);
+        SkanScinka skanScinka = new SkanScinka(data1, new BigDecimal(data2), operator);
         skanScinka.setCreationTime(date);
         skanScinka = opRepo.save( skanScinka );
         km.addOperation(skanScinka);
+        
+        try {
+            skanScinka.accept();
+        } catch (Exception e) { 
+            km.removeOperation(skanScinka);
+            opRepo.delete(skanScinka);
+            System.out.println("bład akceptacji " + e.getMessage());
+            return e.getMessage();
+        };
         
         System.out.println("Skan zarejestrowany");
         kmRepo.save( km );
         return "ok";
     }
     
-    private String zwrotNaMagazyn( String idKm,  Date date) {
+    private String zwrotNaMagazyn( String idKm,  Date date, String login) {
         
         KartaMagazynowa km = kmRepo.findOne( new Long(idKm));
         
+        User operator = userRepo.findOne( login );
+        
+        if( operator == null ) {
+            System.out.println("Brak uzytkownika o loginie");
+            return "Brak uzytkownika o loginie";
+        }
+        
         if( km == null ) {
             System.out.println("zły id partii materiałowej");
-            return "not";
+            return "zły id partii materiałowej";
         };
         
-        Operacja o = new Zwrot( km.getStanIl().getIValue( Stan.IL_STAN_BIEZ)) ;
+        Operacja o = new Zwrot( km.getStanIl().getIValue( Stan.IL_STAN_BIEZ), operator) ;
         o.setCreationTime(date);
         o = opRepo.save(o);
         km.addOperation(o);
@@ -225,7 +301,7 @@ public class ScanSendRestBean {
             km.removeOperation(o);
             opRepo.delete(o);
             System.out.println("nie można zatwierdzić " + e.getMessage());
-            return "not";           
+            return e.getMessage();           
         };
         
         kmRepo.save(km);        

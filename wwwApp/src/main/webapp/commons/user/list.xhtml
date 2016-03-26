@@ -29,6 +29,9 @@
             <p:column headerText="QR Code">
                 <h:outputText value="#{u.kodQR}" />
             </p:column>
+            <p:column headerText="Uprawnienia">
+                <h:outputText value="#{u.role}" />
+            </p:column>
             <p:column headerText="Aktywny">
                 <p:selectBooleanCheckbox value="#{u.aktywny}" style="text-align: center" />
             </p:column>

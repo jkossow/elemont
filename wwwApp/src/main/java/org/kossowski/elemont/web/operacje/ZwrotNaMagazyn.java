@@ -76,7 +76,7 @@ public class ZwrotNaMagazyn {
         KartaMagazynowa km = kmRepo.findOne(id);
         //wydanie.setKartaMagazynowa( km );
         
-        Operacja o = new Zwrot( getIlosc()) ;
+        Operacja o = new Zwrot( getIlosc(), null) ;
         o = opRepo.save(o);
         km.addOperation(o);
         
@@ -115,7 +115,7 @@ public class ZwrotNaMagazyn {
         
         
         
-        Operacja o = new Zwrot( getIlosc() );
+        Operacja o = new Zwrot( getIlosc(), null);
         o = opRepo.save(o);
         km.addOperation(o);
         o.setKartaMagazynowa(km);

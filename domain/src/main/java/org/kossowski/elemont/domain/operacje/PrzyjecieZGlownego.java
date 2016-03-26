@@ -18,6 +18,7 @@ import org.kossowski.elemont.domain.Producent;
 import org.kossowski.elemont.domain.Projekt;
 import org.kossowski.elemont.domain.Stan;
 import org.kossowski.elemont.domain.Status;
+import org.kossowski.elemont.domain.User;
 
 /**
  *
@@ -52,10 +53,10 @@ public class PrzyjecieZGlownego extends Operacja {
     
     public PrzyjecieZGlownego() {};
     
-    public PrzyjecieZGlownego( BigDecimal ilosc ) {
+    public PrzyjecieZGlownego( BigDecimal ilosc, User user ) {
         
         this.ilosc = ilosc;
-        
+        setUser(user);
     }
 
     @Override

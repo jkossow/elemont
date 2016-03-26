@@ -12,6 +12,7 @@ import org.kossowski.elemont.domain.IllegalStatusException;
 import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Stan;
 import org.kossowski.elemont.domain.Status;
+import org.kossowski.elemont.domain.User;
 
 /**
  *
@@ -26,8 +27,9 @@ public class Zwrot extends Operacja {
     
     public Zwrot(){};
     
-    public Zwrot( BigDecimal ilosc ) {
+    public Zwrot( BigDecimal ilosc, User user ) {
         this.ilosc = ilosc;
+        setUser( user );
     }
 
     

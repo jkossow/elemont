@@ -14,6 +14,7 @@ import org.kossowski.elemont.domain.Odcinek;
 import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Stan;
 import org.kossowski.elemont.domain.Status;
+import org.kossowski.elemont.domain.User;
 
 /**
  *
@@ -38,12 +39,13 @@ public class SkanScinka  extends Operacja{
     public SkanScinka() {};
     
     //mozna jeszcze dodac info o czytniku
-    public SkanScinka( String qrCode, BigDecimal znacznik ) {
+    public SkanScinka( String qrCode, BigDecimal znacznik, User user ) {
         
         this.qrCode = qrCode;
         this.dlugosc = znacznik;
         suffix = getSuffix();
         prefix = getIdOdcinka();
+        setUser( user );
     }
     
     public Long getIdOdcinka() {

@@ -52,8 +52,7 @@ public class Rozliczenie1 {
         
         User u = new User("jkossow","kossowski", "janusz");
         k.getProjekt().getZespol().add(u);
-        WydanieNaBudowe wyd = new WydanieNaBudowe( u , 
-                new BigDecimal(100));
+        WydanieNaBudowe wyd = new WydanieNaBudowe( new BigDecimal(100), u );
         k.addOperation(( wyd));
         
         try {
@@ -64,7 +63,7 @@ public class Rozliczenie1 {
         
         for( int i = 0; i < 4; i++ ) {
             Odcinek o = bo.nowyOdcinek();
-            NowyOdcinek no = new NowyOdcinek( o );
+            NowyOdcinek no = new NowyOdcinek( o, u );
             k.addOcinek(o);
             k.addOperation(no);
             
@@ -109,7 +108,7 @@ public class Rozliczenie1 {
         rejSkanScinka(k, "4A1", 1); printState(k);
         rejSkanScinka(k, "4B1", 2); printState(k);
         
-        Zwrot z = new Zwrot(  new BigDecimal(5));
+        Zwrot z = new Zwrot(  new BigDecimal(5), u);
         k.addOperation(z);
         try {
             z.accept();
@@ -138,7 +137,9 @@ public class Rozliczenie1 {
     
     public static void rejSkanPrzyw( KartaMagazynowa k, String skan, long znacznik) {
         
-        SkanZawieszki o = new SkanZawieszki( skan, new BigDecimal( znacznik ));
+        User u = new User("jkossow","kossowski", "janusz");
+        
+        SkanZawieszki o = new SkanZawieszki( skan, new BigDecimal( znacznik ), u);
         System.out.println( o.opis() );
         k.addOperation( o );
         try {
@@ -149,7 +150,9 @@ public class Rozliczenie1 {
     
     public static void rejSkanScinka( KartaMagazynowa k, String skan, long znacznik) {
         
-        SkanScinka o = new SkanScinka( skan, new BigDecimal( znacznik ));
+        User u = new User("jkossow","kossowski", "janusz");
+        
+        SkanScinka o = new SkanScinka( skan, new BigDecimal( znacznik ), u);
         System.out.println( o.opis() );
         k.addOperation( o );
         try {

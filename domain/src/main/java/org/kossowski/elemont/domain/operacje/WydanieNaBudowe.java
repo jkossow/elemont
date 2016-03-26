@@ -27,19 +27,15 @@ import org.kossowski.elemont.domain.User;
 public class WydanieNaBudowe extends Operacja { 
     
     private BigDecimal ilosc;
-    
-    @ManyToOne
-    @JoinColumn( foreignKey = @ForeignKey(name = "user_fk"))
-    private User user;
-
+  
     public WydanieNaBudowe() {
     }
     
     
     
-    public WydanieNaBudowe( User  user, BigDecimal ilosc ) {
+    public WydanieNaBudowe( BigDecimal ilosc, User user ) {
         this.ilosc = ilosc;
-        this.user = user;
+        setUser( user );
     }
 
     public BigDecimal getIlosc() {
@@ -64,7 +60,7 @@ public class WydanieNaBudowe extends Operacja {
             throw new Exception("Pracownik nieprzypisany do projektu");
         
         //przypisanie pól
-        getKartaMagazynowa().setUser(this.user);
+        getKartaMagazynowa().setUser( getUser() );
         
         Stan s = getKartaMagazynowa().getStanIl();
         
@@ -83,16 +79,5 @@ public class WydanieNaBudowe extends Operacja {
         return "Wydanie na budowę, Pracownik: " + getUser().getNazwisko() + " ilosc: " + getIlosc() ;
     }
 
-    
-    
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-    
-    
     
 }

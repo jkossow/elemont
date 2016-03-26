@@ -67,7 +67,7 @@ public class SkanScinkaBean {
         
         KartaMagazynowa km = o.getKartaMagazynowa();
         
-        SkanScinka skanScinka = new SkanScinka(QRCode2, znacznik);
+        SkanScinka skanScinka = new SkanScinka(QRCode2, znacznik, null);
         skanScinka = opRepo.save( skanScinka );
         km.addOperation( skanScinka );
         

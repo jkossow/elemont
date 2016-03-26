@@ -19,6 +19,7 @@ import org.kossowski.elemont.qr.EtykietaQR4;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.OdcinekRepository;
 import org.kossowski.elemont.repositories.OperacjaRepository;
+import org.kossowski.elemont.security.SecurityController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,9 @@ public class DrukPrzywBean {
     @Autowired
     protected OdcinekRepository odcRepo;
     
+    @Autowired
+    protected SecurityController securityController;
+    
     private KartaMagazynowa km;
     private int ilosc = 1;
     private Long kartaId = 0L;
@@ -55,7 +59,7 @@ public class DrukPrzywBean {
         for( int i = 0; i < ilosc; i++ ) {
             Odcinek odc = new Odcinek();
             odc = odcRepo.save(odc);
-            NowyOdcinek no = new NowyOdcinek( odc );
+            NowyOdcinek no = new NowyOdcinek( odc, securityController.getUser() );
             no = opRepo.save( no );
             km.addOcinek(odc);
             km.addOperation(no);
@@ -105,7 +109,7 @@ public class DrukPrzywBean {
         try {
             //File file = File.createTempFile("zpl", ".zpl");
             
-            File file = new File("/tmp/plikjk1");
+            File file = new File("/tmp/odc"+o.getId()+"A");
             
             FileOutputStream fout = new FileOutputStream(file);
             fout.write( et.printerString().getBytes());
@@ -114,9 +118,10 @@ public class DrukPrzywBean {
             
             //java.lang.Runtime.getRuntime().exec("lp -d cab_EOS1_300 /Users/jkossow/Downloads/qr1.zpl");
             //String s = "lp -d cab_EOS1_300 \"" + file.getCanonicalPath() +"\"";
-            String s = "lp -d cab_EOS1_300 /tmp/plikjk1";
+            String s = "lp -d cab_EOS1_300 /tmp/odc"+o.getId()+"A";
             System.out.println( s );
             java.lang.Runtime.getRuntime().exec( s );
+            Thread.sleep(2000);
             
             //file.delete();
             System.out.println( et.printerString() );
@@ -129,7 +134,7 @@ public class DrukPrzywBean {
         try {
             //File file = File.createTempFile("zpl", ".zpl");
             
-            File file = new File("/tmp/plikjk2");
+            File file = new File("/tmp/odc"+o.getId()+"B");
             
             FileOutputStream fout = new FileOutputStream(file);
             fout.write( et.printerString().getBytes());
@@ -138,10 +143,10 @@ public class DrukPrzywBean {
             
             //java.lang.Runtime.getRuntime().exec("lp -d cab_EOS1_300 /Users/jkossow/Downloads/qr1.zpl");
             //String s = "lp -d cab_EOS1_300 \"" + file.getCanonicalPath() +"\"";
-            String s = "lp -d cab_EOS1_300 /tmp/plikjk2";
+            String s = "lp -d cab_EOS1_300 /tmp/odc"+o.getId()+"B";
             System.out.println( s );
             java.lang.Runtime.getRuntime().exec( s );
-            
+            Thread.sleep(2000);
             //file.delete();
             System.out.println( et.printerString() );
         } catch ( Exception e) {
@@ -153,7 +158,7 @@ public class DrukPrzywBean {
         try {
             //File file = File.createTempFile("zpl", ".zpl");
             
-            File file = new File("/tmp/plikjk3");
+            File file = new File("/tmp/odc"+o.getId()+"C");
             
             FileOutputStream fout = new FileOutputStream(file);
             fout.write( et.printerString().getBytes());
@@ -162,10 +167,10 @@ public class DrukPrzywBean {
             
             //java.lang.Runtime.getRuntime().exec("lp -d cab_EOS1_300 /Users/jkossow/Downloads/qr1.zpl");
             //String s = "lp -d cab_EOS1_300 \"" + file.getCanonicalPath() +"\"";
-            String s = "lp -d cab_EOS1_300 /tmp/plikjk3";
+            String s = "lp -d cab_EOS1_300 /tmp/odc"+o.getId()+"C";
             System.out.println( s );
             java.lang.Runtime.getRuntime().exec( s );
-            
+            Thread.sleep(2000);
             //file.delete();
             System.out.println( et.printerString() );
         } catch ( Exception e) {
@@ -177,7 +182,7 @@ public class DrukPrzywBean {
         try {
             //File file = File.createTempFile("zpl", ".zpl");
             
-            File file = new File("/tmp/plikjk4");
+            File file = new File("/tmp/odc"+o.getId()+"D");
             
             FileOutputStream fout = new FileOutputStream(file);
             fout.write( et.printerString().getBytes());
@@ -186,10 +191,10 @@ public class DrukPrzywBean {
             
             //java.lang.Runtime.getRuntime().exec("lp -d cab_EOS1_300 /Users/jkossow/Downloads/qr1.zpl");
             //String s = "lp -d cab_EOS1_300 \"" + file.getCanonicalPath() +"\"";
-            String s = "lp -d cab_EOS1_300 /tmp/plikjk4";
+            String s = "lp -d cab_EOS1_300 /tmp/odc"+o.getId()+"D";
             System.out.println( s );
             java.lang.Runtime.getRuntime().exec( s );
-            
+            Thread.sleep(2000);
             //file.delete();
             System.out.println( et.printerString() );
         } catch ( Exception e) {

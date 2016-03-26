@@ -11,6 +11,7 @@ import java.util.GregorianCalendar;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -40,7 +41,10 @@ public class Operacja implements IOperacja, Serializable {
     private Date creationTime = null;
     private Date acceptionTime = null;
     private Boolean accepted = false;
-
+    
+    @ManyToOne
+    @JoinColumn( foreignKey = @ForeignKey(name = "user_fk"))
+    private User user;
     
     public Operacja() {
         this.creationTime = GregorianCalendar.getInstance().getTime();
@@ -107,7 +111,14 @@ public class Operacja implements IOperacja, Serializable {
     public String getOpis() {
       return opis();  
     };
-    
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
     
 
     @Override
