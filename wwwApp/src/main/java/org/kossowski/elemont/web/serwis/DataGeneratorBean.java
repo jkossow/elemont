@@ -95,6 +95,7 @@ public class DataGeneratorBean {
         List<Material> lm = matRepo.findAll();
         List<Projekt> lp = projektRepo.findAll();
         List<Producent> lprod = prodRepo.findAll();
+        /*
         KartaMagazynowa k = new KartaMagazynowa();
         
         k = kartaRepo.save(k);
@@ -124,7 +125,7 @@ public class DataGeneratorBean {
         k.addOperation(no);
         no.accept();
         kartaRepo.save(k);
-        
+        */
     }
     
     private void initJm() {

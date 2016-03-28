@@ -46,17 +46,18 @@ public class PrzyjecieZGlownego extends Operacja {
     
     String miejsceSkladowania;
     
-    private BigDecimal ilosc ;
+    private BigDecimal ilosc;
     private BigDecimal znacznikPocz;
     private BigDecimal znacznikKonc;
     private Boolean znacznikKoncaDostepny;
+    private Boolean znacznikiRosnaco = true;
     
     public PrzyjecieZGlownego() {};
     
     public PrzyjecieZGlownego( BigDecimal ilosc, User user ) {
         
         this.ilosc = ilosc;
-        setUser(user);
+        setUtworzyl(user);
     }
 
     @Override
@@ -167,6 +168,14 @@ public class PrzyjecieZGlownego extends Operacja {
 
     public void setZnacznikKoncaDostepny(Boolean znacznikKoncaDostepny) {
         this.znacznikKoncaDostepny = znacznikKoncaDostepny;
+    }
+
+    public Boolean getZnacznikiRosnaco() {
+        return znacznikiRosnaco;
+    }
+
+    public void setZnacznikiRosnaco(Boolean znacznikiRosnaco) {
+        this.znacznikiRosnaco = znacznikiRosnaco;
     }
     
     

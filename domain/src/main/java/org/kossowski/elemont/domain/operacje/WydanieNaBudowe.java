@@ -29,13 +29,14 @@ public class WydanieNaBudowe extends Operacja {
     private BigDecimal ilosc;
   
     public WydanieNaBudowe() {
+        super();
     }
     
     
     
     public WydanieNaBudowe( BigDecimal ilosc, User user ) {
         this.ilosc = ilosc;
-        setUser( user );
+        setUtworzyl(user );
     }
 
     public BigDecimal getIlosc() {
@@ -56,11 +57,11 @@ public class WydanieNaBudowe extends Operacja {
         if( ilosc.compareTo( getKartaMagazynowa().getStanIl().getIValue(Stan.IL_W_MAG_GL) ) > 0 )
             throw new Exception("Pobranie ponad stan");
         
-        if( !getKartaMagazynowa().getProjekt().getZespol().contains( this.getUser() ))
+        if( !getKartaMagazynowa().getProjekt().getZespol().contains( this.getUtworzyl() ))
             throw new Exception("Pracownik nieprzypisany do projektu");
         
         //przypisanie pól
-        getKartaMagazynowa().setUser( getUser() );
+        getKartaMagazynowa().setUser( getUtworzyl());
         
         Stan s = getKartaMagazynowa().getStanIl();
         
@@ -76,7 +77,7 @@ public class WydanieNaBudowe extends Operacja {
 
     @Override
     public String opis() {
-        return "Wydanie na budowę, Pracownik: " + getUser().getNazwisko() + " ilosc: " + getIlosc() ;
+        return "Wydanie na budowę, Pracownik: " + getUtworzyl().getNazwisko() + " ilosc: " + getIlosc() ;
     }
 
     

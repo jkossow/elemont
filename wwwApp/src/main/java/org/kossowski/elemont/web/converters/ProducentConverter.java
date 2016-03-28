@@ -38,7 +38,8 @@ public class ProducentConverter implements Converter  {
         if( id != 0L) 
             p = prodRepo.findOne(id);
         else
-            p = new Producent();
+            p = null;
+            //p = new Producent();
         return p;
     }
 

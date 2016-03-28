@@ -10,7 +10,7 @@
     
     <ui:define name="content">
       
-        View id &nbsp; <h:outputText value="#{view.viewId}" />
+        <!--View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
         <h:form>
         <p:panel>
             <p:commandLink value="Nowy użytkownik" action="#{userBean.prepAdd()}" ajax="false"/>
@@ -29,6 +29,11 @@
             <p:column headerText="QR Code">
                 <h:outputText value="#{u.kodQR}" />
             </p:column>
+            <!--
+            <p:column>
+                <p:barcode value="#{u.kodQR}" type="qr"/>
+            </p:column>
+            -->
             <p:column headerText="Uprawnienia">
                 <h:outputText value="#{u.role}" />
             </p:column>

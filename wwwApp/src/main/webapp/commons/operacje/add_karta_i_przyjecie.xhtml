@@ -10,8 +10,10 @@
     <ui:define name="content">
             <!--<p:growl id="growl" showDetail="true" sticky="true" /> -->
             <f:view>
+            <!--
             View id &nbsp; <h:outputText value="#{view.viewId}" />
-            
+            -->
+            <p:growl id="growl" autoUpdate="true"/>
             <h:form id="add_karta_i_przyjecie">
                 
             <p:panelGrid columns="2">
@@ -24,15 +26,14 @@
                 <p:selectOneMenu   id="material" value="#{kartaIPrzyjecieBean.przyjecie.material}"  
                                    required="true"
                                    
-                                   converterMessage="conccccc"
-                                   validatorMessage="mat vnot vvvv" 
+                                  
                                    requiredMessage="Materiał - musisz wypełnić" 
                                    filter="true" filterMatchMode="contains" 
                                    >
                     <!--<f:selectItem itemLabel="dddd" itemValue="0" noSelectionOption="true" /> -->
                     
-                    <f:selectItems value="#{kartaIPrzyjecieBean.materialSelectItemsMap}" var="m"  itemLabel="#{m.nazwa}" itemValue="#{m}"/>
-                    
+                    <f:selectItems value="#{kartaIPrzyjecieBean.materialSelectItems}" var="m"  itemLabel="#{m.nazwa}" itemValue="#{m}"/>
+                    <f:validateRequired />
                     <f:converter binding="#{materialConverter}"  />
                     <p:ajax partialSubmit="true" update="nazwa,grupa,jm"/>
                 </p:selectOneMenu>
@@ -49,9 +50,8 @@
               
                 <h:outputText value ="Producent:" />
                 <p:selectOneMenu id="producent" value="#{kartaIPrzyjecieBean.przyjecie.producent}" required="true"
-                                converterMessage="conccccc"
-                                validatorMessage="mat vnot vvvv" 
-                                requiredMessage="Materiał - musisz wypełnić" 
+                                
+                                requiredMessage="Producent - musisz wypełnić" 
                                 filter="true" filterMatchMode="contains" >
                     <f:selectItem itemLabel="---" itemValue="0" noSelectionOption="true" />
                     <f:selectItems value="#{kartaIPrzyjecieBean.producenci}" var="prod" itemLabel="#{prod.nazwa}" itemValue="#{prod}"/> 
@@ -60,9 +60,8 @@
                 
                  <h:outputText value ="Dostawca:" />
                  <p:selectOneMenu id="dostawca" value="#{kartaIPrzyjecieBean.przyjecie.dostawca}" required="true"
-                                converterMessage="conccccc"
-                                validatorMessage="mat vnot vvvv" 
-                                requiredMessage="Materiał - musisz wypełnić" 
+                                
+                                requiredMessage="Dostawca - musisz wypełnić" 
                                 filter="true" filterMatchMode="contains" >
                     <f:selectItem itemLabel="---" itemValue="0" noSelectionOption="true" />
                     <f:selectItems value="#{kartaIPrzyjecieBean.producenci}" var="prod" itemLabel="#{prod.nazwa}" itemValue="#{prod}"/> 
@@ -73,11 +72,10 @@
                 <h:outputText value="Projekt:" />
                 
                 <p:selectOneMenu id="projekt" value="#{kartaIPrzyjecieBean.przyjecie.projekt}" required="true"
-                                converterMessage="conccccc"
-                                validatorMessage="mat vnot vvvv" 
-                                requiredMessage="Materiał - musisz wypełnić" 
+                                
+                                requiredMessage="Projekt - musisz wypełnić" 
                                 filter="true" filterMatchMode="contains" >>
-                    <f:selectItem itemLabel="---" itemValue="0" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="---" itemValue="0" noSelectionOption="true" />
                     <f:selectItems value="#{kartaIPrzyjecieBean.projekty}" var="p" itemLabel="#{p.symbol}" itemValue="#{p}"/>
                     <f:converter binding="#{projektConverter}" />
                     
@@ -85,29 +83,40 @@
                
                 <h:outputText value="Miejsce składowania:" />
                 <p:inputText id="miejsceSkl" value="#{kartaIPrzyjecieBean.przyjecie.miejsceSkladowania}" required="true"
-                             requiredMessage="Musisz wypełnić"/>
+                             requiredMessage="Miejsce składowania - musisz wypełnić"/>
                 
                 <h:outputText value="Ilość:" />
                 <p:inputText id="ilosc" value="#{kartaIPrzyjecieBean.przyjecie.ilosc}" required="true"
-                             requiredMessage="Ilość - musisz wypełnić" converterMessage="To nie jest liczba"/>
+                             requiredMessage="Ilość - musisz wypełnić" converterMessage="To nie jest liczba">
+                    <p:ajax event="blur" partialSubmit="true" update="znMess" listener="#{kartaIPrzyjecieBean.sprawdIloscIZnacznikiListener()}" />
+                </p:inputText>    
+                
+                
+                <h:outputText value="Znaczniki rosnąco:" />
+                <p:selectBooleanCheckbox  value="#{kartaIPrzyjecieBean.przyjecie.znacznikiRosnaco}"/>
                 
                 <h:outputText value="Znacznik początku:" />
-                <p:inputText  value="#{kartaIPrzyjecieBean.przyjecie.znacznikPocz}"/>
+                <p:inputText  value="#{kartaIPrzyjecieBean.przyjecie.znacznikPocz}" >
+                    <p:ajax event="blur" partialSubmit="true"  update="znMess" listener="#{kartaIPrzyjecieBean.sprawdIloscIZnacznikiListener()}" />
+                </p:inputText>
                 
                 <h:outputText value="Znacznik końca dostepny?" />
                 <p:selectBooleanCheckbox value="#{kartaIPrzyjecieBean.przyjecie.znacznikKoncaDostepny}"  >
-                    <p:ajax  update="koniec" partialSubmit="true"/>
+                    <p:ajax  event="change"  update="koniec" partialSubmit="true" />
                 </p:selectBooleanCheckbox>
                 
                 <h:outputText value="Znacznik końca:" />
-                <p:inputText value="#{kartaIPrzyjecieBean.przyjecie.znacznikKonc}" disabled="#{kartaIPrzyjecieBean.przyjecie.znacznikKoncaDostepny}"/>
+                <p:inputText id="koniec"  value="#{kartaIPrzyjecieBean.przyjecie.znacznikKonc}" disabled="#{not kartaIPrzyjecieBean.przyjecie.znacznikKoncaDostepny}">
+                    <p:ajax event="blur" partialSubmit="true" update="znMess" listener="#{kartaIPrzyjecieBean.sprawdIloscIZnacznikiListener()}" />
+                </p:inputText>
                 
-                <p:commandButton id="koniec"  value="Zapisz"  action="#{kartaIPrzyjecieBean.save()}" ajax="false" update="growl"/>
-                <h:outputText value="&nbsp;"  />   
+                <p:commandButton   value="Zapisz" action="#{kartaIPrzyjecieBean.save()}" ajax="false" update="growl"/>
+                <h:outputText value="&nbsp;"  /> 
+                
             </p:panelGrid>
            
-            <h:messages />
-            <h:message for="material" showDetail="true"/>
+            <h:outputText id="znMess" value="#{kartaIPrzyjecieBean.znacznikiMessage}" />
+           
             </h:form>
             </f:view>
     </ui:define>

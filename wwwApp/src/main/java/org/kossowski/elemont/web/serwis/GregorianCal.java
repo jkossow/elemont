@@ -6,6 +6,7 @@
 package org.kossowski.elemont.web.serwis;
 
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 /**
  *
@@ -13,6 +14,6 @@ import java.util.GregorianCalendar;
  */
 public class GregorianCal {
     public static void main(String[] args) {
-        System.out.println( GregorianCalendar.getInstance().getTime());
+        System.out.println( GregorianCalendar.getInstance(TimeZone.getTimeZone("pl_PL")).getTime());
     }
 }

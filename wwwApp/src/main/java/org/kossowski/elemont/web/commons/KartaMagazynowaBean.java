@@ -31,7 +31,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-@Scope("view")
+@Scope("request")
 public class KartaMagazynowaBean implements Serializable {
     
     @Autowired

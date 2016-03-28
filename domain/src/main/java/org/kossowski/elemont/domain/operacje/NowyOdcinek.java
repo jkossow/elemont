@@ -36,12 +36,12 @@ public class NowyOdcinek  extends Operacja {
     
     public NowyOdcinek( User u) {
         this.odcinek = new Odcinek();
-        setUser(u);
+        setUtworzyl(u);
     };
     
     public NowyOdcinek( Odcinek odcinek, User user ) {
         this.odcinek = odcinek;
-        setUser( user );
+        setUtworzyl(user );
     }
     
     private Set<Status> allowedStates() {

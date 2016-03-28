@@ -142,6 +142,12 @@
             <version>4.0.3.RELEASE</version>
         </dependency>
         
+        <!-- Barcodes -->
+        <dependency>
+            <groupId>net.glxn</groupId>
+            <artifactId>qrgen</artifactId>
+            <version>1.4</version>
+        </dependency>
     </dependencies>
 
     <build>

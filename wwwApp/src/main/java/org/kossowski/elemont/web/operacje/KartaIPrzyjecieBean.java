@@ -19,8 +19,12 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Material;
 import org.kossowski.elemont.domain.Operacja;
@@ -46,7 +50,7 @@ import org.springframework.stereotype.Service;
  * @author jkossow
  */
 
-@Service
+@Controller
 @Scope("request")
 public class KartaIPrzyjecieBean implements Serializable {
     
@@ -75,7 +79,7 @@ public class KartaIPrzyjecieBean implements Serializable {
     
     private Long id;
     
-    
+    private String znacznikiMessage;
     
     public KartaIPrzyjecieBean() {
         Logger.getAnonymousLogger().log( Level.INFO, "Konstruktor PrzyjecieBean");
@@ -97,7 +101,7 @@ public class KartaIPrzyjecieBean implements Serializable {
         
         List<SelectItem> si = new ArrayList<>();
         
-        si.add( new SelectItem( new Material() , "---", "", false, false, true ));
+        si.add( new SelectItem( null , "---", "", false, false, true ));
         for( Material m : matRepo.findAll() ) 
             si.add( new SelectItem( m, m.getIndeks()) );
         
@@ -122,7 +126,15 @@ public class KartaIPrzyjecieBean implements Serializable {
         return new Material();
     }
     
-      
+     public void znacznik2DostepnyListener() {
+         System.out.println("przełączono");
+     } 
+     
+    public void sprawdIloscIZnacznikiListener( ComponentSystemEvent event ) {
+        
+        UIComponent source = event.getComponent();
+        
+    }
     
     public String save() {
         //System.out.println("początek metody save PrzujeciaIKartaBean");
@@ -212,6 +224,15 @@ public class KartaIPrzyjecieBean implements Serializable {
         }
     
     }
+
+    public String getZnacznikiMessage() {
+        return znacznikiMessage;
+    }
+
+    public void setZnacznikiMessage(String znacznikiMessage) {
+        this.znacznikiMessage = znacznikiMessage;
+    }
    
+    
     
 }

@@ -29,7 +29,7 @@ public class Zwrot extends Operacja {
     
     public Zwrot( BigDecimal ilosc, User user ) {
         this.ilosc = ilosc;
-        setUser( user );
+        setUtworzyl(user );
     }
 
     

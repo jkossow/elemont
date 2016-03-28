@@ -19,7 +19,7 @@
                         </f:facet>
                         <h:outputText value="KOd QR2.:" />
                         <p:inputText value="#{skanScinkaBean.QRCode2}" >
-                            <p:ajax event="change" listener="#{skanScinkaBean.onQR2CodeComplete()}" 
+                            <p:ajax event="keyup" listener="#{skanScinkaBean.onQR2CodeComplete()}" 
                                     update="spodzScA1,spodzScB1,material" partialSubmit="yes" />
                             
                         </p:inputText>

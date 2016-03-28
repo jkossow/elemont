@@ -53,7 +53,7 @@ public class SkanZawieszki  extends Operacja{
         suffix = getSuffix();
         prefix = getIdOdcinka();
         
-        setUser( user );
+        setUtworzyl(user );
     }
     
     public Long getIdOdcinka() {

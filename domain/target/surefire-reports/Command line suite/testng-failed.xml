@@ -9,7 +9,6 @@
           <include name="tearDownMethod"/>
           <include name="setUpClass"/>
           <include name="setUpMethod"/>
-          <include name="isSet"/>
         </methods>
       </class> <!-- org.kossowski.elemont.domain.OdcinekTest -->
       <class name="org.kossowski.elemont.domain.KartaMagazynowaTest">
@@ -17,7 +16,9 @@
           <include name="setUpMethod"/>
           <include name="tearDownMethod"/>
           <include name="setUpClass"/>
+          <include name="operacjeSizeTest3"/>
           <include name="tearDownClass"/>
+          <include name="operacjeSizeTest2"/>
         </methods>
       </class> <!-- org.kossowski.elemont.domain.KartaMagazynowaTest -->
       <class name="org.kossowski.elemont.domain.StanTest">

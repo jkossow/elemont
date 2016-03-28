@@ -154,7 +154,7 @@ public class ScanSendRestBean {
         }
         
         Operacja o = new WydanieNaBudowe( km.getStanIl().getIValue( Stan.IL_W_MAG_GL), user) ;
-        o.setCreationTime(date);
+        o.setCzasUtworzenia(date);
         o = opRepo.save(o);
         km.addOperation(o);
         o.setKartaMagazynowa(km);
@@ -205,7 +205,7 @@ public class ScanSendRestBean {
         KartaMagazynowa km = o.getKartaMagazynowa();
         
         SkanZawieszki skanZaw = new SkanZawieszki(data1, znacznik, operator);
-        skanZaw.setCreationTime(date);
+        skanZaw.setCzasUtworzenia(date);
         skanZaw = opRepo.save( skanZaw );
         km.addOperation(skanZaw);
         
@@ -254,7 +254,7 @@ public class ScanSendRestBean {
         KartaMagazynowa km = o.getKartaMagazynowa();
         
         SkanScinka skanScinka = new SkanScinka(data1, new BigDecimal(data2), operator);
-        skanScinka.setCreationTime(date);
+        skanScinka.setCzasUtworzenia(date);
         skanScinka = opRepo.save( skanScinka );
         km.addOperation(skanScinka);
         
@@ -289,7 +289,7 @@ public class ScanSendRestBean {
         };
         
         Operacja o = new Zwrot( km.getStanIl().getIValue( Stan.IL_STAN_BIEZ), operator) ;
-        o.setCreationTime(date);
+        o.setCzasUtworzenia(date);
         o = opRepo.save(o);
         km.addOperation(o);
         o.setKartaMagazynowa(km);

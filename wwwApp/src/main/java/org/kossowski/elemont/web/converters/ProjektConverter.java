@@ -38,7 +38,7 @@ public class ProjektConverter implements Converter  {
         if( id != 0L) 
             p = projRepo.findOne(id);
         else
-            p = new Projekt();
+            p = null; //p = new Projekt();
         return p;
     }
 

@@ -9,7 +9,7 @@
     
 
     <ui:define name="content">
-        View id &nbsp; <h:outputText value="#{view.viewId}" />
+        <!--View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
         <!--
         <p:panel >
         <p:commandLink value="Nowa karta magazynowa" action="/faces/commons/karta_mag/add.xhtml" />
@@ -17,7 +17,7 @@
         -->
         <h:form id="form">
         <p:panel>
-            <p:dataTable value="#{kartaMagazynowaBean.findAll}" var="k" scrollable="true" scrollHeight="60%"
+            <p:dataTable value="#{kartaMagazynowaBean.findAll}" var="k" scrollable="true"  scrollHeight="500px"
                      selectionMode="single" selection="#{kartaMagazynowaBean.selected}" 
                      rowKey="#{k.id}"
                      
@@ -108,12 +108,12 @@
                             <h:outputText value="#{o.id}" />
                         </p:column>
                         <p:column headerText="Czas utworzenia">
-                            <h:outputText value="#{o.creationTime}" >
+                            <h:outputText value="#{o.czasUtworzenia}" >
                                 <f:convertDateTime pattern="YYYY-MM-dd HH:mm" />
                             </h:outputText>
                         </p:column>
                         <p:column headerText="Czas akceptacji">
-                            <h:outputText value="#{o.creationTime}" >
+                            <h:outputText value="#{o.czasAkceptacji}" >
                                 <f:convertDateTime pattern="YYYY-MM-dd HH:mm" />
                             </h:outputText>
                         </p:column>

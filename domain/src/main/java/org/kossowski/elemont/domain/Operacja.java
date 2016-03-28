@@ -8,6 +8,7 @@ package org.kossowski.elemont.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -38,18 +39,24 @@ public class Operacja implements IOperacja, Serializable {
     @JoinColumn( name = "kartaMag_id" )
     private KartaMagazynowa kartaMagazynowa;
     
-    private Date creationTime = null;
-    private Date acceptionTime = null;
+    private Date czasUtworzenia = null;
+    private Date czasAkceptacji = null;
     private Boolean accepted = false;
     
     @ManyToOne
-    @JoinColumn( foreignKey = @ForeignKey(name = "user_fk"))
-    private User user;
+    @JoinColumn( foreignKey = @ForeignKey(name = "utworzyl_fk"))
+    private User utworzyl;
     
     public Operacja() {
-        this.creationTime = GregorianCalendar.getInstance().getTime();
+        this.czasUtworzenia = GregorianCalendar.getInstance(TimeZone.getTimeZone("pl_PL")).getTime();
         
     }
+    
+    public Operacja( User utworzyl, Date czasAkceptacji ) {
+        this.utworzyl = utworzyl;
+        this.czasAkceptacji = czasAkceptacji;
+    }
+    
     
     public Operacja( KartaMagazynowa k ) {
         this();
@@ -58,9 +65,10 @@ public class Operacja implements IOperacja, Serializable {
         this.kartaMagazynowa = k;
     }
     
+
     public void setAcceptFlag() {
         setAccepted(true);
-        setAcceptionTime( GregorianCalendar.getInstance().getTime() );
+        setCzasAkceptacji( GregorianCalendar.getInstance().getTime() );
     }
     
     public String opis() {
@@ -83,20 +91,20 @@ public class Operacja implements IOperacja, Serializable {
         this.kartaMagazynowa = kartaMagazynowa;
     }
 
-    public Date getCreationTime() {
-        return creationTime;
+    public Date getCzasUtworzenia() {
+        return czasUtworzenia;
     }
 
-    public void setCreationTime(Date creationTime) {
-        this.creationTime = creationTime;
+    public void setCzasUtworzenia(Date czasUtworzenia) {
+        this.czasUtworzenia = czasUtworzenia;
     }
 
-    public Date getAcceptionTime() {
-        return acceptionTime;
+    public Date getCzasAkceptacji() {
+        return czasAkceptacji;
     }
 
-    public void setAcceptionTime(Date acceptionTime) {
-        this.acceptionTime = acceptionTime;
+    public void setCzasAkceptacji(Date czasAkceptacji) {
+        this.czasAkceptacji = czasAkceptacji;
     }
 
     public Boolean getAccepted() {
@@ -112,15 +120,15 @@ public class Operacja implements IOperacja, Serializable {
       return opis();  
     };
 
-    public User getUser() {
-        return user;
+    public User getUtworzyl() {
+        return utworzyl;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUtworzyl(User utworzyl) {
+        this.utworzyl = utworzyl;
     }
+
     
-
     @Override
     public String toString() {
         return "Operacja{" + "id=" + id + '}';
@@ -155,7 +163,7 @@ public class Operacja implements IOperacja, Serializable {
     @Override
     public void accept() throws IllegalStatusException, Exception {
         accepted = true;
-        acceptionTime = GregorianCalendar.getInstance().getTime();
+        czasAkceptacji = GregorianCalendar.getInstance().getTime();
     }
     
     

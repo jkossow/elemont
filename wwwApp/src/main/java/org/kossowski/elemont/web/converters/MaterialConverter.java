@@ -40,7 +40,7 @@ public class MaterialConverter implements Converter  {
         if( id != 0L) 
             m = matRepo.findOne(id);
         else
-            m = new Material();
+            m = null; //m = new Material();
         return m;
     }
 

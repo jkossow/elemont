@@ -45,7 +45,7 @@ public class SkanScinka  extends Operacja{
         this.dlugosc = znacznik;
         suffix = getSuffix();
         prefix = getIdOdcinka();
-        setUser( user );
+        setUtworzyl(user );
     }
     
     public Long getIdOdcinka() {

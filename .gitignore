@@ -1,3 +1,4 @@
-/WebApplication1/nbproject/private/
-/WebApplication1/build/
-/WebApplication1/dist/
+/commons/target
+/domain/target
+/wwwApp/target
+/desktopApp/target

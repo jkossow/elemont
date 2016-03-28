@@ -65,7 +65,7 @@ public class KartaMagazynowa implements Serializable {
     private Stan stanIl = new Stan();
     
     @OneToMany(  mappedBy = "kartaMagazynowa" , cascade = CascadeType.ALL  )
-    @OrderBy("creationTime")
+    @OrderBy("czasUtworzenia")
     //@JoinColumn( foreignKey = @ForeignKey(name = "operacje_fk"))
     private List<Operacja> operacje = new ArrayList<>();       
 
