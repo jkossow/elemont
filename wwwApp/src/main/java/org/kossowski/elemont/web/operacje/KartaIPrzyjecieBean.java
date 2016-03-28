@@ -11,15 +11,19 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
+import java.util.TimeZone;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
@@ -40,6 +44,7 @@ import org.kossowski.elemont.repositories.OperacjaRepository;
 import org.kossowski.elemont.repositories.ProducentRepository;
 import org.kossowski.elemont.repositories.ProjektRepository;
 import org.kossowski.elemont.repositories.UmowaRepository;
+import org.kossowski.elemont.security.SecurityController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -72,8 +77,11 @@ public class KartaIPrzyjecieBean implements Serializable {
     @Autowired
     protected OperacjaRepository opRepo;
     
+    @Autowired
+    protected SecurityController securityController;
+    
     //KartaMagazynowa km = new KartaMagazynowa();
-    protected PrzyjecieZGlownego przyjecie =new PrzyjecieZGlownego();
+    protected PrzyjecieZGlownego przyjecie = new PrzyjecieZGlownego();
      
     private BigDecimal ilosc;
     
@@ -130,9 +138,26 @@ public class KartaIPrzyjecieBean implements Serializable {
          System.out.println("przełączono");
      } 
      
-    public void sprawdIloscIZnacznikiListener( ComponentSystemEvent event ) {
+    public void sprawdIloscIZnacznikiListener() {
         
-        UIComponent source = event.getComponent();
+        UIViewRoot rootView = FacesContext.getCurrentInstance().getViewRoot();
+        
+        
+        
+        UIComponent iloscUIComponent = rootView.findComponent("add_karta_i_przyjecie:ilosc");
+        UIComponent poczUIComponent = rootView.findComponent("pocz");
+        UIComponent koniecUIComponent = rootView.findComponent("koniec");
+       
+        ELContext elc = FacesContext.getCurrentInstance().getELContext();
+        
+        String s1 = (String)iloscUIComponent.getValueExpression("value").getValue(elc);
+        String s2 = poczUIComponent.getValueExpression("value").getExpressionString();
+        String s3 = koniecUIComponent.getValueExpression("value").getExpressionString();
+        
+        String s = s1 + " " + s2 + " " + s3 + "koniec";
+        setZnacznikiMessage( s );
+        
+        System.out.println("koniec listenera");
         
     }
     
@@ -145,6 +170,9 @@ public class KartaIPrzyjecieBean implements Serializable {
         //przyjecie.setKartaMagazynowa(km);
         
         km.addOperation(przyjecie);
+        przyjecie.setUtworzyl( securityController.getUser() );
+        przyjecie.setCzasUtworzenia( 
+                GregorianCalendar.getInstance( TimeZone.getTimeZone("Europe/Warsaw")).getTime());
         
         try {
             przyjecie.accept();

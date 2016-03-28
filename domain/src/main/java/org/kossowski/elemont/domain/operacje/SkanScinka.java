@@ -131,7 +131,7 @@ public class SkanScinka  extends Operacja{
         
         if( o.getScinekA1() != null && o.getScinekB1() != null )
             o.setStatus( Status.S8 );
-        getKartaMagazynowa().trySet( Status.S8 );
+        //getKartaMagazynowa().trySet( Status.S8 );
     }
 
     @Override

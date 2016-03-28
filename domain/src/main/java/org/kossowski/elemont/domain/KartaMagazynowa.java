@@ -6,6 +6,7 @@
 package org.kossowski.elemont.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -78,10 +79,18 @@ public class KartaMagazynowa implements Serializable {
     //private Umowa umowa = null;
     
     @ManyToOne
-    @JoinColumn( foreignKey = @ForeignKey(name = "user_fk"))
-    private User user = null;
+    @JoinColumn( foreignKey = @ForeignKey(name = "utworzyl_fk"))
+    private User utworzyl = null;
+    
+    @ManyToOne
+    @JoinColumn( foreignKey = @ForeignKey(name = "owner_fk"))
+    private User owner = null;
     
     private String miejsceSkladowania;
+    private BigDecimal znacznikPoczatkowy;
+    private BigDecimal znacznikKoncowy;
+    private Boolean znacznikKoncowyDostepny;
+    private Boolean znacznikiNarastajaco;
     
     private Integer przyrostekNazwyOdcinka = 1;  // pomocnicza do nadawania nazw odcinkom
     
@@ -224,12 +233,12 @@ public class KartaMagazynowa implements Serializable {
         this.dostawca = dostawca;
     }
 
-    public User getUser() {
-        return user;
+    public User getUtworzyl() {
+        return utworzyl;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUtworzyl(User utworzyl) {
+        this.utworzyl = utworzyl;
     }
 
     public Integer getPrzyrostekNazwyOdcinka() {
@@ -240,14 +249,54 @@ public class KartaMagazynowa implements Serializable {
         this.przyrostekNazwyOdcinka = przyrostekNazwyOdcinka;
     }
 
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public BigDecimal getZnacznikPoczatkowy() {
+        return znacznikPoczatkowy;
+    }
+
+    public void setZnacznikPoczatkowy(BigDecimal znacznikPoczatkowy) {
+        this.znacznikPoczatkowy = znacznikPoczatkowy;
+    }
+
+    public BigDecimal getZnacznikKoncowy() {
+        return znacznikKoncowy;
+    }
+
+    public void setZnacznikKoncowy(BigDecimal znacznikKoncowy) {
+        this.znacznikKoncowy = znacznikKoncowy;
+    }
+
+    public Boolean getZnacznikKoncowyDostepny() {
+        return znacznikKoncowyDostepny;
+    }
+
+    public void setZnacznikKoncowyDostepny(Boolean znacznikKoncowyDostepny) {
+        this.znacznikKoncowyDostepny = znacznikKoncowyDostepny;
+    }
+
+    public Boolean getZnacznikiNarastajaco() {
+        return znacznikiNarastajaco;
+    }
+
+    public void setZnacznikiNarastajaco(Boolean znacznikiNarastajaco) {
+        this.znacznikiNarastajaco = znacznikiNarastajaco;
+    }
+
     
-   
+    
 
     
     
     @Override
     public String toString() {
-        return "KartaMagazynowa{" + "id=" + id + ", status=" + status + ", projekt=" + projekt + ", material=" + material + ", producent=" + producent + ", dostawca=" + dostawca + ", stanIl=" + stanIl + ", operacje=" + operacje + ", odcinki=" + odcinki + ", user=" + user + ", miejsceSkladowania=" + miejsceSkladowania + '}';
+        return "KartaMagazynowa{" + "id=" + id + ", status=" + status + ", projekt=" + projekt + ", material=" + material + ", producent=" + producent + ", dostawca=" + dostawca + ", stanIl=" + stanIl + ", operacje=" + operacje + ", odcinki=" + odcinki + ", user=" + utworzyl + ", miejsceSkladowania=" + miejsceSkladowania + '}';
     }
 
 

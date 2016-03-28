@@ -31,11 +31,19 @@ public class Rozliczenie1 {
     
         GeneratorOdcinkow bo = new GeneratorOdcinkow();
         
+        User u = new User("jkossow","kossowski", "janusz");
+        u.getRole().add("ROLE_ADMIN");
+        u.getRole().add("ROLE_MAGAZYN");
+        u.getRole().add("ROLE_BUDOWA");
+        
         KartaMagazynowa k = new KartaMagazynowa();
         k.setId( 1L );
         printState(k);
         
         PrzyjecieZGlownego przyj = new PrzyjecieZGlownego();
+        
+        
+        
         przyj.setProjekt(new Projekt(1L,"p1", "projekt1"));
         przyj.setMaterial(new Material(1L ,"indeks", "nazwa"));
         przyj.setProducent( new Producent(1L, "prod1", "prod1"));
@@ -50,7 +58,7 @@ public class Rozliczenie1 {
         System.out.println( przyj.opis() );
         printState(k);
         
-        User u = new User("jkossow","kossowski", "janusz");
+        
         k.getProjekt().getZespol().add(u);
         WydanieNaBudowe wyd = new WydanieNaBudowe( new BigDecimal(100), u );
         k.addOperation(( wyd));
@@ -128,8 +136,8 @@ public class Rozliczenie1 {
         System.out.println("Operacji i odcinków " + k.getOperacje().size() + " " + k.getOdcinki().size() );
         System.out.println("Material"  + k.getMaterial()  );
         System.out.println("Projekt " + k.getProjekt() );
-        if( k.getUser() != null)
-            System.out.println("User " + k.getUser().getLogin());
+        if( k.getUtworzyl() != null)
+            System.out.println("User " + k.getUtworzyl().getLogin());
         for( Odcinek o : k.getOdcinki() ) {
             System.out.println( o );
         }

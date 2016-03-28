@@ -6,6 +6,7 @@
 package org.kossowski.elemont.domain.operacje;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -54,10 +55,11 @@ public class PrzyjecieZGlownego extends Operacja {
     
     public PrzyjecieZGlownego() {};
     
-    public PrzyjecieZGlownego( BigDecimal ilosc, User user ) {
+    public PrzyjecieZGlownego( User utworzyl, Date czasUtworzenia, BigDecimal ilosc ) {
         
         this.ilosc = ilosc;
-        setUtworzyl(user);
+        setUtworzyl(utworzyl);
+        setCzasUtworzenia(czasUtworzenia);
     }
 
     @Override
@@ -73,15 +75,25 @@ public class PrzyjecieZGlownego extends Operacja {
         
         //modyfikacja stanu
         Stan s = getKartaMagazynowa().getStanIl();
-        s.setIValue( Stan.IL_PRZYJETA, ilosc);
-        s.setIValue( Stan.IL_W_MAG_GL, ilosc);
+        s.setIValue( Stan.IL_PRZYJETA, ilosc );
+        s.setIValue( Stan.IL_W_MAG_GL, ilosc );
         
         //ustawienie pol jak w przyjeciu
-        getKartaMagazynowa().setProjekt(projekt);
-        getKartaMagazynowa().setMaterial(material);
-        getKartaMagazynowa().setProducent(producent);
-        getKartaMagazynowa().setDostawca(dostawca);
-        getKartaMagazynowa().setMiejsceSkladowania(miejsceSkladowania);
+        getKartaMagazynowa().setProjekt( this.projekt );
+        getKartaMagazynowa().setMaterial( this.material );
+        getKartaMagazynowa().setProducent( this.producent );
+        getKartaMagazynowa().setDostawca( this.dostawca );
+        getKartaMagazynowa().setMiejsceSkladowania( this.miejsceSkladowania );
+        getKartaMagazynowa().setUtworzyl( this.getUtworzyl() );
+        
+        //korekta pola znacznik koncowy
+        if( ! this.znacznikKoncaDostepny )
+            setZnacznikKonc( null );
+        
+        getKartaMagazynowa().setZnacznikPoczatkowy( this.znacznikPocz );
+        getKartaMagazynowa().setZnacznikKoncowy( this.znacznikKonc );
+        getKartaMagazynowa().setZnacznikKoncowyDostepny( this.znacznikKoncaDostepny );
+        getKartaMagazynowa().setZnacznikiNarastajaco( this.znacznikiRosnaco );
         
         //zmiana statusu
         getKartaMagazynowa().setStatus( Status.S1 );

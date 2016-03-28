@@ -105,7 +105,7 @@ public class SkanZawieszki  extends Operacja{
         //setAcceptFlag();
         
         o.setStatus( Status.S4);
-        getKartaMagazynowa().trySet( Status.S4 );
+        //getKartaMagazynowa().trySet( Status.S4 );
         
     }
     
@@ -117,7 +117,7 @@ public class SkanZawieszki  extends Operacja{
         //setAcceptFlag();
         
         o.setStatus( Status.S5);
-        getKartaMagazynowa().trySet( Status.S5 );
+        //getKartaMagazynowa().trySet( Status.S5 );
     }
     
     private void dodajPodlaczenieDrugiegoKonca( Odcinek o ) throws  Exception {
@@ -136,7 +136,7 @@ public class SkanZawieszki  extends Operacja{
         //setAcceptFlag();
         
         o.setStatus( Status.S6);
-        getKartaMagazynowa().trySet( Status.S6 );
+        //getKartaMagazynowa().trySet( Status.S6 );
     }
     
     

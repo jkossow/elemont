@@ -61,7 +61,7 @@ public class WydanieNaBudowe extends Operacja {
             throw new Exception("Pracownik nieprzypisany do projektu");
         
         //przypisanie pól
-        getKartaMagazynowa().setUser( getUtworzyl());
+        getKartaMagazynowa().setUtworzyl( getUtworzyl());
         
         Stan s = getKartaMagazynowa().getStanIl();
         

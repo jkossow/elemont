@@ -25,10 +25,13 @@
                 <ui:insert name="top"><h2>Magazyn główny</h2></ui:insert>
             </div>
             <div id="topContent">
-                aaaa Login Logout
+                <h:outputText value="#{securityController.userName}" /> <br/>
+                <h:outputText value="#{securityController.nazwisko}" /> <br/>
+                <h:outputText value="#{securityController.imie}" /> <br/>
+                <a href="/wwwApp/loginjk.xhtml?logout">wyloguj</a> 
             </div>
             <div id="topContent">
-                bbb bbb
+                &nbsp;
             </div>
         </div>
         <div>

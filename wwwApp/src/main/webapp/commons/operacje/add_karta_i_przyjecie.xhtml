@@ -89,6 +89,7 @@
                 <p:inputText id="ilosc" value="#{kartaIPrzyjecieBean.przyjecie.ilosc}" required="true"
                              requiredMessage="Ilość - musisz wypełnić" converterMessage="To nie jest liczba">
                     <p:ajax event="blur" partialSubmit="true" update="znMess" listener="#{kartaIPrzyjecieBean.sprawdIloscIZnacznikiListener()}" />
+                    
                 </p:inputText>    
                 
                 
@@ -96,12 +97,12 @@
                 <p:selectBooleanCheckbox  value="#{kartaIPrzyjecieBean.przyjecie.znacznikiRosnaco}"/>
                 
                 <h:outputText value="Znacznik początku:" />
-                <p:inputText  value="#{kartaIPrzyjecieBean.przyjecie.znacznikPocz}" >
+                <p:inputText  id="pocz" value="#{kartaIPrzyjecieBean.przyjecie.znacznikPocz}" >
                     <p:ajax event="blur" partialSubmit="true"  update="znMess" listener="#{kartaIPrzyjecieBean.sprawdIloscIZnacznikiListener()}" />
                 </p:inputText>
                 
                 <h:outputText value="Znacznik końca dostepny?" />
-                <p:selectBooleanCheckbox value="#{kartaIPrzyjecieBean.przyjecie.znacznikKoncaDostepny}"  >
+                <p:selectBooleanCheckbox id="dostepny" value="#{kartaIPrzyjecieBean.przyjecie.znacznikKoncaDostepny}"  >
                     <p:ajax  event="change"  update="koniec" partialSubmit="true" />
                 </p:selectBooleanCheckbox>
                 
