@@ -5,7 +5,9 @@
  */
 package org.kossowski.elemont.repositories;
 
+import java.util.List;
 import org.kossowski.elemont.domain.Odcinek;
+import org.kossowski.elemont.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -14,6 +16,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface OdcinekRepository extends JpaRepository<Odcinek, Long>{
     
+    public List<Odcinek> findByOwner( User owner);
     
     
 }

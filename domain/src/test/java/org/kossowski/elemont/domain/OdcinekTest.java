@@ -72,15 +72,6 @@ public class OdcinekTest {
     }
     
     @Test
-    public void odcinekWithIdTest() {
-       // Odcinek o = new Odcinek("1111A");
-       // assertEquals(o.getId(), "1111");
-        
-       // Odcinek o1 = new Odcinek("1112B");
-        
-    }
-    
-    @Test
     public void odcinekEqualsTest() {
         
     }

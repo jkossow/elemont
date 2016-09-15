@@ -6,6 +6,7 @@
 package org.kossowski.elemont.domain.operacje;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -39,13 +40,15 @@ public class SkanScinka  extends Operacja{
     public SkanScinka() {};
     
     //mozna jeszcze dodac info o czytniku
-    public SkanScinka( String qrCode, BigDecimal znacznik, User user ) {
+    public SkanScinka( User utworzyl, Date czasUtworzenia, String qrCode, BigDecimal znacznik ) {
+        
+        super(utworzyl, czasUtworzenia);
         
         this.qrCode = qrCode;
         this.dlugosc = znacznik;
         suffix = getSuffix();
         prefix = getIdOdcinka();
-        setUtworzyl(user );
+        
     }
     
     public Long getIdOdcinka() {
@@ -127,6 +130,7 @@ public class SkanScinka  extends Operacja{
         
         
         //akceptacja
+        
         setAcceptFlag();
         
         if( o.getScinekA1() != null && o.getScinekB1() != null )

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/templates/mainTemplate.xhtml">
+
+            <ui:define name="menu">
+                <ui:include src="/menu/mainMenu.xhtml" />
+            </ui:define>
+
+            <ui:define name="content" >
+                <!--    
+                <p:panel style="width:50%">
+                    View id &nbsp; <h:outputText value="#{view.viewId}" />
+                </p:panel>
+                -->
+
+                <h:form>
+                    <p:growl />  
+                    <h:inputHidden value="#{userBean.user.login}" />
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row>
+                                <p:column colspan="4">
+                                    <h:outputText value="Edycja danych uzytkownika" />
+                                </p:column>
+                            </p:row>
+                        </f:facet>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Login" />
+                            </p:column>
+                            <p:column colspan="3">
+                                <h:outputText value="#{userBean.user.login}" />
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Nazwisko:" />
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="nazwisko" value="#{userBean.user.nazwisko}" />
+                                <p:message for="nazwisko" />
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="Imię:" />
+                            </p:column>
+                            <p:column>
+                                <p:inputText value="#{userBean.user.imie}" />
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Hasło:" />
+                            </p:column>
+                            <p:column colspan="3">
+                                <p:inputText value="#{userBean.user.password}" />
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Aktywny:" />
+                            </p:column>
+                            <p:column colspan="3">
+                                <p:selectBooleanCheckbox value="#{userBean.user.aktywny}" />
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Kod QR:" />
+                            </p:column>    
+                            <p:column>
+                                <p:inputText value="#{userBean.user.kodQR}">
+                                    <p:ajax event="keyup" update="barcode" partialSubmit="yes"/>
+                                </p:inputText>
+                            </p:column>
+                            <p:column colspan="2">
+                                <p:barcode id="barcode" value="#{userBean.user.kodQR}" type="qr" />
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="4">
+                                <p:pickList value="#{userBean.pickData}" var="r" itemLabel="#{r}" itemValue="#{r}">
+                                    <f:facet name="sourceCaption">Dostępne</f:facet>
+                                    <f:facet name="targetCaption">Udzielone</f:facet>
+                                </p:pickList>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="2">
+                                <p:commandButton value="Zapisz" action="#{userBean.save}" ajax="false"/>
+                            </p:column>
+                            <p:column colspan="2">
+                                <p:commandButton value="Cancel" action="list.xhtml" ajax="false"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+
+                </h:form>
+
+
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

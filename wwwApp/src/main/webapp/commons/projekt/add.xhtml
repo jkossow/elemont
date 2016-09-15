@@ -10,16 +10,18 @@
 
     <ui:define name="content">
         <h:form>
-        <p:panel>
+        <!--
+            <p:panel>
             View id &nbsp; <h:outputText value="#{view.viewId}" />
         </p:panel>
+        -->
         <p:panel>
-            
+            <p:growl />
             <p:panelGrid columns="2">
                 <h:outputText value ="Symbol:" />
-                <p:inputText value="#{projektBean.projekt.symbol}" />
+                <p:inputText value="#{projektBean.projekt.symbol}"  required="true" requiredMessage="symbol - musisz wprowadzić"/>
                 <h:outputLabel value="Nazwa:" />
-                <p:inputText value="#{projektBean.projekt.nazwa}" />
+                <p:inputText value="#{projektBean.projekt.nazwa}"  required="true" requiredMessage="nazwa - musisz wprowadzić"/>
             </p:panelGrid>
             <p:spacer />
                     <p:pickList value="#{projektBean.pickData}" var="u" itemLabel="#{u}" itemValue="#{u}">
@@ -35,7 +37,7 @@
                     </p:pickList>
             <p:panelGrid columns="2">
                 <p:commandButton value="Zapisz" action="#{projektBean.save}" ajax="false"/>
-                <p:commandButton value="Cancel" action="list.xhtml" ajax="false" /> 
+                <p:commandButton value="Cancel" action="list.xhtml" ajax="false" immediate="true"/> 
             </p:panelGrid>
             
         </p:panel>

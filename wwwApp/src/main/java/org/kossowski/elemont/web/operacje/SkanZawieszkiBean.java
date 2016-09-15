@@ -6,12 +6,15 @@
 package org.kossowski.elemont.web.operacje;
 
 import java.math.BigDecimal;
+import java.util.GregorianCalendar;
+import javax.transaction.Transactional;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Odcinek;
 import org.kossowski.elemont.domain.operacje.SkanZawieszki;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.OdcinekRepository;
 import org.kossowski.elemont.repositories.OperacjaRepository;
+import org.kossowski.elemont.security.SecurityController;
 import org.kossowski.elemont.utils.JSFUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -35,7 +38,8 @@ public class SkanZawieszkiBean {
     @Autowired
     protected KartaMagazynowaRepository kmRepo;
     
-    
+    @Autowired
+    protected SecurityController secController;
     
     private String QRCode2;
     private BigDecimal znacznik;
@@ -44,6 +48,7 @@ public class SkanZawieszkiBean {
         return QRCode2;
     }
 
+    //@Transactional(Transactional.TxType.REQUIRED)
     public String perform() {
         
         String s = QRCode2.substring(0, QRCode2.length() -2 );
@@ -65,7 +70,11 @@ public class SkanZawieszkiBean {
         
         KartaMagazynowa km = o.getKartaMagazynowa();
         
-        SkanZawieszki skanZaw = new SkanZawieszki(QRCode2, znacznik, null);
+        SkanZawieszki skanZaw = new SkanZawieszki(secController.getUser(),
+                GregorianCalendar.getInstance().getTime(), 
+                QRCode2, 
+                znacznik );
+        
         skanZaw = opRepo.save( skanZaw );
         km.addOperation(skanZaw);
         
@@ -75,6 +84,7 @@ public class SkanZawieszkiBean {
             km.removeOperation(skanZaw);
             opRepo.delete(skanZaw);
             JSFUtils.addMessage(e.getMessage());
+            
             return null;
         };
         JSFUtils.addMessage("Skan zarejestrowany");

@@ -10,7 +10,9 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 import javax.faces.context.FacesContext;
+import org.apache.commons.logging.Log;
 import org.kossowski.elemont.domain.Grupa;
 import org.kossowski.elemont.domain.Umowa;
 import org.kossowski.elemont.domain.User;
@@ -20,8 +22,11 @@ import org.kossowski.elemont.repositories.GrupaRepository;
 import org.kossowski.elemont.repositories.UmowaRepository;
 import org.kossowski.elemont.repositories.UserRepository;
 import org.kossowski.elemont.utils.JSFUtils;
+import org.kossowski.elemont.utils.Printer;
 import org.primefaces.model.DualListModel;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -37,6 +42,9 @@ public class UserBean {
     
     @Autowired
     private UserRepository userRepo;
+    
+    @Autowired
+    Printer printer = null;
     
     private User user = new User();
     
@@ -93,22 +101,27 @@ public class UserBean {
         return "list.xhtml";
     }
     
+    @Value("${print.filePath}")
+    public String filePath;
+    
+    @Value("${print.printString}") 
+    public String printString;
+    
+    
     public String print() {
         System.out.println("printuję");
         
-        FacesContext fc = FacesContext.getCurrentInstance();
-        Map<String,String> pm = fc.getExternalContext().getRequestParameterMap();
-        
-        String login = pm.get("login");
-        
+        String login = JSFUtils.getRequestParam("login");
         user = userRepo.findOne(login);
         
         Etykieta et = new EtykietaQR2( user );
         
+        
+        
         try {
             //File file = File.createTempFile("zpl", ".zpl");
             
-            File file = new File("/tmp/plikjk");
+            File file = new File( filePath + "plikjk");
             
             FileOutputStream fout = new FileOutputStream(file);
             fout.write( et.printerString().getBytes());
@@ -117,8 +130,17 @@ public class UserBean {
             
             //java.lang.Runtime.getRuntime().exec("lp -d cab_EOS1_300 /Users/jkossow/Downloads/qr1.zpl");
             //String s = "lp -d cab_EOS1_300 \"" + file.getCanonicalPath() +"\"";
-            String s = "lp -d cab_EOS1_300 /tmp/plikjk";
-            System.out.println( s );
+            //String s = "lp -d kuba /tmp/plikjk";
+            
+            if( printer == null )
+                throw new Exception( "Printer is null");
+            
+            printer.auth();
+            
+            String s = printString + " " +  filePath + "plikjk";
+            Logger.getAnonymousLogger().info("print string(log):" + s);
+            System.out.println( "print string(print):" + s );
+            
             java.lang.Runtime.getRuntime().exec( s );
             
             //file.delete();

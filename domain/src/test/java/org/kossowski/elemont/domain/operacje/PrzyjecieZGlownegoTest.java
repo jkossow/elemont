@@ -6,17 +6,23 @@
 package org.kossowski.elemont.domain.operacje;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import org.kossowski.elemont.domain.IllegalStatusException;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Stan;
 import org.kossowski.elemont.domain.Status;
-import static org.testng.Assert.*;
+import org.kossowski.elemont.domain.User;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.*;
+
+
+
+
 
 /**
  *
@@ -41,15 +47,9 @@ public class PrzyjecieZGlownegoTest {
     public static void tearDownClass() throws Exception {
     }
 
-    @BeforeMethod
-    public void setUpMethod() throws Exception {
-    }
-
-    @AfterMethod
-    public void tearDownMethod() throws Exception {
-    }
     
-    /*
+    
+    @Test
     public void przyjecieZGlownego( BigDecimal ilosc ) throws IllegalStatusException, Exception {
         KartaMagazynowa k = new KartaMagazynowa();
         Stan przed = new Stan( new int[]{0,0,0,0,0,0,0,0} );
@@ -60,7 +60,7 @@ public class PrzyjecieZGlownegoTest {
         
         System.out.println("Stan przed operacja " + k.getStanIl() ); 
         System.out.println("Status przed operacja " + k.getStatus() ); 
-        Operacja o = new PrzyjecieZGlownego( ilosc );
+        Operacja o = new PrzyjecieZGlownego( new User(), new Date(), ilosc );
         k.addOperation(o);
         assertEquals( k.getOperacje().size(), 1 );
         
@@ -88,13 +88,13 @@ public class PrzyjecieZGlownegoTest {
     @Test( expectedExceptions = IllegalStatusException.class )
     public void powtornePrzyjecieTest() throws IllegalStatusException, Exception {
          KartaMagazynowa k = new KartaMagazynowa();
-         Operacja o1 = new PrzyjecieZGlownego( new BigDecimal(10) );
+         Operacja o1 = new PrzyjecieZGlownego( new User(), new Date(), new BigDecimal(10) );
          k.addOperation(o1);
          o1.accept();
          
-         Operacja o2 = new PrzyjecieZGlownego( new BigDecimal(20) );
+         Operacja o2 = new PrzyjecieZGlownego( new User(), new Date(),  new BigDecimal(20) );
          k.addOperation(o2);
          o2.accept();
     }
-    */
+   
 }

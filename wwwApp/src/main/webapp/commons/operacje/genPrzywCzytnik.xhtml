@@ -9,7 +9,7 @@
     <body>
 
         <ui:composition template="./../../mainTemplate.xhtml">
-
+            
             <ui:define name="content">
                 <h:form>
                    
@@ -23,12 +23,26 @@
                         <f:converter binding="#{kartaMagazynowaConverter}" />
                     </p:inputText>
                     
+                    <h:outputText value="QR kod pracownika:" />
+                    <p:inputText value="#{drukPrzywBean.owner}" >
+                        <f:converter binding="#{userKodQRConverter}" />
+                    </p:inputText>
+                    
                     <h:outputText value="Ilosc:" />
                     <p:inputText value="#{drukPrzywBean.ilosc}" />
+                    
+                    <h:outputText value="Znacznik początkowy:" />
+                    <p:inputText value="#{drukPrzywBean.znacznikPoczatkowy}" />
+                    
+                    <p:row>
+                        <p:column colspan="2">
                     <p:commandButton value="OK" action="#{drukPrzywBean.drukuj()}" ajax="false">
                         <!--<f:param name="id" value="#{przekazNaBudowe.id}" /> -->
-                    </p:commandButton>    
+                    </p:commandButton>  
+                        </p:column>
+                    </p:row>
                 </p:panelGrid>
+                    <p:growl />
                 </h:form>
             </ui:define>
 

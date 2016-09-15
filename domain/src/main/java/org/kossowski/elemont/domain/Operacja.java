@@ -52,9 +52,9 @@ public class Operacja implements IOperacja, Serializable {
         
     }
     
-    public Operacja( User utworzyl, Date czasAkceptacji ) {
+    public Operacja( User utworzyl, Date czasUtworzenia ) {
         this.utworzyl = utworzyl;
-        this.czasAkceptacji = czasAkceptacji;
+        this.czasUtworzenia = czasUtworzenia;
     }
     
     

@@ -14,13 +14,13 @@ import org.kossowski.elemont.domain.SelektorZawieszki;
  */
 public class EtykietaQR3  extends Etykieta {
 
-    private QR3 qr2;
+    private QR3 qr3;
     private SelektorZawieszki selektor;
     private String nazwa_odcinka;
     private String nazwa_materialu;
     
     public EtykietaQR3( Odcinek o, SelektorZawieszki selektor) {
-        this.qr2 =  new QR3( o, selektor );
+        this.qr3 =  new QR3( o, selektor );
         this.selektor = selektor;
         this.nazwa_odcinka = o.getNazwa();
         this.nazwa_materialu = o.getKartaMagazynowa().getMaterial().getNazwa();
@@ -36,7 +36,7 @@ public class EtykietaQR3  extends Etykieta {
                 "^FO50,200,0^AG^FD" + selektor + "^FS\n" +
                 "^FO140,300,0^AE^FD" + nazwa_odcinka +"^FS\n" +
                 "^FO70,300,0^AE^FD" + nazwa_materialu + "^FS\n" +
-                "^FO50,30^BQN,2,6^FDMA," + qr2.encode() + "^FS\n" +
+                "^FO50,30^BQN,2,6^FDMA," + qr3.encode() + "^FS\n" +
                 "^XZ";
         
         /*        

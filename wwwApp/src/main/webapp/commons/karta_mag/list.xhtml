@@ -1,12 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../../mainTemplate.xhtml"
+                template="/templates/mainTemplate.xhtml"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     
+    <ui:define name="menu">
+        <ui:include src="/menu/mainMenu.xhtml" />
+    </ui:define>
+        
 
     <ui:define name="content">
         <!--View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
@@ -16,53 +20,67 @@
         </p:panel>
         -->
         <h:form id="form">
-        <p:panel>
-            <p:dataTable value="#{kartaMagazynowaBean.findAll}" var="k" scrollable="true"  scrollHeight="500px"
+            <h1>#{menu}</h1>
+            
+            <p:dataTable  id="kmTable" value="#{kartaMagazynowaBean.findAll}" var="k" 
                      selectionMode="single" selection="#{kartaMagazynowaBean.selected}" 
-                     rowKey="#{k.id}" stickyHeader="true"
+                     rowKey="#{k.id}"   sortField="#{k.id}"
                      
-                     >
+                     scrollable="true" scrollHeight="450" >
             
-            <p:ajax event="rowSelect"  update="form:opDlg,viewBtn,przekBtn"/>
+                
+                <p:ajax event="rowSelect"  update="form:opDlg,viewBtn,przekBtn"/>
             
-            <p:column headerText="Id" sortBy="#{k.id}" filterBy="#{k.id}" >
+                <p:column  sortBy="#{k.id}"  filterBy="#{k.id}">
+                <f:facet name="header" >Id</f:facet>
                 <h:outputText value="#{k.id}" />
             </p:column>
-            <p:column headerText="Indeks" sortBy="#{k.material.indeks}" filterBy="#{k.material.indeks}">
+                <p:column  headerText="Indeks" sortBy="#{k.material.indeks}" filterBy="#{k.material.indeks}"  >
+                
                 <h:outputText value="#{k.material.indeks}" />
             </p:column>
-            <p:column headerText="Nazwa" >
+            <p:column headerText="Nazwa"   >
                 <h:outputText value="#{k.material.nazwa}" />
             </p:column>
+            <!--
             <p:column headerText="Jedn. miary" style="width: 5%;">
                 <h:outputText value="#{k.material.jm.symbol}" />
             </p:column>
             <p:column headerText="Grupa">
                 <h:outputText value="#{k.material.grupa.symbol}" />
             </p:column>
-            <p:column headerText="Projekt">
+            -->
+            <p:column headerText="Projekt"  >
                 <h:outputText value="#{k.projekt.nazwa}" />
             </p:column>
+            <!--
             <p:column headerText="Producent">
                 <h:outputText value="#{k.producent.symbol}" />
             </p:column>
+            -->
+            <!--
             <p:column headerText="Miejsce składowania">
                 <h:outputText value="#{k.miejsceSkladowania}" />
             </p:column>
+            -->
             <p:column headerText="Użytkownik">
                 <h:outputText value="#{k.owner.login}" />
             </p:column>
-            <p:column headerText="Status" style="width: 5%;">
+            -->
+            <p:column headerText="Status" style="width:10%" >
                 <h:outputText value="#{k.status}" />
             </p:column>
-            <p:column headerText="Ilość w magazynie">
+            <p:column headerText="Ilość w magazaynie" style="line-break: normal" >
                 <h:outputText value="#{k.stanIl.stan[1]}" />
             </p:column>
+           
             
             <f:facet name="footer">
-                <p:commandButton id ="viewBtn"  value="Szczegóły" disabled="#{kartaMagazynowaBean.selected eq null}"  onclick="PF('opDlg').show()"/>
-                <p:commandButton id ="przekBtn" value="Przek. na budowę" ajax="false" disabled="#{kartaMagazynowaBean.selected eq null}" action="#{przekazNaBudowe.prePrzekaz1()}">
-                    <f:param name="id" value="#{kartaMagazynowaBean.selected.id}" />
+                <p:commandButton id ="viewBtn"  value="Szczegóły" disabled="#{kartaMagazynowaBean.selected eq null}"  oncomplete="PF('opDlg').show()">
+                
+                </p:commandButton>
+                <p:commandButton rendered="false" id ="przekBtn" value="Przek. na budowę" ajax="false" disabled="#{kartaMagazynowaBean.selected eq null}" action="#{przekazNaBudowe.prePrzekaz1()}">
+                    <f:param name="id"  value="#{kartaMagazynowaBean.selected.id}" />
                 </p:commandButton>
             
             </f:facet>
@@ -71,9 +89,21 @@
         </p:dataTable>
         
                 
-            <p:dialog  widgetVar="opDlg" width="75%;" responsive="true">
-            <p:outputPanel id="opDlg">
+            <p:dialog   widgetVar="opDlg" resizable="true"   modal="true" >
+                <p:outputPanel id="opDlg" >
             <p:tabView>
+                <p:tab title="Szegóły" >
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Znacznik początkowy:"/>
+                        <h:outputText value="#{kartaMagazynowaBean.selected.znacznikPoczatkowy}" />
+                        <h:outputText value="Znacznik bieżący:"/>
+                        <h:outputText value="#{kartaMagazynowaBean.selected.znacznikBiezacy}"/> 
+                        <h:outputText value="Znacznik końcowy:"/>
+                        <h:outputText value="#{kartaMagazynowaBean.selected.znacznikKoncowy}" />
+                        <h:outputText value="Znaczniki rosnąco:"/>
+                        <p:selectBooleanCheckbox   value="#{kartaMagazynowaBean.selected.znacznikiNarastajaco}" disabled="true"/>
+                    </p:panelGrid>
+                </p:tab>
                 <p:tab title="Stany">
                     <p:panelGrid columns="3">
                         <h:outputText value="S0" />
@@ -103,7 +133,8 @@
                     </p:panelGrid>
                 </p:tab >
                 <p:tab title="Operacje">
-                    <p:dataTable var="o" value="#{kartaMagazynowaBean.selected.operacje}" >
+                    <p:dataTable var="o" value="#{kartaMagazynowaBean.selected.operacje}" scrollable="true" 
+                                 rowKey="#{o.id}" scrollHeight="100%;" >
                         <p:column headerText="Id odcinka">
                             <h:outputText value="#{o.id}" />
                         </p:column>
@@ -123,12 +154,21 @@
                     </p:dataTable>
                 </p:tab>
                 <p:tab title="Odcinki">
-                    <p:dataTable var="odc" value="#{kartaMagazynowaBean.selected.odcinki}" >
+                    <p:dataTable var="odc"  value="#{kartaMagazynowaBean.selected.odcinki}" >
                         <p:column headerText="id">
                             <h:outputText value="#{odc.id}" />
                         </p:column>
                         <p:column headerText="Nazwa">
                             <h:outputText value="#{odc.nazwa}" />
+                        </p:column>
+                        <p:column headerText="Status">
+                            <h:outputText value="#{odc.status}" />
+                        </p:column>
+                        <p:column headerText="Właśc.">
+                            <h:outputText value="#{odc.owner.login}" />
+                        </p:column>
+                        <p:column headerText="Zn pocz.">
+                            <h:outputText value="#{odc.znacznikPoczatkowy}" />
                         </p:column>
                         <p:column headerText="A1">
                             <h:outputText value="#{odc.a1}" />
@@ -158,12 +198,13 @@
                 </p:tab>
             </p:tabView>   
             </p:outputPanel>    
-                    
-            <h:commandLink value="close" onclick="close()" />
+                   
+                <h:commandLink rendered="false" value="close" onclick="close();" />
+            
         </p:dialog>
         
+           
         
-        </p:panel>
         </h:form>
         
     </ui:define>

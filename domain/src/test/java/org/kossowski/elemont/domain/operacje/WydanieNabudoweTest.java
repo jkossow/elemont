@@ -6,6 +6,7 @@
 package org.kossowski.elemont.domain.operacje;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import org.kossowski.elemont.domain.IllegalStatusException;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Operacja;
@@ -49,18 +50,18 @@ public class WydanieNabudoweTest {
     @AfterMethod
     public void tearDownMethod() throws Exception {
     }
-    /*
+    
     //normalny cykl operacji
     @Test
     public void wydanieNaBudoweTest() throws Exception {
         KartaMagazynowa k = new KartaMagazynowa();
         
         System.out.println( "Stan poczotkowy " + k.getStanIl() );
-        Operacja o1 = new PrzyjecieZGlownego(new BigDecimal(100 ));
+        Operacja o1 = new PrzyjecieZGlownego( new User(), new Date(), new BigDecimal(100 ));
         k.addOperation(o1);
         o1.accept();
         System.out.println( "Stan po przyjeciu " + k.getStanIl() );
-        Operacja o2 = new WydanieNaBudowe( new User(), new BigDecimal( 100 ));
+        Operacja o2 = new WydanieNaBudowe( new User(), new Date(), new BigDecimal( 100 ), new User() );
         k.addOperation(o2);
         o2.accept();
         System.out.println( "Stan po wydaniu " + k.getStanIl() );
@@ -74,11 +75,11 @@ public class WydanieNabudoweTest {
         KartaMagazynowa k = new KartaMagazynowa();
         
         System.out.println( "Stan poczotkowy " + k.getStanIl() );
-        Operacja o1 = new PrzyjecieZGlownego( new BigDecimal(100 ));
+        Operacja o1 = new PrzyjecieZGlownego( new User(), new Date(), new BigDecimal(100 ));
         k.addOperation(o1);
         o1.accept();
         System.out.println( "Stan po przyjeciu " + k.getStanIl() );
-        Operacja o2 = new WydanieNaBudowe( new User(), new BigDecimal( 50 ));
+        Operacja o2 = new WydanieNaBudowe( new User(), new Date(), new BigDecimal( 50 ), new User() );
         k.addOperation(o2);
         o2.accept();
         System.out.println( "Stan po wydaniu " + k.getStanIl() );
@@ -86,7 +87,7 @@ public class WydanieNabudoweTest {
         assertEquals( k.getStanIl(), new Stan( new int[]{100,50,50,0,0,0,0,50 } ));
         
         //drugie wydanie
-        Operacja o3 = new WydanieNaBudowe( new User(), new BigDecimal( 50 ));
+        Operacja o3 = new WydanieNaBudowe( new User(), new Date(), new BigDecimal( 50 ), new User() );
         k.addOperation(o3);
         o3.accept();
         
@@ -97,7 +98,7 @@ public class WydanieNabudoweTest {
     public void wydanieNaBudoweTest1()  throws IllegalStatusException, Exception {
         KartaMagazynowa k = new KartaMagazynowa();
         
-        Operacja o = new WydanieNaBudowe( new User(), BigDecimal.ONE);
+        Operacja o = new WydanieNaBudowe( new User(), new Date(), BigDecimal.ONE, new User() );
         k.addOperation(o);
         o.accept();
     }
@@ -107,5 +108,5 @@ public class WydanieNabudoweTest {
     //    Operacja o = new WydanieNaBudowe( new User(), BigDecimal.ONE);
     //}
 
-    */
+    
 }

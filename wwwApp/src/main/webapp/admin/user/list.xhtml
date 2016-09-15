@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/adminTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                >
+
+    <ui:define name="menu">
+        <ui:include src="/menu/adminMenu.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+
+  <!--View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
+        <h:form>
+            <p:panel>
+                <p:commandLink value="Nowy użytkownik" action="#{userBean.prepAdd()}" ajax="false"/>
+            </p:panel>
+            <p:spacer height="10"/>
+            <p:panel>
+                <p:dataTable value="#{userBean.findAll}" var="u">
+                    <p:column headerText="Login">
+                        <h:outputText value="#{u.login}" />
+                    </p:column>
+                    <p:column headerText="Nazwisko">
+                        <h:outputText value="#{u.nazwisko}" />
+                    </p:column>
+                    <p:column headerText="Nazwisko">
+                        <h:outputText value="#{u.imie}" />
+                    </p:column>
+                    <p:column headerText="QR Code">
+                        <h:outputText value="#{u.kodQR}" />
+                    </p:column>
+                    <!--
+                    <p:column>
+                        <p:barcode value="#{u.kodQR}" type="qr"/>
+                    </p:column>
+                    -->
+                    <p:column headerText="Uprawnienia">
+                        <h:outputText value="#{u.role}" />
+                    </p:column>
+                    <p:column headerText="Aktywny">
+                        <p:selectBooleanCheckbox value="#{u.aktywny}" style="text-align: center" />
+                    </p:column>
+                    <p:column headerText="Nazwa">
+                        <p:commandLink value="Popraw" action="#{userBean.edit}" ajax="false">
+                            <f:param name="login" value="#{u.login}" />
+                        </p:commandLink>    
+                        &nbsp;
+                        <p:commandLink value="Usuń" />
+                        &nbsp;
+                        <p:commandLink value="Drukuj" action="#{userBean.print}"  ajax="false">
+                            <f:param name="login" value="#{u.login}" />
+                        </p:commandLink>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>    
+    </ui:define>
+
+</ui:composition>

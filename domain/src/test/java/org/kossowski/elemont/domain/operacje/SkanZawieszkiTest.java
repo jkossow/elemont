@@ -7,6 +7,7 @@ package org.kossowski.elemont.domain.operacje;
 
 
 import java.math.BigDecimal;
+import java.util.Date;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.kossowski.elemont.domain.KartaMagazynowa;
@@ -43,13 +44,11 @@ public class SkanZawieszkiTest {
     @AfterClass
     public void tearDown() throws Exception {
     }
-    /*
+    
     @Test
     public void testQRCode1() {
         SkanZawieszki sk = new SkanZawieszki();
-        sk.setQrCode("23432D");
-        System.out.println("testqrCode suffix " + sk.getSuffix() );
-        System.out.println("get qrcodeid " + sk.getIdOdcinka() );
+        sk.setQrCode("2343A1");
         
         assertTrue( sk.testQRCode() );
     }
@@ -57,16 +56,16 @@ public class SkanZawieszkiTest {
     @Test
     public void suffixTest() {
         SkanZawieszki sk = new SkanZawieszki();
-        sk.setQrCode("1111A");
-        System.out.println( sk.getSuffix() );
-        assertEquals( sk.getSuffix(), "A");
+        sk.setQrCode("1111A1");
+       
+        assertEquals( sk.getSuffix(), "A1");
     }
     
     @Test
     public void prefixTest() {
         SkanZawieszki sk = new SkanZawieszki();
-        sk.setQrCode("1234A");
-        System.out.println( sk.getIdOdcinka() );
+        sk.setQrCode("1234A1");
+        
         assertEquals( sk.getIdOdcinka(), new Long(1234) );
     }
     
@@ -74,17 +73,17 @@ public class SkanZawieszkiTest {
     public void skanTest1()  throws Exception {
         System.out.println("Start skanTest1");
         KartaMagazynowa km = new KartaMagazynowa();
-        Operacja o = new PrzyjecieZGlownego( new BigDecimal(100) );
+        Operacja o = new PrzyjecieZGlownego(new User(), new Date(),  new BigDecimal(100) );
         km.addOperation(o);
         o.accept();
-        System.out.println( "il Operacji -> " + km.getOperacje().size()) ;
+     
         
-        o = new WydanieNaBudowe( new User(), new BigDecimal(100));
+        o = new WydanieNaBudowe( new User(), new Date(), new BigDecimal(100), new User() );
         km.addOperation(o);
         o.accept();
-        System.out.println( "il Operacji -> " + km.getOperacje().size()) ;
+     
         
        
     }
-   */
+   
 }

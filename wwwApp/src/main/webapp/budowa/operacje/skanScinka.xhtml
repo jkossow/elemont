@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="/templates/budowaTemplate.xhtml">
+
+            <ui:define name="menu">
+                <ui:include src="/menu/budowaMenu.xhtml" />
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <p:panelGrid columns="2" >
+                        <f:facet name="header">
+                            Skan ścinka
+                        </f:facet>
+                        <h:outputText value="KOd QR2.:" />
+                        <p:inputText value="#{skanScinkaBean.QRCode2}" >
+                            <p:ajax event="keyup" listener="#{skanScinkaBean.onQR2CodeComplete()}" 
+                                    update="spodzScA1,spodzScB1,material" partialSubmit="yes" />
+
+                        </p:inputText>
+                        <h:outputText value="Znacznik:" />
+                        <p:inputText value="#{skanScinkaBean.znacznik}"/>
+
+                        <p:commandButton value="Ok" ajax="false" action="#{skanScinkaBean.perform()}"/>
+                    </p:panelGrid>
+                    <p/>
+                    <p:panelGrid >
+                        <f:facet name="header">
+                            <p:row>
+                                <p:column colspan="2">
+                                    <h:outputText value="Spodziewane długości ścinek" />
+                                </p:column>
+                            </p:row>
+                        </f:facet>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Ścinek A1"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText id="spodzScA1" value="#{skanScinkaBean.spodzScA1}" />
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <h:outputText value="Ścinek B1"/>
+                            </p:column>
+                            <p:column>
+                                <h:outputText id="spodzScB1" value="#{skanScinkaBean.spodzScB1}" />
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="2">
+                                <h:outputText id="material" value="#{skanScinkaBean.nazwaMaterialu}" />
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <p:growl />
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

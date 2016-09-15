@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/adminTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="menu">
+        <ui:include src="/menu/adminMenu.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+        <!--iew id &nbsp; <h:outputText value="#{view.viewId}" /> -->
+        <p:growl />
+
+        <h:form>
+            <p:panel>
+                <h:commandLink value="Nowy producent/dostawca" action="#{producentBean.prepAdd()}" />
+            </p:panel>
+            <p:spacer height="10"/>
+            <p:dataTable value="#{producentBean.findAll}" var="p" scrollable="true" scrollHeight="500">
+                <p:column headerText="Symbol" footerText="">
+                    <h:outputText value="#{p.symbol}" />
+                </p:column>
+                <p:column headerText="Nazwa">
+                    <h:outputText value="#{p.nazwa}" />
+                </p:column>
+
+                <p:column headerText="Nazwa">
+                    <p:commandLink value="Popraw" action="#{producentBean.prepEdit()}">
+                        <f:param name="id" value="#{p.id}" />
+                    </p:commandLink>
+                    &nbsp;
+                    <p:commandLink value="Usuń" action="#{producentBean.list()}" immediate="true"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

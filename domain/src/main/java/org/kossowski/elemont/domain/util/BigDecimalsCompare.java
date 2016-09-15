@@ -23,6 +23,9 @@ public class BigDecimalsCompare {
         
         System.out.println(b1.longValue()==b2.longValue());
         
+        BigDecimal a1 = new BigDecimal( 5 );
+        BigDecimal a2 = new BigDecimal( 2 );
+        System.out.println( a1 == null || a2 == null || a1.compareTo(a2) < 0 );
         
         
     }

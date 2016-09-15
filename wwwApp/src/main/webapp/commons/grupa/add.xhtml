@@ -10,24 +10,22 @@
 
         <ui:composition template="./../../mainTemplate.xhtml">
             <ui:define name="content" >
-            View id &nbsp; <h:outputText value="#{view.viewId}" />
+            <!-- View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
             <h:form>
-                
+                <p:growl />
                 <p:panelGrid columns="2" >
-                    <h:outputText value="Login" />
-                    <p:inputText value="#{userBean.user.login}" />
-                    <h:outputText value="Nazwisko" />
-                    <p:inputText value="#{userBean.user.nazwisko}" />
-                    <h:outputText value="Imię" />
-                    <p:inputText value="#{userBean.user.imie}" />
-                    <h:outputText value="Hasło" />
-                    <p:inputText value="#{userBean.user.password}" />
-                    <h:outputText value="Aktywny:" />
-                    <p:selectBooleanCheckbox value="#{userBean.user.aktywny}" />
-                    <h:outputText value="Kod QR:" />
-                    <p:inputText value="#{userBean.user.kodQR}" />
-                    <p:commandButton value="Zapisz" action="#{userBean.save}" ajax="false"/>
-                    <p:commandButton value="Cancel" action="list.xhtml" ajax="false"/>
+                    <f:facet name="header">
+                      Nowa grupa materiałowa  
+                    </f:facet>
+                    <h:outputText value="Symbol:" />
+                    <p:inputText value="#{grupaBean.grupa.symbol}"  required="true" requiredMessage="symbol - musisz wprowadzić"/>
+                    <h:outputText value="Nazwa:" />
+                    <p:inputText value="#{grupaBean.grupa.nazwa}"  required="true" requiredMessage="nazwa - musisz wprowadzić"/>
+                   
+                    <f:facet name="footer">
+                        <p:commandButton value="Zapisz" action="#{grupaBean.save}" ajax="false"/>
+                        <p:commandButton value="Cancel" action="list.xhtml" ajax="false" immediate="true"/>
+                    </f:facet>
                 </p:panelGrid>
             </h:form>
             </ui:define>

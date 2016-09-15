@@ -6,6 +6,7 @@
 package org.kossowski.elemont.domain.util;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Material;
 import org.kossowski.elemont.domain.Odcinek;
@@ -60,7 +61,7 @@ public class Rozliczenie1 {
         
         
         k.getProjekt().getZespol().add(u);
-        WydanieNaBudowe wyd = new WydanieNaBudowe( new BigDecimal(100), u );
+        WydanieNaBudowe wyd = new WydanieNaBudowe( u, new Date(), new BigDecimal(100), u );
         k.addOperation(( wyd));
         
         try {
@@ -71,7 +72,7 @@ public class Rozliczenie1 {
         
         for( int i = 0; i < 4; i++ ) {
             Odcinek o = bo.nowyOdcinek();
-            NowyOdcinek no = new NowyOdcinek( o, u );
+            NowyOdcinek no = new NowyOdcinek( u, new Date(), o, new BigDecimal("100"), u );
             k.addOcinek(o);
             k.addOperation(no);
             
@@ -116,7 +117,8 @@ public class Rozliczenie1 {
         rejSkanScinka(k, "4A1", 1); printState(k);
         rejSkanScinka(k, "4B1", 2); printState(k);
         
-        Zwrot z = new Zwrot(  new BigDecimal(5), u);
+        Zwrot z = new Zwrot( u, new Date(), new BigDecimal(5), new BigDecimal(5),
+                null, false, u);
         k.addOperation(z);
         try {
             z.accept();
@@ -147,7 +149,7 @@ public class Rozliczenie1 {
         
         User u = new User("jkossow","kossowski", "janusz");
         
-        SkanZawieszki o = new SkanZawieszki( skan, new BigDecimal( znacznik ), u);
+        SkanZawieszki o = new SkanZawieszki( u, new Date(), skan, new BigDecimal( znacznik ) );
         System.out.println( o.opis() );
         k.addOperation( o );
         try {
@@ -160,7 +162,7 @@ public class Rozliczenie1 {
         
         User u = new User("jkossow","kossowski", "janusz");
         
-        SkanScinka o = new SkanScinka( skan, new BigDecimal( znacznik ), u);
+        SkanScinka o = new SkanScinka( u, new Date(), skan, new BigDecimal( znacznik ) );
         System.out.println( o.opis() );
         k.addOperation( o );
         try {

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/adminTemplate.xhtml"
+
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                >
+
+    <ui:define name="menu">
+        <ui:include src="/menu/adminMenu.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <!--
+            <p:panel>
+                View id &nbsp; <h:outputText value="#{view.viewId}" />
+            </p:panel>
+            -->
+            <p:panel>
+                <p:growl />
+                <h:inputHidden value="#{projektBean.projekt.id}" />
+                <p:panelGrid columns="2">
+                    <h:outputText value ="Symbol:" />
+                    <p:inputText value="#{projektBean.projekt.symbol}"  required="true" requiredMessage="symbol - musisz wprowadzić" />
+                    <h:outputLabel value="Nazwa:" />
+                    <p:inputText value="#{projektBean.projekt.nazwa}" required="true" requiredMessage="nazwa - musisz wprowadzić" />
+                </p:panelGrid>
+
+                <p:pickList  value="#{projektBean.pickData}" var="u" itemLabel="#{u}" itemValue="#{u}">
+                    <f:converter binding="#{userConverter}" />
+                    <f:facet name="sourceCaption">Dostępni</f:facet>
+                    <f:facet name="targetCaption">Przydzieleni</f:facet>
+                    <p:column>
+                        <h:outputText value="#{u.nazwisko}" />
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{u.imie}" />
+                    </p:column>
+                </p:pickList>
+
+                <p:panelGrid columns="2">
+                    <p:commandButton partialSubmit="false" value="Zapisz" action="#{projektBean.save}" ajax="false"/>
+                    <p:commandButton value="Cancel" action="list.xhtml" ajax="false" immediate="true"/>
+                </p:panelGrid>
+
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

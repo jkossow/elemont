@@ -1,55 +1,28 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      >
-<f:view>
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <h:form>
-            <p:commandButton action="#{newClass.deleteAllMaterials()}" value="" icon="ui-icon-trash"/>
-            <p:commandButton action="#{newClass.createKartaMaag()}" value="Karta Mag" update="dataTable"/>
-            <p:commandLink value="Kasuj" />
-            <p:commandLink id="ddd" styleClass="ui-icon ui-icon-trash myIconsSize" />
-            <p:inputText  value="#{newClass.name}" />
-            <p:dataTable id="dataTable" value="#{newClass.kartaMagazynowa}" var="k" liveResize="true" resizableColumns="true"
-                         >
-                <p:column headerText="Year">
-                    <h:outputText value="#{k.id}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{k.stanIl}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{k.stanIl.stan[0]}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{k.stanIl.stan[1]}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{k.stanIl.stan[2]}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{k.stanIl.stan[3]}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{k.stanIl.stan[4]}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{k.stanIl.stan[5]}" />
-                </p:column>
-                <p:column headerText="Year">
-                    <h:outputText value="#{k.stanIl.stan[6]}" />
-                </p:column>
-                
-            </p:dataTable>
-        </h:form>
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h1>Aplikacja</h1>
         
-    </h:body>
-</f:view>
+        <a href="faces/index.xhtml">Strona próbna</a><br/>
+        <a href="faces/sandbox/index.xhtml">SandBox</a>
+        <br/>
+        <h2>Linki do aplikacji:</h2>
+        <br/>
+        <h:link outcome="/magazyn/index.xhtml">Magazyn</h:link><br/>
+        <h:link outcome="/budowa/index.xhtml">Budowa</h:link><br/>
+        <h:link outcome="/admin/index.xhtml">Admin/Szef</h:link><br/>
+        <br/>
+        <h:link outcome="/serwis/index.xhtml">Wpisanie lub kasowanie danych przykładowych</h:link>
+    </body>
 </html>
-

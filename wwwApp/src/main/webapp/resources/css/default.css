@@ -6,6 +6,10 @@ body {
     margin: 10px;
 }
 
+table {
+    font-size: 12px;
+}
+
 h1 {
     font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
     border-bottom: 1px solid #AFAFAF; 

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="/templates/adminTemplate.xhtml">
+
+            <ui:define name="menu">
+                <ui:include src="/menu/adminMenu.xhtml" />
+            </ui:define>
+
+            <ui:define name="content" >
+            <!-- View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
+                <h:form>
+                    <!-- <h:inputHidden value="#{producentBean.producent.id}" /> -->
+                    <p:growl />
+                    <f:facet name="header">
+                        Nowa producent/dostawca
+                    </f:facet>
+                    <p:panelGrid columns="2" >
+                        <f:facet name="header">
+                            Nowa jednostka miary
+                        </f:facet>
+                        <h:outputText value="Symbol:" />
+                        <p:inputText value="#{producentBean.producent.symbol}" required="true" requiredMessage="Symbol - pole wymagane"/>
+                        <h:outputText value="Nazwa:" />
+                        <p:inputText value="#{producentBean.producent.nazwa}"  required="true" requiredMessage="Nazwa - pole wymagane"/>
+
+                        <f:facet name="footer">
+                            <p:commandButton value="Zapisz" action="#{producentBean.save}" ajax="false"/>
+                            <p:commandButton value="Cancel" action="list.xhtml" ajax="false" immediate="true"/>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+
+
+    </body>
+</html>

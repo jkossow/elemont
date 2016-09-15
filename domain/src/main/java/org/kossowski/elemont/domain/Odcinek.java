@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -20,7 +21,7 @@ import javax.persistence.ManyToOne;
  */
 
 @Entity
-public class Odcinek implements Serializable  {
+public class Odcinek implements Serializable, Cloneable {
     
     //public static final BigDecimal NOT_SET = new BigDecimal( -1);
             
@@ -29,6 +30,8 @@ public class Odcinek implements Serializable  {
     private Long id;
     
     private String nazwa;
+    
+    private String kks;
     
     @ManyToOne
     @JoinColumn( name = "kartaMag_id")
@@ -51,12 +54,30 @@ public class Odcinek implements Serializable  {
     private Status status = Status.S0 ;
     private boolean  uzyty = false;
     
-
+    private BigDecimal znacznikPoczatkowy;
+    
+    @ManyToOne
+    @JoinColumn( foreignKey = @ForeignKey(name = "owner_fk"))
+    private User owner;
+    
     //KartaMagazynowa kartaMag;
     
     public Odcinek(){};
     
+    public Odcinek( BigDecimal A1, BigDecimal A2, BigDecimal B2, BigDecimal B1 ) {
+        this.A1 = A1;
+        this.A2 = A2;
+        this.B1 = B1;
+        this.B2 = B2;
+    }
     
+    
+    public Odcinek( Integer A1, Integer A2, Integer B2, Integer B1 ) {
+        this.A1 = A1 != null ? new BigDecimal( A1 ) : null;
+        this.A2 = A2 != null ? new BigDecimal( A2 ) : null;
+        this.B2 = B2 != null ? new BigDecimal( B2 ) : null;
+        this.B1 = B1 != null ? new BigDecimal( B1 ) : null;
+    }
     
         
     private void updateUsed() {
@@ -113,6 +134,14 @@ public class Odcinek implements Serializable  {
         return getB1().subtract( getB2() ).abs();
     }
     
+    
+    public BigDecimal sumaScinek() {
+        BigDecimal suma = null;
+        
+        suma = scinekA1 != null ? scinekA1.add( suma ) : suma ; 
+        suma = scinekB1 != null ? scinekB1.add( suma ) : suma ; 
+        return suma;
+    }
     
     public Long getId() {
         return id;
@@ -228,12 +257,39 @@ public class Odcinek implements Serializable  {
         this.nazwa = nazwa;
     }
 
+    public BigDecimal getZnacznikPoczatkowy() {
+        return znacznikPoczatkowy;
+    }
+
+    public void setZnacznikPoczatkowy(BigDecimal znacznikPoczatkowy) {
+        this.znacznikPoczatkowy = znacznikPoczatkowy;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    
     
     @Override
     public int hashCode() {
         int hash = 5;
         return hash;
     }
+
+    public String getKks() {
+        return kks;
+    }
+
+    public void setKks(String kks) {
+        this.kks = kks;
+    }
+    
+    
 
     @Override
     public boolean equals(Object obj) {
@@ -258,7 +314,13 @@ public class Odcinek implements Serializable  {
         return "Odcinek{" + "id=" + id + ", nazwa=" + nazwa + ", A1=" + A1 + ", B1=" + B1 + ", A2=" + A2 + ", B2=" + B2 + ", ulozone=" + ulozone + ", podlaczone=" + podlaczone + ", scinkiSpodziewane=" + scinkiSpodziewane + ", scinekA1=" + scinekA1 + ", scinekB1=" + scinekB1 + ", status=" + status + ", uzyty=" + uzyty + '}';
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
+    
 
     
 

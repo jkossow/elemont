@@ -48,18 +48,18 @@ public class PrzyjecieZGlownego extends Operacja {
     String miejsceSkladowania;
     
     private BigDecimal ilosc;
-    private BigDecimal znacznikPocz;
-    private BigDecimal znacznikKonc;
-    private Boolean znacznikKoncaDostepny;
+    private BigDecimal znacznikPoczatkowy;
+    private BigDecimal znacznikKoncowy;
+    private Boolean znacznikKoncowyDostepny = false; // bo przewazie nie jest dostepny
     private Boolean znacznikiRosnaco = true;
     
     public PrzyjecieZGlownego() {};
     
     public PrzyjecieZGlownego( User utworzyl, Date czasUtworzenia, BigDecimal ilosc ) {
         
+        super(utworzyl, czasUtworzenia);
         this.ilosc = ilosc;
-        setUtworzyl(utworzyl);
-        setCzasUtworzenia(czasUtworzenia);
+        
     }
 
     @Override
@@ -85,14 +85,15 @@ public class PrzyjecieZGlownego extends Operacja {
         getKartaMagazynowa().setDostawca( this.dostawca );
         getKartaMagazynowa().setMiejsceSkladowania( this.miejsceSkladowania );
         getKartaMagazynowa().setUtworzyl( this.getUtworzyl() );
+        getKartaMagazynowa().setZnacznikBiezacy( znacznikPoczatkowy );
         
         //korekta pola znacznik koncowy
-        if( ! this.znacznikKoncaDostepny )
-            setZnacznikKonc( null );
+        if( ! this.znacznikKoncowyDostepny )
+            setZnacznikKoncowy( null );
         
-        getKartaMagazynowa().setZnacznikPoczatkowy( this.znacznikPocz );
-        getKartaMagazynowa().setZnacznikKoncowy( this.znacznikKonc );
-        getKartaMagazynowa().setZnacznikKoncowyDostepny( this.znacznikKoncaDostepny );
+        getKartaMagazynowa().setZnacznikPoczatkowy(this.znacznikPoczatkowy );
+        getKartaMagazynowa().setZnacznikKoncowy(this.znacznikKoncowy );
+        getKartaMagazynowa().setZnacznikKoncowyDostepny(this.znacznikKoncowyDostepny );
         getKartaMagazynowa().setZnacznikiNarastajaco( this.znacznikiRosnaco );
         
         //zmiana statusu
@@ -158,28 +159,28 @@ public class PrzyjecieZGlownego extends Operacja {
         this.miejsceSkladowania = miejsceSkladowania;
     }
 
-    public BigDecimal getZnacznikPocz() {
-        return znacznikPocz;
+    public BigDecimal getZnacznikPoczatkowy() {
+        return znacznikPoczatkowy;
     }
 
-    public void setZnacznikPocz(BigDecimal znacznikPocz) {
-        this.znacznikPocz = znacznikPocz;
+    public void setZnacznikPoczatkowy(BigDecimal znacznikPoczatkowy) {
+        this.znacznikPoczatkowy = znacznikPoczatkowy;
     }
 
-    public BigDecimal getZnacznikKonc() {
-        return znacznikKonc;
+    public BigDecimal getZnacznikKoncowy() {
+        return znacznikKoncowy;
     }
 
-    public void setZnacznikKonc(BigDecimal znacznikKonc) {
-        this.znacznikKonc = znacznikKonc;
+    public void setZnacznikKoncowy(BigDecimal znacznikKoncowy) {
+        this.znacznikKoncowy = znacznikKoncowy;
     }
 
-    public Boolean getZnacznikKoncaDostepny() {
-        return znacznikKoncaDostepny;
+    public Boolean getZnacznikKoncowyDostepny() {
+        return znacznikKoncowyDostepny;
     }
 
-    public void setZnacznikKoncaDostepny(Boolean znacznikKoncaDostepny) {
-        this.znacznikKoncaDostepny = znacznikKoncaDostepny;
+    public void setZnacznikKoncowyDostepny(Boolean znacznikKoncowyDostepny) {
+        this.znacznikKoncowyDostepny = znacznikKoncowyDostepny;
     }
 
     public Boolean getZnacznikiRosnaco() {

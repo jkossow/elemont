@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/adminTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                >
+
+    <ui:define name="menu">
+        <ui:include src="/menu/adminMenu.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+
+        <!-- View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
+        <h:form>
+            <p:panel>
+                <p:commandLink value="Nowy projekt" action="#{projektBean.prepAdd}" ajax="false" />
+            </p:panel>
+            <p:spacer height="10"/>
+            <p:panel>
+                <p:dataTable value="#{projektBean.findAll}" var="p" scrollable="true" scrollHeight="490">
+                    <p:column headerText="Numer umowy" footerText="&nbsp;">
+                        <h:outputText value="#{p.symbol}" />
+                    </p:column>
+                    <p:column headerText="Nazwa">
+                        <h:outputText value="#{p.nazwa}" />
+                    </p:column>
+                    <p:column headerText="Nazwa">
+                        <p:commandLink value="Popraw" ajax="false" action="#{projektBean.prepEdit}">
+                            <f:param name="id" value="#{p.id}" />
+                        </p:commandLink>    
+                        &nbsp;
+                        <p:commandLink value="Usuń" action="#{projektBean.delete}" ajax="false">
+                            <f:param name="id" value="#{p.id}" />
+                        </p:commandLink>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>    
+    </ui:define>
+
+</ui:composition>

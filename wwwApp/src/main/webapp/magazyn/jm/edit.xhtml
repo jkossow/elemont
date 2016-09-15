@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      mlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="/templates/mainTemplate.xhtml">
+
+            <ui:define name="menu">
+                <ui:include src="/menu/mainMenu.xhtml" />
+            </ui:define>
+
+            <ui:define name="content" >
+            <!-- View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
+                <h:form>
+                    <!--<h:inputHidden value="#{grupaBean.grupa.id}" /> -->
+                    <p:growl />
+                    <p:panelGrid columns="2" >
+                        <f:facet name="header">
+                            Edycja jednostki miary
+                        </f:facet>
+                        <h:outputText value="Symbol:" />
+                        <p:inputText value="#{jmBean.jm.symbol}"  required="true" requiredMessage="symbol - musisz wprowadzić"/>
+                        <h:outputText value="Nazwa:" />
+                        <p:inputText value="#{jmBean.jm.nazwa}"  required="true" requiredMessage="nazwa - musisz wprowadzić"/>
+
+                        <f:facet name="footer">
+                            <p:commandButton value="Zapisz" action="#{jmBean.save}" ajax="false"/>
+                            <p:commandButton value="Cancel" action="list.xhtml" ajax="false" immediate="true"/>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+
+
+    </body>
+</html>

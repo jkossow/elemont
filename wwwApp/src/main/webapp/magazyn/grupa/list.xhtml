@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/mainTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                >
+
+    <ui:define name="menu">
+        <ui:include src="/menu/mainMenu.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+
+  <!--View id &nbsp; <h:outputText value="#{view.viewId}" />-->
+        <h:form>
+            <p:panel>    
+                <h:commandLink value="Nowa grupa" action="#{grupaBean.prepAdd()}" />    
+            </p:panel>
+            <p:spacer height="10"/>
+            <p:dataTable value="#{grupaBean.findAll}" var="grupa">
+                <p:column headerText="Symbol">
+                    <h:outputText value="#{grupa.symbol}" />
+                </p:column>
+                <p:column headerText="Nazwa">
+                    <h:outputText value="#{grupa.nazwa}" />
+                </p:column>
+                <p:column headerText="Nazwa">
+                    <p:commandLink value="Popraw" action="#{grupaBean.prepEdit()}">
+                        <f:param name="id" value="#{grupa.id}" />
+                    </p:commandLink> 
+                    <p:spacer width="10"/>
+                    <p:commandLink value="Usuń" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

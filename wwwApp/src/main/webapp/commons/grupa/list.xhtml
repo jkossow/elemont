@@ -9,8 +9,11 @@
 
     <ui:define name="content">
       
-        View id &nbsp; <h:outputText value="#{view.viewId}" />
+        <!--View id &nbsp; <h:outputText value="#{view.viewId}" />-->
         <h:form>
+            
+        <h:commandLink value="Nowa grupa" action="#{grupaBean.prepAdd()}" />    
+        <p:spacer height="10"/>
         <p:dataTable value="#{grupaBean.findAll}" var="grupa">
             <p:column headerText="Symbol">
                 <h:outputText value="#{grupa.symbol}" />
@@ -19,7 +22,10 @@
                 <h:outputText value="#{grupa.nazwa}" />
             </p:column>
             <p:column headerText="Nazwa">
-                <h:commandLink value="Popraw" />&nbsp;
+                <p:commandLink value="Popraw" action="#{grupaBean.prepEdit()}">
+                    <f:param name="id" value="#{grupa.id}" />
+                </p:commandLink> 
+                <p:spacer width="10"/>
                 <h:commandLink value="Usuń" />
             </p:column>
         </p:dataTable>

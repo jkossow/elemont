@@ -2,23 +2,19 @@ package org.kossowski.elemont.web.operacje;
 
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.GregorianCalendar;
 import java.util.Map;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Operacja;
-import org.kossowski.elemont.domain.Status;
 import org.kossowski.elemont.domain.User;
 import org.kossowski.elemont.domain.operacje.WydanieNaBudowe;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.OperacjaRepository;
-import org.kossowski.elemont.repositories.UserRepository;
 import org.kossowski.elemont.security.SecurityController;
 import org.kossowski.elemont.utils.JSFUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 /*
@@ -50,9 +46,10 @@ public class PrzekazNaBudowe {
     
     protected KartaMagazynowa km;
     protected Long id; //id karty magazynowej
-    protected User user;
+    protected User user; //owner
     protected BigDecimal ilosc;
     
+    /*
     public String prePrzekaz1() {
         
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -65,6 +62,7 @@ public class PrzekazNaBudowe {
                 
         return "/commons/operacje/przekNaBud.xhtml";
     }
+    */
     
     public String przekaz1() {
         
@@ -81,12 +79,14 @@ public class PrzekazNaBudowe {
         KartaMagazynowa km = kmRepo.findOne(id);
         //wydanie.setKartaMagazynowa( km );
         
-        Operacja o = new WydanieNaBudowe( getIlosc(), getUser() ) ;
+        Operacja o = new WydanieNaBudowe( 
+                securityController.getUser(), 
+                GregorianCalendar.getInstance().getTime(),
+                getIlosc(),
+                getUser() );
+        
         o = opRepo.save(o);
         km.addOperation(o);
-        
-        
-        //o.setKartaMagazynowa(km);
         
         try {
             o.accept();
@@ -124,7 +124,9 @@ public class PrzekazNaBudowe {
         }
         
         
-        Operacja o = new WydanieNaBudowe( getIlosc(), getUser() );
+        Operacja o = new WydanieNaBudowe( securityController.getUser(), 
+                GregorianCalendar.getInstance().getTime(),
+                getIlosc(), getUser() );
         o = opRepo.save(o);
         km.addOperation(o);
         o.setKartaMagazynowa(km);
@@ -146,11 +148,12 @@ public class PrzekazNaBudowe {
     }
     
     
+    /*
     public String przekazAll() {
         
         return null;
         
-        /*
+        
         Status s = Status.S1;  
         List<KartaMagazynowa> ls = kmRepo.findAllByStatus( s );
         
@@ -165,9 +168,9 @@ public class PrzekazNaBudowe {
             } catch ( Exception e ) { e.printStackTrace(); }
         }
         return "";
-        */
+        
     }
-
+    */
     public Long getId() {
         return id;
     }

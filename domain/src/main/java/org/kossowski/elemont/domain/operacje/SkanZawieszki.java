@@ -6,6 +6,7 @@
 package org.kossowski.elemont.domain.operacje;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ import org.kossowski.elemont.domain.Operacja;
 import org.kossowski.elemont.domain.Stan;
 import org.kossowski.elemont.domain.Status;
 import org.kossowski.elemont.domain.User;
+import org.kossowski.elemont.domain.validators.SkanZawieszkiValidator;
 
 /**
  *
@@ -45,7 +47,9 @@ public class SkanZawieszki  extends Operacja{
     public SkanZawieszki() {};
     
     //mozna jeszcze dodac info o czytniku
-    public SkanZawieszki( String qrCode, BigDecimal znacznik, User user ) {
+    public SkanZawieszki( User utworzyl, Date czasUtworzenia, String qrCode, BigDecimal znacznik  ) {
+        
+        super(utworzyl, czasUtworzenia);
         
         this.qrCode = qrCode;
         this.znacznik = znacznik;
@@ -53,7 +57,7 @@ public class SkanZawieszki  extends Operacja{
         suffix = getSuffix();
         prefix = getIdOdcinka();
         
-        setUtworzyl(user );
+        
     }
     
     public Long getIdOdcinka() {
@@ -121,10 +125,10 @@ public class SkanZawieszki  extends Operacja{
     }
     
     private void dodajPodlaczenieDrugiegoKonca( Odcinek o ) throws  Exception {
-        System.out.println("Podłczono drugi koniec " + o.getId());
+        System.out.println("Podłączono drugi koniec " + o.getId());
         
         if( o.getStatus() !=Status.S5   )
-            throw new Exception("zła faza");
+            throw new Exception("niepoprawny status odcinka");
         
         BigDecimal podlaczono =  o.getA2().subtract(o.getB2()).abs();
         o.setPodlaczone( podlaczono );
@@ -153,23 +157,30 @@ public class SkanZawieszki  extends Operacja{
         
         // A i B tylko przy S3
         if( (getSuffix().equals("A1") || getSuffix().equals("B1")) &&  o.getStatus() !=Status.S3   )
-            throw new Exception("zła faza");
+            throw new Exception("niepoprawny status odcinka");
         
         // C i D tylko przy S4
         if( (getSuffix().equals("A2") || getSuffix().equals("B2")) && !( o.getStatus() == Status.S4 || o.getStatus() ==Status.S5 ) )
-            throw new Exception("zła faza");
+            throw new Exception("niepoprany status odcinka");
         
         //sprawdz czy juz byl skanowany
         System.out.println( "Zancznik n " + getSuffix() + " " + o.getN( getSuffix() ) );
         if( o.getN( getSuffix()) != null )
             throw new Exception("juz przypisany");
+       
+        Odcinek o1 = (Odcinek) o.clone();
         
-        
+        o1.setN( getSuffix(), znacznik);
+        SkanZawieszkiValidator v = SkanZawieszkiValidator.getInstance( getKartaMagazynowa().getZnacznikiNarastajaco());
+        if ( ! v.dobraSekwencja(o1) )
+            throw new Exception("Niepoprawna wartość znacznika");
+       
         o.setN( getSuffix(), znacznik);
         
-     
+        
         
         //akceptacja
+        getKartaMagazynowa().ustawZnacznikBiezacy(znacznik);
         setAcceptFlag();
         
         //sprawdz czy mozna dodac ulozenie

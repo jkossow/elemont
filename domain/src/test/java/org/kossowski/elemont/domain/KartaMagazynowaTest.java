@@ -85,22 +85,5 @@ public class KartaMagazynowaTest {
         assertEquals( k.getStanIl(), s );
     }
      
-     @Test
-     public void odcinkiTest() {
-         KartaMagazynowa k = new KartaMagazynowa();
-         
-        // k.getOdcinki().add( new Odcinek("1111A"));
-        // k.getOdcinki().add( new Odcinek("1112B"));
-        // k.getOdcinki().add( new Odcinek("1113C"));
-        // k.getOdcinki().add( new Odcinek("1114D"));
-         
-        // assertTrue(k.getOdcinki().contains( new Odcinek("1111B")) );
-        // assertTrue(k.getOdcinki().contains( new Odcinek("1112D")) );
-        // assertTrue(k.getOdcinki().contains( new Odcinek("1113A")) );
-        // assertTrue(k.getOdcinki().contains( new Odcinek("1114A")) );
-         
-         //assertFalse(k.getOdcinki().contains("1115") );
-         
-         
-     }
+    
 }

@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -45,7 +46,9 @@ import org.kossowski.elemont.repositories.ProducentRepository;
 import org.kossowski.elemont.repositories.ProjektRepository;
 import org.kossowski.elemont.repositories.UmowaRepository;
 import org.kossowski.elemont.security.SecurityController;
+import org.kossowski.elemont.utils.Printer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -80,14 +83,21 @@ public class KartaIPrzyjecieBean implements Serializable {
     @Autowired
     protected SecurityController securityController;
     
+    @Autowired
+    protected Printer printer;
+    
     //KartaMagazynowa km = new KartaMagazynowa();
     protected PrzyjecieZGlownego przyjecie = new PrzyjecieZGlownego();
      
-    private BigDecimal ilosc;
+    //private BigDecimal ilosc;
     
     private Long id;
     
-    private String znacznikiMessage;
+    //private String znacznikiMessage;
+    
+    
+    
+            
     
     public KartaIPrzyjecieBean() {
         Logger.getAnonymousLogger().log( Level.INFO, "Konstruktor PrzyjecieBean");
@@ -138,28 +148,7 @@ public class KartaIPrzyjecieBean implements Serializable {
          System.out.println("przełączono");
      } 
      
-    public void sprawdIloscIZnacznikiListener() {
-        
-        UIViewRoot rootView = FacesContext.getCurrentInstance().getViewRoot();
-        
-        
-        
-        UIComponent iloscUIComponent = rootView.findComponent("add_karta_i_przyjecie:ilosc");
-        UIComponent poczUIComponent = rootView.findComponent("pocz");
-        UIComponent koniecUIComponent = rootView.findComponent("koniec");
-       
-        ELContext elc = FacesContext.getCurrentInstance().getELContext();
-        
-        String s1 = (String)iloscUIComponent.getValueExpression("value").getValue(elc);
-        String s2 = poczUIComponent.getValueExpression("value").getExpressionString();
-        String s3 = koniecUIComponent.getValueExpression("value").getExpressionString();
-        
-        String s = s1 + " " + s2 + " " + s3 + "koniec";
-        setZnacznikiMessage( s );
-        
-        System.out.println("koniec listenera");
-        
-    }
+    
     
     public String save() {
         //System.out.println("początek metody save PrzujeciaIKartaBean");
@@ -196,14 +185,6 @@ public class KartaIPrzyjecieBean implements Serializable {
     
     
 
-      public BigDecimal getIlosc() {
-        return ilosc;
-    }
-
-    public void setIlosc(BigDecimal ilosc) {
-        this.ilosc = ilosc;
-    }
-
     public PrzyjecieZGlownego getPrzyjecie() {
         return przyjecie;
     }
@@ -221,6 +202,12 @@ public class KartaIPrzyjecieBean implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Value("${print.filePath}")
+    public String filePath;
+    
+    @Value("${print.printString}") 
+    public String printString;
     
     
     public void print( KartaMagazynowa km ) {
@@ -232,7 +219,7 @@ public class KartaIPrzyjecieBean implements Serializable {
         try {
             //File file = File.createTempFile("zpl", ".zpl");
             
-            File file = new File("/tmp/plikjk");
+            File file = new File( filePath  + "/plikjk");
             
             FileOutputStream fout = new FileOutputStream(file);
             fout.write( et.printerString().getBytes());
@@ -241,7 +228,9 @@ public class KartaIPrzyjecieBean implements Serializable {
             
             //java.lang.Runtime.getRuntime().exec("lp -d cab_EOS1_300 /Users/jkossow/Downloads/qr1.zpl");
             //String s = "lp -d cab_EOS1_300 \"" + file.getCanonicalPath() +"\"";
-            String s = "lp -d cab_EOS1_300 /tmp/plikjk";
+            //String s = "lp -d cab_EOS1_300 /tmp/plikjk";
+            //String s = "lp -d kuba /tmp/plikjk";
+            String s = printString + " " + filePath + "plikjk";
             System.out.println( s );
             java.lang.Runtime.getRuntime().exec( s );
             
@@ -252,15 +241,5 @@ public class KartaIPrzyjecieBean implements Serializable {
         }
     
     }
-
-    public String getZnacznikiMessage() {
-        return znacznikiMessage;
-    }
-
-    public void setZnacznikiMessage(String znacznikiMessage) {
-        this.znacznikiMessage = znacznikiMessage;
-    }
-   
-    
     
 }

@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/templates/budowaTemplate.xhtml">
+
+    <ui:define name="menu">
+        <ui:include src="/menu/budowaMenu.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form   id="formDetail">
+        <!-- <p:outputPanel id="opDlg" > -->
+        <!--
+        <h:inputHidden id="kartaId" value="#{kartaMagazynowaBean.detailed}" 
+                       />
+        -->
+        <p:tabView style="display: inline-block; width: 100%"
+                   dynamic="false">
+
+            <p:tab title="Szegóły" >
+                <p:panelGrid columns="2">
+                    <h:outputText value="Znacznik początkowy:"/>
+                    <h:outputText value="#{kartaMagazynowaBean.detailed.znacznikPoczatkowy}" />
+                    <h:outputText value="Znacznik bieżący:"/>
+                    <h:outputText value="#{kartaMagazynowaBean.detailed.znacznikBiezacy}"/> 
+                    <h:outputText value="Znacznik końcowy:"/>
+                    <h:outputText value="#{kartaMagazynowaBean.detailed.znacznikKoncowy}" />
+                    <h:outputText value="Znaczniki rosnąco:"/>
+                    <p:selectBooleanCheckbox   value="#{kartaMagazynowaBean.detailed.znacznikiNarastajaco}" disabled="true"/>
+                    
+                </p:panelGrid>
+            </p:tab>
+            <p:tab title="Stany">
+                <p:panelGrid columns="3">
+                    <h:outputText value="S0" />
+                    <h:outputText value="ilość przyjęta"/>
+                    <h:outputText value="#{kartaMagazynowaBean.detailed.stanIl.stan[0]}" />
+                    <h:outputText value="S1" />
+                    <h:outputText value="ilość w magazynie głównym"/>
+                    <h:outputText value="#{kartaMagazynowaBean.detailed.stanIl.stan[1]}" />
+                    <h:outputText value="S2" />
+                    <h:outputText value="ilość wydana na budowę"/>
+                    <h:outputText value="#{kartaMagazynowaBean.detailed.stanIl.stan[2]}" />
+                    <h:outputText value="S3" />
+                    <h:outputText value="ilość położona"/>
+                    <h:outputText value="#{kartaMagazynowaBean.detailed.stanIl.stan[3]}" />
+                    <h:outputText value="S4" />
+                    <h:outputText value="ilość podłaczona"/>
+                    <h:outputText value="#{kartaMagazynowaBean.detailed.stanIl.stan[4]}" />
+                    <h:outputText value="S5" />
+                    <h:outputText value="ilość ścinków"/>
+                    <h:outputText value="#{kartaMagazynowaBean.detailed.stanIl.stan[5]}" />
+                    <h:outputText value="S6" />
+                    <h:outputText value="ilość inne"/>
+                    <h:outputText value="#{kartaMagazynowaBean.detailed.stanIl.stan[6]}" />
+                    <h:outputText value="S7" />
+                    <h:outputText value="ilość na budowie"/>
+                    <h:outputText value="#{kartaMagazynowaBean.detailed.stanIl.stan[7]}" />
+                </p:panelGrid>
+            </p:tab >
+            <p:tab title="Operacje">
+                <p:dataTable var="o" value="#{kartaMagazynowaBean.detailed.operacje}" scrollable="true" 
+                             rowKey="#{o.id}" scrollHeight="100%;" >
+                    <p:column headerText="Id odcinka">
+                        <h:outputText value="#{o.id}" />
+                    </p:column>
+                    <p:column headerText="Czas utworzenia">
+                        <h:outputText value="#{o.czasUtworzenia}" >
+                            <f:convertDateTime pattern="YYYY-MM-dd HH:mm" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Czas akceptacji">
+                        <h:outputText value="#{o.czasAkceptacji}" >
+                            <f:convertDateTime pattern="YYYY-MM-dd HH:mm" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Opis">
+                        <h:outputText value="#{o.opis}" />
+                    </p:column>
+                </p:dataTable>
+            </p:tab>
+            <p:tab title="Odcinki">
+                <p:dataTable var="odc"  value="#{kartaMagazynowaBean.detailed.odcinki}" >
+                    <p:column headerText="id">
+                        <h:outputText value="#{odc.id}" />
+                    </p:column>
+                    <p:column headerText="Nazwa">
+                        <h:outputText value="#{odc.nazwa}" />
+                    </p:column>
+                    <p:column headerText="KKS">
+                        <h:outputText value="#{odc.kks}" />
+                    </p:column>
+                    <p:column headerText="Status">
+                        <h:outputText value="#{odc.status}" />
+                    </p:column>
+                    <p:column headerText="Właśc.">
+                        <h:outputText value="#{odc.owner.login}" />
+                    </p:column>
+                    <p:column headerText="Zn pocz.">
+                        <h:outputText value="#{odc.znacznikPoczatkowy}" />
+                    </p:column>
+                    <p:column headerText="A1">
+                        <h:outputText value="#{odc.a1}" />
+                    </p:column>
+                    <p:column headerText="A2">
+                        <h:outputText value="#{odc.a2}" />
+                    </p:column>
+                    <p:column headerText="B2">
+                        <h:outputText value="#{odc.b2}" />
+                    </p:column>
+                    <p:column headerText="B1">
+                        <h:outputText value="#{odc.b1}" />
+                    </p:column>
+                    <p:column headerText="Ułożone">
+                        <h:outputText value="#{odc.ulozone}" />
+                    </p:column>
+                    <p:column headerText="Podłaczone">
+                        <h:outputText value="#{odc.podlaczone}" />
+                    </p:column>
+                    <p:column headerText="Ścinek A1">
+                        <h:outputText value="#{odc.scinekA1}" />
+                    </p:column>
+                    <p:column headerText="Ścinek B2">
+                        <h:outputText value="#{odc.scinekB1}" />
+                    </p:column>
+                </p:dataTable>
+            </p:tab>
+
+        </p:tabView>  
+        
+
+        <!-- </p:outputPanel> -->
+        </h:form>
+    </ui:define>
+
+</ui:composition>

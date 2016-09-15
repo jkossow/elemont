@@ -71,6 +71,7 @@ public class KartaMagazynowa implements Serializable {
     private List<Operacja> operacje = new ArrayList<>();       
 
     @OneToMany ( mappedBy = "kartaMagazynowa", cascade = CascadeType.ALL )
+    @OrderBy("a1")
     //@JoinColumn( foreignKey = @ForeignKey(name = "odcinki_fk"))
     private List<Odcinek> odcinki = new ArrayList<>();
     
@@ -91,6 +92,8 @@ public class KartaMagazynowa implements Serializable {
     private BigDecimal znacznikKoncowy;
     private Boolean znacznikKoncowyDostepny;
     private Boolean znacznikiNarastajaco;
+    
+    private BigDecimal znacznikBiezacy;
     
     private Integer przyrostekNazwyOdcinka = 1;  // pomocnicza do nadawania nazw odcinkom
     
@@ -117,6 +120,16 @@ public class KartaMagazynowa implements Serializable {
             odcinki.remove(o);
             o.setKartaMagazynowa( null );
         }        
+    }
+    
+    public void ustawZnacznikBiezacy( BigDecimal znacznik ) {
+        if( getZnacznikiNarastajaco() ) 
+            if( znacznik.compareTo(znacznikBiezacy) > 0)
+                znacznikBiezacy = znacznik;
+        else
+            if( znacznik.compareTo(znacznikBiezacy) < 0)
+                znacznikBiezacy = znacznik;
+                
     }
     
     public void trySet( Status status ) {
@@ -287,6 +300,14 @@ public class KartaMagazynowa implements Serializable {
 
     public void setZnacznikiNarastajaco(Boolean znacznikiNarastajaco) {
         this.znacznikiNarastajaco = znacznikiNarastajaco;
+    }
+
+    public BigDecimal getZnacznikBiezacy() {
+        return znacznikBiezacy;
+    }
+
+    public void setZnacznikBiezacy(BigDecimal znacznikBiezacy) {
+        this.znacznikBiezacy = znacznikBiezacy;
     }
 
     

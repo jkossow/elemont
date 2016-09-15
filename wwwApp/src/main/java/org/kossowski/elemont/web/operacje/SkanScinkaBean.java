@@ -6,6 +6,7 @@
 package org.kossowski.elemont.web.operacje;
 
 import java.math.BigDecimal;
+import java.util.GregorianCalendar;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Odcinek;
 import org.kossowski.elemont.domain.operacje.SkanScinka;
@@ -13,6 +14,7 @@ import org.kossowski.elemont.domain.operacje.SkanZawieszki;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.OdcinekRepository;
 import org.kossowski.elemont.repositories.OperacjaRepository;
+import org.kossowski.elemont.security.SecurityController;
 import org.kossowski.elemont.utils.JSFUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -35,6 +37,9 @@ public class SkanScinkaBean {
     
     @Autowired
     protected KartaMagazynowaRepository kmRepo;
+    
+    @Autowired
+    protected SecurityController secController;
     
     private String QRCode2;
     private BigDecimal znacznik;
@@ -67,7 +72,8 @@ public class SkanScinkaBean {
         
         KartaMagazynowa km = o.getKartaMagazynowa();
         
-        SkanScinka skanScinka = new SkanScinka(QRCode2, znacznik, null);
+        SkanScinka skanScinka = new SkanScinka( secController.getUser(), 
+                GregorianCalendar.getInstance().getTime() , QRCode2, znacznik );
         skanScinka = opRepo.save( skanScinka );
         km.addOperation( skanScinka );
         

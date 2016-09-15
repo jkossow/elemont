@@ -40,7 +40,7 @@ public class SelektorZawieszkiTest {
     public void Sel1Test() {
         
         SelektorZawieszki s1 = SelektorZawieszki.A1;
-        System.out.println( s1 );
+        //System.out.println( s1 );
         assertEquals(s1.toString(), "A1");
     }
     

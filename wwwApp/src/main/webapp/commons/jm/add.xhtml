@@ -11,13 +11,29 @@
 
         <ui:composition template="./../../mainTemplate.xhtml">
 
-            <ui:define name="content">
-                <h:form>
-                    <p:panelGrid>
-                      ddd
-                    </p:panelGrid>
-                </h:form>
+            <ui:composition template="./../../mainTemplate.xhtml">
+            <ui:define name="content" >
+            <!-- View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
+            <h:form>
+                <!--<h:inputHidden value="#{grupaBean.grupa.id}" /> -->
+                <p:growl />
+                <p:panelGrid columns="2" >
+                    <f:facet name="header">
+                        Nowa jednostka miary
+                    </f:facet>
+                    <h:outputText value="Symbol:" />
+                    <p:inputText value="#{jmBean.jm.symbol}" required="true" requiredMessage="symbol - musisz wprowadzić"/>
+                    <h:outputText value="Nazwa:" />
+                    <p:inputText value="#{jmBean.jm.nazwa}" required="true" requiredMessage="nazwa - musisz wprowadzić" />
+                   
+                    <f:facet name="footer">
+                        <p:commandButton value="Zapisz" action="#{jmBean.save}" ajax="false"/>
+                        <p:commandButton value="Cancel" action="list.xhtml" ajax="false" immediate="true"/>
+                    </f:facet>
+                </p:panelGrid>
+            </h:form>
             </ui:define>
+        </ui:composition>
 
         </ui:composition>
 

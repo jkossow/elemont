@@ -6,6 +6,7 @@
 package org.kossowski.elemont.web.serwis;
 
 import org.kossowski.elemont.domain.KartaMagazynowa;
+import org.kossowski.elemont.domain.User;
 import org.kossowski.elemont.repositories.GrupaRepository;
 import org.kossowski.elemont.repositories.JmRepository;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
@@ -66,12 +67,52 @@ public class TableDeleteBean {
         umowaRepo.deleteAll();
         projektRepo.deleteAll();
         userRepo.deleteAll();
-        
+        //initUser();
         
     }
     
     public void deleteKm() {
         kartaRepo.deleteAll();
+    }
+    
+    private void initUser() {
+        User u;
+        
+        u = new User("jkossow", "Kossowski", "Janusz");
+        u.setPassword("aaaaa");
+        u.getRole().add("ROLE_ADMIN");
+        u.getRole().add("ROLE_BUDOWA");
+        u.getRole().add("ROLE_MAGAZYN");
+        u.getRole().add("ROLE_SERWIS");
+        u.setKodQR("001");
+        userRepo.save( u );
+        
+        u = new User("jakubk", "Kwiatkowski", "Jakub");
+        u.setKodQR("002");
+        u.getRole().add("ROLE_ADMIN");
+        u.getRole().add("ROLE_BUDOWA");
+        u.getRole().add("ROLE_MAGAZYN");
+        u.getRole().add("ROLE_ADMIN");
+        userRepo.save( u );
+        
+        /*
+        u = new User("golonm", "Golonka", "łukasz");
+        u.setPassword("aaaaa");
+        u.getRole().add("ROLE_MAGAZYN");
+        u.setKodQR("003");
+        userRepo.save( u );
+        
+        u = new User("golonb", "Golonka", "łukasz");
+        u.setPassword("aaaaa");
+        u.getRole().add("ROLE_BUDOWA");
+        u.setKodQR("004");
+        userRepo.save( u );
+        
+        u = new User("golonadmin", "Golonka", "łukasz");
+        u.setPassword("aaaaa");
+        u.getRole().add("ROLE_ADMIN");
+        u.setKodQR("005");
+        userRepo.save( u );*/
     }
     
 }

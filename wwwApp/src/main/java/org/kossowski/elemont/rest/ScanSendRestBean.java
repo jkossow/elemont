@@ -7,6 +7,7 @@ package org.kossowski.elemont.rest;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import org.kossowski.elemont.domain.KartaMagazynowa;
 import org.kossowski.elemont.domain.Odcinek;
 import org.kossowski.elemont.domain.Operacja;
@@ -153,7 +154,8 @@ public class ScanSendRestBean {
             return "Brak uzytkownika o loginie";
         }
         
-        Operacja o = new WydanieNaBudowe( km.getStanIl().getIValue( Stan.IL_W_MAG_GL), user) ;
+        Operacja o = new WydanieNaBudowe();
+        //Operacja o = new WydanieNaBudowe( km.getStanIl().getIValue( Stan.IL_W_MAG_GL), user) ;
         o.setCzasUtworzenia(date);
         o = opRepo.save(o);
         km.addOperation(o);
@@ -204,7 +206,7 @@ public class ScanSendRestBean {
         
         KartaMagazynowa km = o.getKartaMagazynowa();
         
-        SkanZawieszki skanZaw = new SkanZawieszki(data1, znacznik, operator);
+        SkanZawieszki skanZaw = new SkanZawieszki(operator, date, data1, znacznik );
         skanZaw.setCzasUtworzenia(date);
         skanZaw = opRepo.save( skanZaw );
         km.addOperation(skanZaw);
@@ -253,7 +255,10 @@ public class ScanSendRestBean {
         
         KartaMagazynowa km = o.getKartaMagazynowa();
         
-        SkanScinka skanScinka = new SkanScinka(data1, new BigDecimal(data2), operator);
+        SkanScinka skanScinka = new SkanScinka(operator,
+                GregorianCalendar.getInstance().getTime(),
+                data1, new BigDecimal(data2) );
+        
         skanScinka.setCzasUtworzenia(date);
         skanScinka = opRepo.save( skanScinka );
         km.addOperation(skanScinka);
@@ -288,7 +293,8 @@ public class ScanSendRestBean {
             return "zły id partii materiałowej";
         };
         
-        Operacja o = new Zwrot( km.getStanIl().getIValue( Stan.IL_STAN_BIEZ), operator) ;
+        //Operacja o = new Zwrot( km.getStanIl().getIValue( Stan.IL_STAN_BIEZ), operator) ;
+        Operacja o = new Zwrot();
         o.setCzasUtworzenia(date);
         o = opRepo.save(o);
         km.addOperation(o);

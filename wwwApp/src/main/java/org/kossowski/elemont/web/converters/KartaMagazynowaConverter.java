@@ -42,7 +42,8 @@ public class KartaMagazynowaConverter implements Converter {
         if (id != 0L) {
             km = kmRepo.findOne(id);
         } else {
-            km = new KartaMagazynowa();
+            //km = new KartaMagazynowa();
+            km = null;
         }
         return km;
     }

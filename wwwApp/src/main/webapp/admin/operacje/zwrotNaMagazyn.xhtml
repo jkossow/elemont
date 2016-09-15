@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/adminTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="menu">
+        <ui:include src="/menu/adminMenu.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+        <!--<p:growl id="growl" showDetail="true" sticky="true" /> -->
+        <f:view>
+            <!--
+            View id &nbsp; <h:outputText value="#{view.viewId}" />
+            -->
+            <p:growl id="growl" autoUpdate="true"/>
+            <h:form id="add_karta_i_przyjecie">
+
+                <p:panelGrid columns="2">
+                    <f:facet name="header">
+                        Zwrot na magazyn
+                    </f:facet>
+
+                    <h:outputText value="Ident. partii:" />
+                    <p:inputText value="#{zwrotNaMagazyn.km}" >
+                        <f:converter binding="#{kartaMagazynowaConverter}" />
+                    </p:inputText>
+
+                    <h:outputText value="Zwraca:" />
+                    <p:inputText value="#{zwrotNaMagazyn.owner}" >
+                        <f:converter binding="#{userKodQRConverter}" />
+                    </p:inputText>
+
+                    <h:outputText value="Ilość:" />
+                    <p:inputText id="ilosc" value="#{zwrotNaMagazyn.ilosc}" required="true"
+                                 requiredMessage="Ilość - musisz wypełnić" converterMessage="To nie jest liczba">
+
+
+                    </p:inputText>    
+
+
+                    <h:outputText value="Znacznik początku:" />
+                    <p:inputText  id="pocz" value="#{zwrotNaMagazyn.znacznikPoczatkowy}" >
+
+                    </p:inputText>
+
+                    <h:outputText value="Znacznik końca dostepny?" />
+                    <p:selectBooleanCheckbox id="dostepny" value="#{zwrotNaMagazyn.znacznikKoncowyDostepny}"  >
+                        <p:ajax  event="change"  update="koniec" partialSubmit="true" />
+                    </p:selectBooleanCheckbox>
+
+                    <h:outputText value="Znacznik końca:" />
+                    <p:inputText id="koniec"  value="#{zwrotNaMagazyn.znacznikKoncowy}" disabled="#{not zwrotNaMagazyn.znacznikKoncowyDostepny}">
+
+                    </p:inputText>
+
+                    <p:commandButton   value="Zapisz" action="#{zwrotNaMagazyn.save()}" ajax="false" update="growl"/>
+                    <h:outputText value="&nbsp;"  /> 
+
+                </p:panelGrid>
+                <p:growl />
+
+
+            </h:form>
+        </f:view>
+    </ui:define>
+
+</ui:composition>

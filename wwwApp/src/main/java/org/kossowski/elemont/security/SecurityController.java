@@ -29,10 +29,10 @@ public class SecurityController implements  Serializable {
     
     public String getUserName() {
         
-        if( user == null ) {
+        //if( user == null ) {
             String s = SecurityContextHolder.getContext().getAuthentication().getName();
             user = userRepo.findOne(s);
-        }         
+        //}         
         return user.getLogin();
         
     }
@@ -54,6 +54,9 @@ public class SecurityController implements  Serializable {
     }
     
     public User getUser() {
+        //return user;
+        String s = SecurityContextHolder.getContext().getAuthentication().getName();
+        user = userRepo.findOne(s);
         return user;
     }
     

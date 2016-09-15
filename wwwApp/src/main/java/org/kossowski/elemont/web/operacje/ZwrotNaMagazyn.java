@@ -2,6 +2,7 @@ package org.kossowski.elemont.web.operacje;
 
 
 import java.math.BigDecimal;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 import javax.faces.application.FacesMessage;
@@ -16,6 +17,7 @@ import org.kossowski.elemont.domain.operacje.Zwrot;
 import org.kossowski.elemont.repositories.KartaMagazynowaRepository;
 import org.kossowski.elemont.repositories.OperacjaRepository;
 import org.kossowski.elemont.repositories.UserRepository;
+import org.kossowski.elemont.security.SecurityController;
 import org.kossowski.elemont.utils.JSFUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -43,6 +45,9 @@ public class ZwrotNaMagazyn {
     @Autowired
     protected OperacjaRepository opRepo;
     
+    @Autowired
+    protected SecurityController secController;
+    
     //@Autowired
     //protected UserRepository userRepo;
     
@@ -50,38 +55,23 @@ public class ZwrotNaMagazyn {
     protected Long id; //id karty magazynowej
     
     protected BigDecimal ilosc;
+    protected BigDecimal znacznikPoczatkowy;
+    protected BigDecimal znacznikKoncowy;
+    protected Boolean znacznikKoncowyDostepny;
+    protected User owner;
     
-    public String prePrzekaz1() {
+    public String save() {
         
-        FacesContext fc = FacesContext.getCurrentInstance();
-        Map<String,String> pm = fc.getExternalContext().getRequestParameterMap();
+        if( km == null ) {
+            JSFUtils.addMessage("Nie ma takiej partii materiaowej");
+            return null;
+        }
         
-        id = new Long( pm.get("id"));
+        Operacja o = new Zwrot( secController.getUser(), GregorianCalendar.getInstance().getTime(),
+            ilosc, znacznikPoczatkowy, znacznikKoncowy, znacznikKoncowyDostepny, owner);
         
-        KartaMagazynowa km = kmRepo.findOne( id );
-        setIlosc( km.getStanIl().getIValue( Stan.IL_STAN_BIEZ ));
-                
-        return "/commons/operacje/zwrotNaMag.xhtml";
-    }
-    
-    // wywołanie z przycisku  widoku karta magazynowa.list
-    // kartaMagazynowa.id nie sprawdzane bo na pewno jest
-    public String przekaz1() {
-        
-        
-        
-        // fix może uda sie przekazawc karte w polu hidden
-        //serializacja
-        //id = new Long( pm.get("id"));
-        KartaMagazynowa km = kmRepo.findOne(id);
-        //wydanie.setKartaMagazynowa( km );
-        
-        Operacja o = new Zwrot( getIlosc(), null) ;
         o = opRepo.save(o);
         km.addOperation(o);
-        
-        
-        //o.setKartaMagazynowa(km);
         
         try {
             o.accept();
@@ -95,68 +85,10 @@ public class ZwrotNaMagazyn {
         };
         km = kmRepo.save(km);
         
-        return "/commons/karta_mag/list.xhtml";
-    }
-    
-    public String przekaz2() {
-        
-        //FacesContext fc = FacesContext.getCurrentInstance();
-        //Map<String,String> pm = fc.getExternalContext().getRequestParameterMap();
-        
-        // fix może uda sie przekazawc karte w polu hidden
-        //serializacja
-        //id = new Long( pm.get("id"));
-        //KartaMagazynowa km = kmRepo.findOne(id);
-        //wydanie.setKartaMagazynowa( km );
-        if( km == null ) {
-            JSFUtils.addMessage("Nie ma takiej partii w magazynie");
-            return null;
-        }
         
         
-        
-        Operacja o = new Zwrot( getIlosc(), null);
-        o = opRepo.save(o);
-        km.addOperation(o);
-        o.setKartaMagazynowa(km);
-        
-        try {
-            o.accept();
-            
-        } catch ( Exception e) {
-            km.removeOperation(o);
-            opRepo.delete(o);
-            
-            JSFUtils.addMessage(e.getMessage());
-            return null;           
-        };
-        
-        kmRepo.save(km);
-        
-        return "/commons/karta_mag/list.xhtml";
-    }
-    
-    
-    public String przekazAll() {
-        
-        return null;
-        
-        /*
-        Status s = Status.S1;  
-        List<KartaMagazynowa> ls = kmRepo.findAllByStatus( s );
-        
-        for( KartaMagazynowa k : ls ) {
-            System.out.println( k.getId() );
-            Operacja o = new WydanieNaBudowe( null, k.getStanIl().getIValue(1) );
-            k.addOperation(o);
-            try {
-                o.accept();
-                System.out.println( k.getStatus());
-                kmRepo.save( k );
-            } catch ( Exception e ) { e.printStackTrace(); }
-        }
+        JSFUtils.addMessage("Zwrócono");
         return "";
-        */
     }
 
     public Long getId() {
@@ -181,6 +113,38 @@ public class ZwrotNaMagazyn {
 
     public void setKm(KartaMagazynowa km) {
         this.km = km;
+    }
+
+    public BigDecimal getZnacznikPoczatkowy() {
+        return znacznikPoczatkowy;
+    }
+
+    public void setZnacznikPoczatkowy(BigDecimal znacznikPoczatkowy) {
+        this.znacznikPoczatkowy = znacznikPoczatkowy;
+    }
+
+    public BigDecimal getZnacznikKoncowy() {
+        return znacznikKoncowy;
+    }
+
+    public void setZnacznikKoncowy(BigDecimal znacznikKoncowy) {
+        this.znacznikKoncowy = znacznikKoncowy;
+    }
+
+    public Boolean getZnacznikKoncowyDostepny() {
+        return znacznikKoncowyDostepny;
+    }
+
+    public void setZnacznikKoncowyDostepny(Boolean znacznikKoncowyDostepny) {
+        this.znacznikKoncowyDostepny = znacznikKoncowyDostepny;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     

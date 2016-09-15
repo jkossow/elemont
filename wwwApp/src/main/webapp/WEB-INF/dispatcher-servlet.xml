@@ -25,6 +25,8 @@
     -->
     
     
+     
+    <context:component-scan base-package="org.kossowski.elemont.security" /> 
     <context:component-scan base-package="org.kossowski.elemont.rest" /> 
     <mvc:annotation-driven />
     <!--

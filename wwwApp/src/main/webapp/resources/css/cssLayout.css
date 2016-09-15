@@ -20,6 +20,7 @@
     padding: 5px;
     height: auto;
     margin: 5px;
+   
 }
 
 #topContentLeft {
@@ -27,9 +28,10 @@
    
     float:left;
     position: relative;
-    padding: 5px;
+    padding: 0px;
     height: 30px;
-    margin: 5px;
+    margin: 0px;
+    
 }
 
 
@@ -66,21 +68,21 @@
 }
 
 .left_content {
-    /*background-color: #dddddd; */ /* to jest styl głównej częsci */
+    /* background-color: #ff0000; */ /* to jest styl głównej częsci */
     padding: 5px;
     margin-left: 210px;
     
 }
 
 .right_content {
-    /*background-color: #dddddd; */
+    /* background-color: #dddddd; */ 
     padding: 5px;
     margin: 0px 170px 0px 170px;
     
 }
 
 #top a:link, #top a:visited {
-  color: white;
+  color: black;
   font-weight : bold;
   text-decoration: none;
 }

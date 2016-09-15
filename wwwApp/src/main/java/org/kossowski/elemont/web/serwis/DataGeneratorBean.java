@@ -6,9 +6,13 @@
 package org.kossowski.elemont.web.serwis;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
+import java.net.URI;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import org.kossowski.elemont.domain.Grupa;
@@ -35,7 +39,9 @@ import org.kossowski.elemont.repositories.StanowiskoRepository;
 import org.kossowski.elemont.repositories.UmowaRepository;
 import org.kossowski.elemont.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 /**
@@ -147,12 +153,15 @@ public class DataGeneratorBean {
         
         try {
             
-            List<String> l = Files.readAllLines( Paths.get( "/Users/jkossow/Desktop/material.txt"),Charset.forName("cp1250"));
+            URL url = this.getClass().getClassLoader().getResource("/org/kossowski/elemont/initdata/material.txt");
+            Path path = Paths.get( url.toURI() );
+            
+            List<String> l = Files.readAllLines( path ,Charset.forName("cp1250"));
             for( String s: l) {
                 Material m = new Material(s, s, jm, grupa);
                 matRepo.save(m);
             }
-        } catch ( IOException e ){ e.printStackTrace(); };
+        } catch ( Exception e ){ e.printStackTrace(); };
             
     }
     
@@ -165,28 +174,33 @@ public class DataGeneratorBean {
         
         try {
             
-            List<String> l = Files.readAllLines( Paths.get( "/Users/jkossow/Desktop/projekty.txt"),Charset.forName("cp1250"));
+            URL url = this.getClass().getClassLoader().getResource("/org/kossowski/elemont/initdata/projekty.txt");
+            Path path = Paths.get( url.toURI() );
+            
+            List<String> l = Files.readAllLines( path ,Charset.forName("cp1250"));
+            
+            
             for( String s: l) {
                 Projekt p = new Projekt(s, s);
                 p.getZespol().add(j);
                 projektRepo.save(p);
             }
-        } catch ( IOException e ){ e.printStackTrace(); };
+        } catch ( Exception e ){ e.printStackTrace(); };
         
     }
     
     private void initUmowa() {
-        umowaRepo.save( new Umowa("um nr 1"));
+        /*umowaRepo.save( new Umowa("um nr 1"));
         umowaRepo.save( new Umowa("um nr 2"));
         umowaRepo.save( new Umowa("um nr 3"));
-        umowaRepo.save( new Umowa("um nr 4"));
+        umowaRepo.save( new Umowa("um nr 4"));*/
     }
     
     private void initUser() {
         User u;
         
         u = new User("jkossow", "Kossowski", "Janusz");
-        u.setPassword("aaa");
+        u.setPassword("aaaaa");
         u.getRole().add("ROLE_ADMIN");
         u.getRole().add("ROLE_BUDOWA");
         u.getRole().add("ROLE_MAGAZYN");
@@ -196,8 +210,14 @@ public class DataGeneratorBean {
         
         u = new User("jakubk", "Kwiatkowski", "Jakub");
         u.setKodQR("002");
+        u.setPassword("aaaaa");
+        u.getRole().add("ROLE_ADMIN");
+        u.getRole().add("ROLE_BUDOWA");
+        u.getRole().add("ROLE_MAGAZYN");
+        u.getRole().add("ROLE_SERWIS");
         userRepo.save( u );
         
+        /*
         u = new User("golonm", "Golonka", "łukasz");
         u.setPassword("aaaaa");
         u.getRole().add("ROLE_MAGAZYN");
@@ -214,29 +234,41 @@ public class DataGeneratorBean {
         u.setPassword("aaaaa");
         u.getRole().add("ROLE_ADMIN");
         u.setKodQR("005");
-        userRepo.save( u );
+        userRepo.save( u );*/
     }
     
     private void initProducent() {
         try {
+           
+            URL url = this.getClass().getClassLoader().getResource("/org/kossowski/elemont/initdata/dostawcy.txt");
+            Path path = Paths.get( url.toURI() );
             
-            List<String> l = Files.readAllLines( Paths.get( "/Users/jkossow/Desktop/dostawcy.txt"),Charset.forName("cp1250"));
+            List<String> l = Files.readAllLines( path ,Charset.forName("cp1250"));
+              
+            
             for( String s: l) {
                 Producent p = new Producent(s, s);
                 prodRepo.save(p);
             }
-        } catch ( IOException e ){ e.printStackTrace(); };
+        } catch ( Exception e ){ e.printStackTrace(); };
     }
     
     private void initStanowisko() {
+        /*
         stanRepo.save( new Stanowisko("s1", "Stanowisko1"));
         stanRepo.save( new Stanowisko("s2", "Stanowisko2"));
         stanRepo.save( new Stanowisko("s3", "Stanowisko3"));
         stanRepo.save( new Stanowisko("s4", "Stanowisko4"));
+        */
     }
     
+    @Value("${db.pass}")
+    String dbPass; 
     
     public void beanList() {
+        
+        
+        System.out.println( dbPass );
         
         String[] beans = ac.getBeanDefinitionNames();
         
