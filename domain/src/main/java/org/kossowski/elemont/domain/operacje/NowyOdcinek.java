@@ -84,7 +84,9 @@ public class NowyOdcinek  extends Operacja {
         odcinek.setZnacznikPoczatkowy(znacznikPoczatkowy);
         
         //zmiana statusu
-        getKartaMagazynowa().ustawZnacznikBiezacy(znacznikPoczatkowy);
+        
+        // nie zmianiamy znacznika początowego karty 
+        //getKartaMagazynowa().ustawZnacznikBiezacy(znacznikPoczatkowy);
         getKartaMagazynowa().setStatus( Status.S3 );
         odcinek.setStatus( Status.S3 );
         setAcceptFlag();

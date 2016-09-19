@@ -40,7 +40,8 @@ public class SkanScinka  extends Operacja{
     public SkanScinka() {};
     
     //mozna jeszcze dodac info o czytniku
-    public SkanScinka( User utworzyl, Date czasUtworzenia, String qrCode, BigDecimal znacznik ) {
+    public SkanScinka( User utworzyl, Date czasUtworzenia, String qrCode, 
+            BigDecimal znacznik ) {
         
         super(utworzyl, czasUtworzenia);
         

@@ -47,7 +47,8 @@ public class SkanZawieszki  extends Operacja{
     public SkanZawieszki() {};
     
     //mozna jeszcze dodac info o czytniku
-    public SkanZawieszki( User utworzyl, Date czasUtworzenia, String qrCode, BigDecimal znacznik  ) {
+    public SkanZawieszki( User utworzyl, Date czasUtworzenia, String qrCode, 
+            BigDecimal znacznik  ) {
         
         super(utworzyl, czasUtworzenia);
         
@@ -180,6 +181,8 @@ public class SkanZawieszki  extends Operacja{
         
         
         //akceptacja
+        
+        // nie ustawiamy znacznika bieżącego dla karty magazynowej
         getKartaMagazynowa().ustawZnacznikBiezacy(znacznik);
         setAcceptFlag();
         

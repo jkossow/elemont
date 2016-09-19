@@ -87,6 +87,8 @@ public class KartaMagazynowa implements Serializable {
     @JoinColumn( foreignKey = @ForeignKey(name = "owner_fk"))
     private User owner = null;
     
+    
+    // TODO: tu może trzeba bedzie dodaćinicjlizację
     private String miejsceSkladowania;
     private BigDecimal znacznikPoczatkowy;
     private BigDecimal znacznikKoncowy;

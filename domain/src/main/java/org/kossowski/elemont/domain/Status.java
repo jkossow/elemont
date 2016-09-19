@@ -19,11 +19,11 @@ public enum Status implements Serializable {
     // S0 - stan początkowy  
     // S1 - przyjety z mag. głównego
     // S2 - wydany na budowę
-    // S3 - przypisane kofy QR2, wygenerowanodcinki
+    // S3 - przypisane kody QR2, wygenerowanodcinki
     // s4 - ułożony
-    // S5 - podłaczony pierwszy koniec
-    // S6 - podłczony drugi koniec
-    // S7 - stan bież na budowie
+    // S5 - podłączony pierwszy koniec
+    // S6 - podłączony drugi koniec
+    // S7 - (nie używamy)
     // S8 - wykorzystany
     // S9 - zwrócony do mag głównego po weryfikacji ścinek
     
